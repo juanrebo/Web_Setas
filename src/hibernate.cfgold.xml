@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping resource="com/setas/modelo/Usuario.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Foto.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Familia.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Orden.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Division.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Subclase.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Seta.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Coleccion.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Subdivision.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Lugar.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Localizacion.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Rol.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Clase.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

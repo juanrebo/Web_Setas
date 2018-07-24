@@ -1,9 +1,9 @@
-package com.setas.dao;
+package com.setas.service;
 
 import com.setas.modelo.Rol;
 import com.setas.modelo.Usuario;
 
-public interface RolDAO {
+public interface ServiceRol {
 	public Rol getRol(Usuario usuario);
 	public Rol getRol(int idRol);
 }
