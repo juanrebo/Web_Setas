@@ -1,5 +1,7 @@
 package com.setas.daoimp;
 
+import javax.persistence.Query;
+
 import org.hibernate.SessionFactory;
 
 import com.setas.dao.UsuarioDAO;
@@ -32,6 +34,16 @@ public class UsuarioDAOImp implements UsuarioDAO {
 		sf.getCurrentSession().getTransaction().begin();
 		sf.getCurrentSession().delete(usuario);
 		sf.getCurrentSession().getTransaction().commit();
+	}
+
+	@Override
+	public Usuario obtenerUsuario(String nombre) {
+		sf.getCurrentSession().getTransaction().begin();
+		Query q = sf.getCurrentSession().createQuery("select u from Usuario u where nombre=:nombre");
+		q.setParameter("nombre", nombre);
+		Usuario usuario = (Usuario) q.getSingleResult();
+		sf.getCurrentSession().getTransaction().commit();
+		return usuario;
 	}
 
 }

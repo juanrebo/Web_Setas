@@ -22,4 +22,9 @@ public class ServiceUsuarioImp implements ServiceUsuario {
 		ud.eliminarUsuario(usuario);
 	}
 
+	@Override
+	public Usuario obtenerUsuario(String nombre) {
+		return ud.obtenerUsuario(nombre);
+	}
+
 }
