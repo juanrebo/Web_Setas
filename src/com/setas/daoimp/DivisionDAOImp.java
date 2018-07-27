@@ -46,4 +46,14 @@ public class DivisionDAOImp implements DivisionDAO {
 		sf.getCurrentSession().getTransaction().commit();
 	}
 
+	@Override
+	public Division recuperaDivision(int iddivision) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Division u where iddivision=:iddivision");
+		q.setParameter("iddivision", iddivision);
+		Division division = (Division) q.getSingleResult();
+		sf.getCurrentSession().close();
+		return division;
+	}
+
 }

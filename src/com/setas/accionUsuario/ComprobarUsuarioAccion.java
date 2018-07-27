@@ -3,7 +3,6 @@ package com.setas.accionUsuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.setas.modelo.Rol;
 import com.setas.modelo.Usuario;
 import com.setas.service.ServiceUsuario;
 import com.setas.service.ServiceUsuarioImp;

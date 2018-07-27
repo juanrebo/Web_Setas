@@ -9,7 +9,8 @@ import com.setas.modelo.Subdivision;
 public interface SubdivisionDAO {
 	public void insertarSubdivision(Subdivision subdivision);
 	public List<Subdivision> getSubdivision();
-	public List<Subdivision> getSubdivisonDivision(Division division);
+	public List<Subdivision> getSubdivisonDivision(int division);
 	public void modificarSubdivision(Subdivision subdivision);
 	public void eliminarSubdivision(Subdivision subdivision);
+	public Subdivision recuperaSubdivision(int idsubdivision);
 }

@@ -9,4 +9,5 @@ public interface DivisionDAO {
 	public List<Division> getDivision();
 	public void modificarDivision(Division division);
 	public void eliminarDivision(Division division);
+	public Division recuperaDivision(int iddivision);
 }

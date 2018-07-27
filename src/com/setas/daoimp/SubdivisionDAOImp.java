@@ -35,10 +35,10 @@ public class SubdivisionDAOImp implements SubdivisionDAO {
 	}
 
 	@Override
-	public List<Subdivision> getSubdivisonDivision(Division division) {
+	public List<Subdivision> getSubdivisonDivision(int division) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Subdivision u where iddivision =: iddivision order by subdivision");
-		q.setParameter("iddivision", division.getIddivision().toString());
+		Query q = sf.getCurrentSession().createQuery("select u from Subdivision u where iddivision=:iddivision order by subdivision");
+		q.setParameter("iddivision", division);
 		List<Subdivision> lista = (List<Subdivision>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return lista;
@@ -56,6 +56,16 @@ public class SubdivisionDAOImp implements SubdivisionDAO {
 		sf.getCurrentSession().beginTransaction();
 		sf.getCurrentSession().delete(subdivision);
 		sf.getCurrentSession().getTransaction().commit();
+	}
+
+	@Override
+	public Subdivision recuperaSubdivision(int idsubdivision) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Subdivision u where idsubdivision=:idsubdivision");
+		q.setParameter("idsubdivision", idsubdivision);
+		Subdivision subdivision = (Subdivision) q.getSingleResult();
+		sf.getCurrentSession().close();
+		return subdivision;
 	}
 
 }

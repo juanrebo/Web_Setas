@@ -29,4 +29,9 @@ public class ServiceDivisionImp implements ServiceDivision {
 		dd.eliminarDivision(division);
 	}
 
+	@Override
+	public Division recuperaDivision(int iddivision) {
+		return dd.recuperaDivision(iddivision);
+	}
+
 }
