@@ -35,4 +35,9 @@ public class ServiceFamiliaImp implements ServiceFamilia {
 		fd.eliminarFamilia(familia);
 	}
 
+	@Override
+	public Familia recuperaFamilia(String familia) {
+		return fd.recuperaFamilia(familia);
+	}
+
 }

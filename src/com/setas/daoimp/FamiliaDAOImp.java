@@ -36,7 +36,7 @@ public class FamiliaDAOImp implements FamiliaDAO {
 	@Override
 	public List<Familia> getFamiliaOrden(Orden orden) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Familia u where idorden =: idorden order by familia");
+		Query q = sf.getCurrentSession().createQuery("select u from Familia u where idorden=:idorden order by familia");
 		q.setParameter("idorden", orden.getIdorden().toString());
 		List<Familia> lista = (List<Familia>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
@@ -55,6 +55,16 @@ public class FamiliaDAOImp implements FamiliaDAO {
 		sf.getCurrentSession().beginTransaction();
 		sf.getCurrentSession().delete(familia);
 		sf.getCurrentSession().getTransaction().commit();
+	}
+
+	@Override
+	public Familia recuperaFamilia(String familia) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Familia u where familia=:familia");
+		q.setParameter("familia", familia);
+		Familia unaFamilia = (Familia) q.getSingleResult();
+		sf.getCurrentSession().close();
+		return unaFamilia;
 	}
 
 }

@@ -3,8 +3,8 @@ package com.setas.service;
 import java.util.List;
 
 import com.setas.dao.OrdenDAO;
+import com.setas.modelo.Clase;
 import com.setas.modelo.Orden;
-import com.setas.modelo.Subclase;
 import com.setas.util.DAOFactory;
 
 public class ServiceOrdenImp implements ServiceOrden {
@@ -21,8 +21,8 @@ public class ServiceOrdenImp implements ServiceOrden {
 	}
 
 	@Override
-	public List<Orden> getOrdenSubclase(Subclase subclase) {
-		return od.getOrdenSubclase(subclase);
+	public List<Orden> getOrdenClase(Clase clase) {
+		return od.getOrdenClase(clase);
 	}
 
 	@Override
@@ -33,6 +33,11 @@ public class ServiceOrdenImp implements ServiceOrden {
 	@Override
 	public void eliminarOrden(Orden orden) {
 		od.eliminarOrden(orden);
+	}
+
+	@Override
+	public Orden recuperaOrden(String orden) {
+		return od.recuperaOrden(orden);
 	}
 
 }

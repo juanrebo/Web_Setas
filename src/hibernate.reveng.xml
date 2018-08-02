@@ -4,15 +4,13 @@
 <hibernate-reverse-engineering>
   <table-filter match-catalog="setasdb" match-name="clase"/>
   <table-filter match-catalog="setasdb" match-name="coleccion"/>
-  <table-filter match-catalog="setasdb" match-name="division"/>
   <table-filter match-catalog="setasdb" match-name="familia"/>
+  <table-filter match-catalog="setasdb" match-name="filo"/>
   <table-filter match-catalog="setasdb" match-name="foto"/>
   <table-filter match-catalog="setasdb" match-name="localizacion"/>
   <table-filter match-catalog="setasdb" match-name="lugar"/>
   <table-filter match-catalog="setasdb" match-name="orden"/>
   <table-filter match-catalog="setasdb" match-name="rol"/>
   <table-filter match-catalog="setasdb" match-name="seta"/>
-  <table-filter match-catalog="setasdb" match-name="subclase"/>
-  <table-filter match-catalog="setasdb" match-name="subdivision"/>
   <table-filter match-catalog="setasdb" match-name="usuario"/>
 </hibernate-reverse-engineering>

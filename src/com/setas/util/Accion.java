@@ -3,12 +3,22 @@ package com.setas.util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.setas.accionClasificacion.DivisionAccion;
-import com.setas.accionClasificacion.EliminarDivisionAccion;
-import com.setas.accionClasificacion.EliminarSubdivisionAccion;
-import com.setas.accionClasificacion.InsertarDivisionAccion;
-import com.setas.accionClasificacion.InsertarSubdivisionAccion;
-import com.setas.accionClasificacion.SubdivisionAccion;
+import com.setas.accionClasificacion.ClaseAccion;
+import com.setas.accionClasificacion.EliminarClaseAccion;
+import com.setas.accionClasificacion.EliminarFamiliaAccion;
+import com.setas.accionClasificacion.EliminarFiloAccion;
+import com.setas.accionClasificacion.EliminarOrdenAccion;
+import com.setas.accionClasificacion.FamiliaAccion;
+import com.setas.accionClasificacion.FiloAccion;
+import com.setas.accionClasificacion.InsertarClaseAccion;
+import com.setas.accionClasificacion.InsertarFamiliaAccion;
+import com.setas.accionClasificacion.InsertarFiloAccion;
+import com.setas.accionClasificacion.InsertarOrdenAccion;
+import com.setas.accionClasificacion.ModificarClaseAccion;
+import com.setas.accionClasificacion.ModificarFamiliaAccion;
+import com.setas.accionClasificacion.ModificarFiloAccion;
+import com.setas.accionClasificacion.ModificarOrdenAccion;
+import com.setas.accionClasificacion.OrdenAccion;
 import com.setas.accionUsuario.ComprobarUsuarioAccion;
 import com.setas.accionUsuario.InsertarUsuarioAccion;
 
@@ -26,29 +36,70 @@ public abstract class Accion {
 			accion = new ComprobarUsuarioAccion();
 		}
 		
-		if(tipo.equals("division")) {
-			accion = new DivisionAccion();
+		if(tipo.equals("filo")) {
+			accion = new FiloAccion();
 		}
 		
-		if(tipo.equals("eliminarDivision")) {
-			accion = new EliminarDivisionAccion();
+		if(tipo.equals("eliminarFilo")) {
+			accion = new EliminarFiloAccion();
 		}
 		
-		if(tipo.equals("insertarDivision")) {
-			accion = new InsertarDivisionAccion();
+		if(tipo.equals("insertarFilo")) {
+			accion = new InsertarFiloAccion();
 		}
 		
-		if(tipo.equals("subdivision")) {
-			accion = new SubdivisionAccion();
+		if(tipo.equals("modificarFilo")) {
+			accion = new ModificarFiloAccion();
 		}
 		
-		if(tipo.equals("eliminarSubdivision")) {
-			accion = new EliminarSubdivisionAccion();
+		if(tipo.equals("clase")) {
+			accion = new ClaseAccion();
 		}
 		
-		if(tipo.equals("insertarSubdivision")) {
-			accion = new InsertarSubdivisionAccion();
+		if(tipo.equals("eliminarClase")) {
+			accion = new EliminarClaseAccion();
 		}
+		
+		if(tipo.equals("insertarClase")) {
+			accion = new InsertarClaseAccion();
+		}
+		
+		if(tipo.equals("modificarClase")) {
+			accion = new ModificarClaseAccion();
+		}
+		
+		if(tipo.equals("orden")) {
+			accion = new OrdenAccion();
+		}
+		
+		if(tipo.equals("eliminarOrden")) {
+			accion = new EliminarOrdenAccion();
+		}
+		
+		if(tipo.equals("insertarOrden")) {
+			accion = new InsertarOrdenAccion();
+		}
+		
+		if(tipo.equals("modificarOrden")) {
+			accion = new ModificarOrdenAccion();
+		}
+		
+		if(tipo.equals("familia")) {
+			accion = new FamiliaAccion();
+		}
+		
+		if(tipo.equals("eliminarFamilia")) {
+			accion = new EliminarFamiliaAccion();
+		}
+		
+		if(tipo.equals("insertarFamilia")) {
+			accion = new InsertarFamiliaAccion();
+		}
+		
+		if(tipo.equals("modificarFamilia")) {
+			accion = new ModificarFamiliaAccion();
+		}
+		
 		return accion;
 	}
 }

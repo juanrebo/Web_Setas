@@ -5,23 +5,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Subdivisiones</title>
+<title>Filos</title>
 </head>
 <body>
-	<h2>Subdivisiones</h2>
+	<h2>Filos</h2>
 	<p>${rol}
-	<p>${division.division}
-	<c:forEach var="l" items="${listaSubdivision}">
-		<p><a href="clase.do?subdivision=${l.idsubdivision}">${l.subdivision}</a>
+	Fungi >
+	<c:forEach var="l" items="${listaFilo}">
+		<p><a href="clase.do?filo=${l.filo}">${l.filo}</a>
 		<c:if test="${rol == 'admin'}">
-			<form method="post" action="eliminarSubdivision.do">
-				<input type="submit" name="eliminar${l.idsubdivision}" value="Eliminar">
+			<form method="post" action="modificarFilo.do">
+				<input type="text" name="modificar${l.filo}">
+				<input type="submit" value="modificar">
+			</form>
+			<form method="post" action="eliminarFilo.do">
+				<input type="submit" name="eliminar${l.filo}" value="Eliminar">
 			</form>
 		</c:if>
+		</p>
 	</c:forEach>
 	<c:if test="${rol == 'admin'}">
-		<form method="post" action="insertarSubdivision.do">
-			<input type="text" name="nuevaSubdivision">
+		<form method="post" action="insertarFilo.do">
+			<input type="text" name="nuevoFilo">
 			<input type="submit" value="+">
 		</form>
 	</c:if>

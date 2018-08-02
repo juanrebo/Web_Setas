@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 
 import com.setas.dao.ClaseDAO;
 import com.setas.modelo.Clase;
-import com.setas.modelo.Subdivision;
+import com.setas.modelo.Filo;
 
 public class ClaseDAOImp implements ClaseDAO {
 	SessionFactory sf;
@@ -33,10 +33,10 @@ public class ClaseDAOImp implements ClaseDAO {
 	}
 
 	@Override
-	public List<Clase> getClaseSubdivison(Subdivision subdivision) {
+	public List<Clase> getClaseFilo(Filo filo) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Clase u where idsubdivision =: idsubdivision order by clase");
-		q.setParameter("idsubdivision", subdivision.getIdsubdivision().toString());
+		Query q = sf.getCurrentSession().createQuery("select u from Clase u where idfilo=:idfilo order by clase");
+		q.setParameter("idfilo", filo.getIdfilo().toString());
 		List<Clase> lista = (List<Clase>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return lista;
@@ -54,6 +54,15 @@ public class ClaseDAOImp implements ClaseDAO {
 		sf.getCurrentSession().beginTransaction();
 		sf.getCurrentSession().delete(clase);
 		sf.getCurrentSession().getTransaction().commit();
+	}
+	@Override
+	public Clase recuperaClase(String clase) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Clase u where clase=:clase");
+		q.setParameter("clase", clase);
+		Clase unaClase = (Clase) q.getSingleResult();
+		sf.getCurrentSession().close();
+		return unaClase;
 	}
 
 }

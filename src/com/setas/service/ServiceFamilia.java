@@ -11,4 +11,5 @@ public interface ServiceFamilia {
 	public List<Familia> getFamiliaOrden(Orden orden);
 	public void modificarFamilia(Familia familia);
 	public void eliminarFamilia(Familia familia);
+	public Familia recuperaFamilia(String familia);
 }

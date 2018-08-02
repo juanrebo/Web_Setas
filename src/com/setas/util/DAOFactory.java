@@ -4,22 +4,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.setas.dao.ClaseDAO;
-import com.setas.dao.DivisionDAO;
+import com.setas.dao.FiloDAO;
 import com.setas.dao.FamiliaDAO;
 import com.setas.dao.OrdenDAO;
 import com.setas.dao.RolDAO;
 import com.setas.dao.SetaDAO;
-import com.setas.dao.SubclaseDAO;
-import com.setas.dao.SubdivisionDAO;
 import com.setas.dao.UsuarioDAO;
 import com.setas.daoimp.ClaseDAOImp;
-import com.setas.daoimp.DivisionDAOImp;
+import com.setas.daoimp.FiloDAOImp;
 import com.setas.daoimp.FamiliaDAOImp;
 import com.setas.daoimp.OrdenDAOImp;
 import com.setas.daoimp.RolDAOImp;
 import com.setas.daoimp.SetaDAOImp;
-import com.setas.daoimp.SubclaseDAOImp;
-import com.setas.daoimp.SubdivisionDAOImp;
 import com.setas.daoimp.UsuarioDAOImp;
 
 public class DAOFactory {
@@ -46,20 +42,12 @@ public class DAOFactory {
 		return new UsuarioDAOImp(sf);
 	}
 	
-	public DivisionDAO getDivision() {
-		return new DivisionDAOImp(sf);
-	}
-	
-	public SubdivisionDAO getSubdivision() {
-		return new SubdivisionDAOImp(sf);
+	public FiloDAO getFilo() {
+		return new FiloDAOImp(sf);
 	}
 	
 	public ClaseDAO getClase() {
 		return new ClaseDAOImp(sf);
-	}
-	
-	public SubclaseDAO getSubclase() {
-		return new SubclaseDAOImp(sf);
 	}
 	
 	public OrdenDAO getOrden() {

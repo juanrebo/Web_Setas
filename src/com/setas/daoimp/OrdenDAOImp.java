@@ -7,8 +7,8 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 
 import com.setas.dao.OrdenDAO;
+import com.setas.modelo.Clase;
 import com.setas.modelo.Orden;
-import com.setas.modelo.Subclase;
 
 public class OrdenDAOImp implements OrdenDAO {
 	SessionFactory sf;
@@ -33,10 +33,10 @@ public class OrdenDAOImp implements OrdenDAO {
 	}
 
 	@Override
-	public List<Orden> getOrdenSubclase(Subclase subclase) {
+	public List<Orden> getOrdenClase(Clase clase) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Orden u where idsubclase =: idsubclase order by orden");
-		q.setParameter("idsubclase", subclase.getIdsubclase().toString());
+		Query q = sf.getCurrentSession().createQuery("select u from Orden u where idclase=:idclase order by orden");
+		q.setParameter("idclase", clase.getIdclase().toString());
 		List<Orden> lista = (List<Orden>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return lista;
@@ -54,6 +54,15 @@ public class OrdenDAOImp implements OrdenDAO {
 		sf.getCurrentSession().beginTransaction();
 		sf.getCurrentSession().delete(orden);
 		sf.getCurrentSession().getTransaction().commit();
+	}
+	@Override
+	public Orden recuperaOrden(String orden) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Orden u where orden=:orden");
+		q.setParameter("orden", orden);
+		Orden unaOrden = (Orden) q.getSingleResult();
+		sf.getCurrentSession().close();
+		return unaOrden;
 	}
 
 }

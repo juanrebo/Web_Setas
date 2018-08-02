@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.setas.dao.ClaseDAO;
 import com.setas.modelo.Clase;
-import com.setas.modelo.Subdivision;
+import com.setas.modelo.Filo;
 import com.setas.util.DAOFactory;
 
 public class ServiceClaseImp implements ServiceClase {
@@ -21,8 +21,8 @@ public class ServiceClaseImp implements ServiceClase {
 	}
 
 	@Override
-	public List<Clase> getClaseSubdivison(Subdivision subdivision) {
-		return cd.getClaseSubdivison(subdivision);
+	public List<Clase> getClaseFilo(Filo filo) {
+		return cd.getClaseFilo(filo);
 	}
 
 	@Override
@@ -33,6 +33,11 @@ public class ServiceClaseImp implements ServiceClase {
 	@Override
 	public void eliminarClase(Clase clase) {
 		cd.eliminarClase(clase);
+	}
+
+	@Override
+	public Clase recuperaClase(String clase) {
+		return cd.recuperaClase(clase);
 	}
 
 }
