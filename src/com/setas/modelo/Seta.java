@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 30-jul-2018 19:59:34 by Hibernate Tools 5.2.10.Final
+// Generated 02-ago-2018 17:38:22 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,8 +22,7 @@ import javax.persistence.Table;
 public class Seta implements java.io.Serializable {
 
 	private Integer idseta;
-	private Familia familia;
-	private String genero;
+	private Genero genero;
 	private String especie;
 	private String cuerpoFructifero;
 	private String sombrero;
@@ -43,16 +42,14 @@ public class Seta implements java.io.Serializable {
 	public Seta() {
 	}
 
-	public Seta(Familia familia, String genero, String especie) {
-		this.familia = familia;
+	public Seta(Genero genero, String especie) {
 		this.genero = genero;
 		this.especie = especie;
 	}
 
-	public Seta(Familia familia, String genero, String especie, String cuerpoFructifero, String sombrero,
-			String himenio, String laminas, String tubos, String gleba, String estroma, String pie, String carne,
-			String esporas, String habitat, String comestibilidad, Set<Coleccion> coleccions, Set<Foto> fotos) {
-		this.familia = familia;
+	public Seta(Genero genero, String especie, String cuerpoFructifero, String sombrero, String himenio, String laminas,
+			String tubos, String gleba, String estroma, String pie, String carne, String esporas, String habitat,
+			String comestibilidad, Set<Coleccion> coleccions, Set<Foto> fotos) {
 		this.genero = genero;
 		this.especie = especie;
 		this.cuerpoFructifero = cuerpoFructifero;
@@ -84,21 +81,12 @@ public class Seta implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idfamilia", nullable = false)
-	public Familia getFamilia() {
-		return this.familia;
-	}
-
-	public void setFamilia(Familia familia) {
-		this.familia = familia;
-	}
-
-	@Column(name = "genero", nullable = false, length = 20)
-	public String getGenero() {
+	@JoinColumn(name = "idgenero", nullable = false)
+	public Genero getGenero() {
 		return this.genero;
 	}
 
-	public void setGenero(String genero) {
+	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 

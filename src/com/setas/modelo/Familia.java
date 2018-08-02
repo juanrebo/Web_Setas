@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 30-jul-2018 19:59:34 by Hibernate Tools 5.2.10.Final
+// Generated 02-ago-2018 17:38:22 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +25,7 @@ public class Familia implements java.io.Serializable {
 	private Integer idfamilia;
 	private Orden orden;
 	private String familia;
-	private Set<Seta> setas = new HashSet<Seta>(0);
+	private Set<Genero> generos = new HashSet<Genero>(0);
 
 	public Familia() {
 	}
@@ -35,10 +35,10 @@ public class Familia implements java.io.Serializable {
 		this.familia = familia;
 	}
 
-	public Familia(Orden orden, String familia, Set<Seta> setas) {
+	public Familia(Orden orden, String familia, Set<Genero> generos) {
 		this.orden = orden;
 		this.familia = familia;
-		this.setas = setas;
+		this.generos = generos;
 	}
 
 	@Id
@@ -63,7 +63,7 @@ public class Familia implements java.io.Serializable {
 		this.orden = orden;
 	}
 
-	@Column(name = "familia", unique = true, nullable = false, length = 45)
+	@Column(name = "familia", unique = true, nullable = false, length = 25)
 	public String getFamilia() {
 		return this.familia;
 	}
@@ -73,12 +73,12 @@ public class Familia implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "familia")
-	public Set<Seta> getSetas() {
-		return this.setas;
+	public Set<Genero> getGeneros() {
+		return this.generos;
 	}
 
-	public void setSetas(Set<Seta> setas) {
-		this.setas = setas;
+	public void setGeneros(Set<Genero> generos) {
+		this.generos = generos;
 	}
 
 }

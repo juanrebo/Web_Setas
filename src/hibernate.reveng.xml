@@ -7,6 +7,7 @@
   <table-filter match-catalog="setasdb" match-name="familia"/>
   <table-filter match-catalog="setasdb" match-name="filo"/>
   <table-filter match-catalog="setasdb" match-name="foto"/>
+  <table-filter match-catalog="setasdb" match-name="genero"/>
   <table-filter match-catalog="setasdb" match-name="localizacion"/>
   <table-filter match-catalog="setasdb" match-name="lugar"/>
   <table-filter match-catalog="setasdb" match-name="orden"/>

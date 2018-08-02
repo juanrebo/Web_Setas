@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 30-jul-2018 19:59:34 by Hibernate Tools 5.2.10.Final
+// Generated 02-ago-2018 17:38:22 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -63,7 +63,7 @@ public class Orden implements java.io.Serializable {
 		this.clase = clase;
 	}
 
-	@Column(name = "orden", unique = true, nullable = false, length = 45)
+	@Column(name = "orden", unique = true, nullable = false, length = 25)
 	public String getOrden() {
 		return this.orden;
 	}

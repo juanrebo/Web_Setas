@@ -7,16 +7,20 @@ import com.setas.accionClasificacion.ClaseAccion;
 import com.setas.accionClasificacion.EliminarClaseAccion;
 import com.setas.accionClasificacion.EliminarFamiliaAccion;
 import com.setas.accionClasificacion.EliminarFiloAccion;
+import com.setas.accionClasificacion.EliminarGeneroAccion;
 import com.setas.accionClasificacion.EliminarOrdenAccion;
 import com.setas.accionClasificacion.FamiliaAccion;
 import com.setas.accionClasificacion.FiloAccion;
+import com.setas.accionClasificacion.GeneroAccion;
 import com.setas.accionClasificacion.InsertarClaseAccion;
 import com.setas.accionClasificacion.InsertarFamiliaAccion;
 import com.setas.accionClasificacion.InsertarFiloAccion;
+import com.setas.accionClasificacion.InsertarGeneroAccion;
 import com.setas.accionClasificacion.InsertarOrdenAccion;
 import com.setas.accionClasificacion.ModificarClaseAccion;
 import com.setas.accionClasificacion.ModificarFamiliaAccion;
 import com.setas.accionClasificacion.ModificarFiloAccion;
+import com.setas.accionClasificacion.ModificarGeneroAccion;
 import com.setas.accionClasificacion.ModificarOrdenAccion;
 import com.setas.accionClasificacion.OrdenAccion;
 import com.setas.accionUsuario.ComprobarUsuarioAccion;
@@ -100,6 +104,21 @@ public abstract class Accion {
 			accion = new ModificarFamiliaAccion();
 		}
 		
+		if(tipo.equals("genero")) {
+			accion = new GeneroAccion();
+		}
+		
+		if(tipo.equals("eliminarGenero")) {
+			accion = new EliminarGeneroAccion();
+		}
+		
+		if(tipo.equals("insertarGenero")) {
+			accion = new InsertarGeneroAccion();
+		}
+		
+		if(tipo.equals("modificarGenero")) {
+			accion = new ModificarGeneroAccion();
+		}
 		return accion;
 	}
 }

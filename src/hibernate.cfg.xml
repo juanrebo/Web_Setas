@@ -10,12 +10,12 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <property name="hibernate.current_session_context_class">thread</property>
         <mapping class="com.setas.modelo.Seta"/>
         <mapping class="com.setas.modelo.Coleccion"/>
         <mapping class="com.setas.modelo.Usuario"/>
         <mapping class="com.setas.modelo.Lugar"/>
         <mapping class="com.setas.modelo.Foto"/>
+        <mapping class="com.setas.modelo.Genero"/>
         <mapping class="com.setas.modelo.Familia"/>
         <mapping class="com.setas.modelo.Filo"/>
         <mapping class="com.setas.modelo.Localizacion"/>

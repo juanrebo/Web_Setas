@@ -5,30 +5,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Familias</title>
+<title>Géneros</title>
 </head>
 <body>
-<h2>Familias</h2>
-	<p>${rol}</p>
+	<h2>Géneros</h2>
 	<a href="filo.do">Fungi</a> > 
 	<a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > 
 	<a href="orden.do?clase=${clase.clase}">${clase.clase}</a> > 
-	${orden.orden}
-	<c:forEach var="l" items="${listaFamilia}">
-		<p><a href="genero.do?familia=${l.familia}">${l.familia}</a>
+	<a href="familia.do?orden=${orden.orden}">${orden.orden}</a> >
+	${seta.genero}
+	<c:forEach var="l" items="${listaGenero}">
+		<p><a href="especie.do?genero=${l.genero}">${l.genero}</a>
 		<c:if test="${rol == 'admin'}">
-			<form method="post" action="modificarFamilia.do">
-				<input type="text" name="modificar${l.familia}">
+			<form method="post" action="modificarGenero.do">
+				<input type="text" name="modificar${l.genero}">
 				<input type="submit" value="modificar">
 			</form>
-			<form method="post" action="eliminarFamilia.do">
-				<input type="submit" name="eliminar${l.familia}" value="Eliminar">
+			<form method="post" action="eliminarGenero.do">
+				<input type="submit" name="eliminar${l.genero}" value="Eliminar">
 			</form>
 		</c:if>
+		</p>
 	</c:forEach>
 	<c:if test="${rol == 'admin'}">
-		<form method="post" action="insertarFamilia.do">
-			<input type="text" name="nuevaFamilia">
+		<form method="post" action="insertarGenero.do">
+			<input type="text" name="nuevoGenero">
 			<input type="submit" value="+">
 		</form>
 	</c:if>

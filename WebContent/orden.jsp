@@ -10,7 +10,9 @@
 <body>
 <h2>Clases</h2>
 	<p>${rol}</p>
-	<a href="filo.do">Fungi</a> > <a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > ${clase.clase}
+	<a href="filo.do">Fungi</a> > 
+	<a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > 
+	${clase.clase}
 	<c:forEach var="l" items="${listaOrden}">
 		<p><a href="familia.do?orden=${l.orden}">${l.orden}</a>
 		<c:if test="${rol == 'admin'}">
