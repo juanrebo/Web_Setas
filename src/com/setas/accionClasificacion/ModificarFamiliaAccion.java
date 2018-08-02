@@ -27,7 +27,7 @@ public class ModificarFamiliaAccion extends Accion{
 			sf.modificarFamilia(unaFamilia);
 		}
 		Orden orden = (Orden) request.getAttribute("orden");
-		return "familia.do?orden="+orden.getOrden();
+		return "familia.do?orden="+orden.getOrden().toString();
 	}
 
 }

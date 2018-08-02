@@ -13,7 +13,7 @@
 	<a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > 
 	<a href="orden.do?clase=${clase.clase}">${clase.clase}</a> > 
 	<a href="familia.do?orden=${orden.orden}">${orden.orden}</a> >
-	${seta.genero}
+	${genero.genero}
 	<c:forEach var="l" items="${listaGenero}">
 		<p><a href="especie.do?genero=${l.genero}">${l.genero}</a>
 		<c:if test="${rol == 'admin'}">

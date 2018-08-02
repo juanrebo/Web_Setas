@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 02-ago-2018 17:38:22 by Hibernate Tools 5.2.10.Final
+// Generated 02-ago-2018 19:14:14 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -59,7 +59,7 @@ public class Usuario implements java.io.Serializable {
 		this.idusuario = idusuario;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idrol", nullable = false)
 	public Rol getRol() {
 		return this.rol;

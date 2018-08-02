@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 02-ago-2018 17:38:22 by Hibernate Tools 5.2.10.Final
+// Generated 02-ago-2018 19:14:14 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
