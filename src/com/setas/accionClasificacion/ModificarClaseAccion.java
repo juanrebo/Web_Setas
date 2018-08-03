@@ -26,7 +26,7 @@ public class ModificarClaseAccion extends Accion {
 			unaClase.setClase(nuevaClase);
 			sc.modificarClase(unaClase);
 		}
-		Filo filo = (Filo) request.getAttribute("filo");
+		Filo filo = (Filo) request.getSession().getAttribute("filo");
 		return "clase.do?filo="+filo.getFilo().toString();
 	}
 

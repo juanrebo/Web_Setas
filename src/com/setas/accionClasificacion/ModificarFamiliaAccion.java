@@ -26,7 +26,7 @@ public class ModificarFamiliaAccion extends Accion{
 			unaFamilia.setFamilia(nuevaFamilia);
 			sf.modificarFamilia(unaFamilia);
 		}
-		Orden orden = (Orden) request.getAttribute("orden");
+		Orden orden = (Orden) request.getSession().getAttribute("orden");
 		return "familia.do?orden="+orden.getOrden().toString();
 	}
 

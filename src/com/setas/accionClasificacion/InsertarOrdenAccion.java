@@ -19,7 +19,7 @@ public class InsertarOrdenAccion extends Accion {
 		orden.setOrden(request.getParameter("nuevoOrden"));
 		orden.setClase(clase);
 		so.insertarOrden(orden);
-		return "orden.do?clase="+clase.getClase();
+		return "orden.do?clase="+clase.getClase().toString();
 	}
 
 }

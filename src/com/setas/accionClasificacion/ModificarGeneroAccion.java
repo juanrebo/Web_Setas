@@ -26,7 +26,7 @@ public class ModificarGeneroAccion extends Accion{
 			unGenero.setGenero(nuevoGenero);
 			sg.modificarGenero(unGenero);
 		}
-		Familia familia = (Familia) request.getAttribute("familia");
+		Familia familia = (Familia) request.getSession().getAttribute("familia");
 		return "genero.do?familia="+familia.getFamilia().toString();
 	}
 

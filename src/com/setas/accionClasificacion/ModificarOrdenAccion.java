@@ -26,7 +26,7 @@ public class ModificarOrdenAccion extends Accion{
 			unOrden.setOrden(nuevoOrden);
 			so.modificarOrden(unOrden);
 		}
-		Clase clase = (Clase) request.getAttribute("clase");
+		Clase clase = (Clase) request.getSession().getAttribute("clase");
 		return "orden.do?clase="+clase.getClase().toString();
 	}
 

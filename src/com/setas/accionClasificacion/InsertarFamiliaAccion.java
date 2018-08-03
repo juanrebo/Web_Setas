@@ -19,7 +19,7 @@ public class InsertarFamiliaAccion extends Accion{
 		familia.setFamilia(request.getParameter("nuevaFamilia"));
 		familia.setOrden(orden);
 		sf.insertarFamilia(familia);
-		return "familia.do?orden="+orden.getOrden();
+		return "familia.do?orden="+orden.getOrden().toString();
 	}
 
 }

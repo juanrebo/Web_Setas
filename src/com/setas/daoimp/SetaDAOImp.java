@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 
 import com.setas.dao.SetaDAO;
 import com.setas.modelo.Familia;
+import com.setas.modelo.Genero;
 import com.setas.modelo.Seta;
 
 public class SetaDAOImp implements SetaDAO {
@@ -35,12 +36,12 @@ public class SetaDAOImp implements SetaDAO {
 		sf.getCurrentSession().close();
 		return lista;
 	}
-
+	
 	@Override
-	public List<Seta> getSetaFamilia(Familia familia) {
+	public List<Seta> getSetaGenero(Genero genero) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Seta u where idfamilia=:idfamilia order by genero");
-		q.setParameter("idfamilia", familia.getIdfamilia().toString());
+		Query q = sf.getCurrentSession().createQuery("select u from Seta u where idgenero=:idgenero order by especie");
+		q.setParameter("idgenero", genero.getIdgenero().toString());
 		List<Seta> lista = (List<Seta>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		sf.getCurrentSession().close();
@@ -59,17 +60,6 @@ public class SetaDAOImp implements SetaDAO {
 		sf.getCurrentSession().beginTransaction();
 		sf.getCurrentSession().delete(seta);
 		sf.getCurrentSession().getTransaction().commit();
-	}
-
-	@Override
-	public List<Seta> getSetaGenero(String genero) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Seta u where genero=:genero order by especie");
-		q.setParameter("genero", genero);
-		List<Seta> lista = (List<Seta>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		sf.getCurrentSession().close();
-		return lista;
 	}
 
 	@Override

@@ -9,10 +9,12 @@ import com.setas.accionClasificacion.EliminarFamiliaAccion;
 import com.setas.accionClasificacion.EliminarFiloAccion;
 import com.setas.accionClasificacion.EliminarGeneroAccion;
 import com.setas.accionClasificacion.EliminarOrdenAccion;
+import com.setas.accionClasificacion.EspecieAccion;
 import com.setas.accionClasificacion.FamiliaAccion;
 import com.setas.accionClasificacion.FiloAccion;
 import com.setas.accionClasificacion.GeneroAccion;
 import com.setas.accionClasificacion.InsertarClaseAccion;
+import com.setas.accionClasificacion.InsertarEspecieAccion;
 import com.setas.accionClasificacion.InsertarFamiliaAccion;
 import com.setas.accionClasificacion.InsertarFiloAccion;
 import com.setas.accionClasificacion.InsertarGeneroAccion;
@@ -119,6 +121,15 @@ public abstract class Accion {
 		if(tipo.equals("modificarGenero")) {
 			accion = new ModificarGeneroAccion();
 		}
+		
+		if(tipo.equals("especie")) {
+			accion = new EspecieAccion();
+		}
+		
+		if(tipo.equals("insertarEspecie")) {
+			accion = new InsertarEspecieAccion();
+		}
+		
 		return accion;
 	}
 }

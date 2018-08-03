@@ -19,7 +19,7 @@ public class InsertarClaseAccion extends Accion {
 		clase.setClase(request.getParameter("nuevaClase"));
 		clase.setFilo(filo);
 		sc.insertarClase(clase);
-		return "clase.do?filo="+filo.getFilo();
+		return "clase.do?filo="+filo.getFilo().toString();
 	}
 
 }

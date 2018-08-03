@@ -3,7 +3,7 @@ package com.setas.service;
 import java.util.List;
 
 import com.setas.dao.SetaDAO;
-import com.setas.modelo.Familia;
+import com.setas.modelo.Genero;
 import com.setas.modelo.Seta;
 import com.setas.util.DAOFactory;
 
@@ -21,8 +21,8 @@ public class ServiceSetaImp implements ServiceSeta {
 	}
 
 	@Override
-	public List<Seta> getSetaFamilia(Familia familia) {
-		return sd.getSetaFamilia(familia);
+	public List<Seta> getSetaGenero(Genero genero) {
+		return sd.getSetaGenero(genero);
 	}
 
 	@Override
@@ -33,11 +33,6 @@ public class ServiceSetaImp implements ServiceSeta {
 	@Override
 	public void eliminarSeta(Seta seta) {
 		sd.eliminarSeta(seta);
-	}
-
-	@Override
-	public List<Seta> getSetaGenero(String genero) {
-		return sd.getSetaGenero(genero);
 	}
 
 	@Override
