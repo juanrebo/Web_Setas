@@ -7,6 +7,8 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 
 import com.setas.dao.FamiliaDAO;
+import com.setas.modelo.Coleccion;
+import com.setas.modelo.ColeccionId;
 import com.setas.modelo.Familia;
 import com.setas.modelo.Orden;
 
@@ -63,7 +65,8 @@ public class FamiliaDAOImp implements FamiliaDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Familia u where familia=:familia");
 		q.setParameter("familia", familia);
 		Familia unaFamilia = (Familia) q.getSingleResult();
-		sf.getCurrentSession().close();
+		unaFamilia.getOrden();
+		sf.getCurrentSession().getTransaction().commit();
 		return unaFamilia;
 	}
 

@@ -60,9 +60,10 @@ public class OrdenDAOImp implements OrdenDAO {
 		sf.getCurrentSession().beginTransaction();
 		Query q = sf.getCurrentSession().createQuery("select u from Orden u where orden=:orden");
 		q.setParameter("orden", orden);
-		Orden unaOrden = (Orden) q.getSingleResult();
-		sf.getCurrentSession().close();
-		return unaOrden;
+		Orden unOrden = (Orden) q.getSingleResult();
+		unOrden.getClase();
+		sf.getCurrentSession().getTransaction().commit();
+		return unOrden;
 	}
 
 }

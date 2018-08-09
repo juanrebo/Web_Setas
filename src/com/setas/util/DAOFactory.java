@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 import com.setas.dao.ClaseDAO;
 import com.setas.dao.FamiliaDAO;
 import com.setas.dao.FiloDAO;
+import com.setas.dao.FotoDAO;
 import com.setas.dao.GeneroDAO;
 import com.setas.dao.OrdenDAO;
 import com.setas.dao.RolDAO;
@@ -14,6 +15,7 @@ import com.setas.dao.UsuarioDAO;
 import com.setas.daoimp.ClaseDAOImp;
 import com.setas.daoimp.FamiliaDAOImp;
 import com.setas.daoimp.FiloDAOImp;
+import com.setas.daoimp.FotoDAOImp;
 import com.setas.daoimp.GeneroDAOImp;
 import com.setas.daoimp.OrdenDAOImp;
 import com.setas.daoimp.RolDAOImp;
@@ -62,5 +64,9 @@ public class DAOFactory {
 	
 	public GeneroDAO getGenero() {
 		return new GeneroDAOImp(sf);
+	}
+	
+	public FotoDAO getFoto() {
+		return new FotoDAOImp(sf);
 	}
 }

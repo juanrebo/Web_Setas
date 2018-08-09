@@ -33,7 +33,6 @@ public class SetaDAOImp implements SetaDAO {
 		Query q = sf.getCurrentSession().createQuery("Select u from setas u");
 		lista = (ArrayList<Seta>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
-		sf.getCurrentSession().close();
 		return lista;
 	}
 	
@@ -44,7 +43,6 @@ public class SetaDAOImp implements SetaDAO {
 		q.setParameter("idgenero", genero.getIdgenero().toString());
 		List<Seta> lista = (List<Seta>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
-		sf.getCurrentSession().close();
 		return lista;
 	}
 	
@@ -63,12 +61,13 @@ public class SetaDAOImp implements SetaDAO {
 	}
 
 	@Override
-	public Seta recuperaSeta(String genero, String especie) {
+	public Seta recuperaSeta(int idgenero, String especie) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Seta where genero=:genero and especie=:especie order by genero, especie");
+		Query q = sf.getCurrentSession().createQuery("select u from Seta u where idgenero=:idgenero and especie=:especie order by genero, especie");
+		q.setParameter("idgenero", idgenero);
+		q.setParameter("especie", especie);
 		Seta seta = (Seta) q.getSingleResult();
 		sf.getCurrentSession().getTransaction().commit();
-		sf.getCurrentSession().close();
 		return seta;
 	}
 

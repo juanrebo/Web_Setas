@@ -62,7 +62,8 @@ public class GeneroDAOImp implements GeneroDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Genero u where genero=:genero");
 		q.setParameter("genero", genero);
 		Genero unGenero = (Genero) q.getSingleResult();
-		sf.getCurrentSession().close();
+		unGenero.getFamilia();
+		sf.getCurrentSession().getTransaction().commit();;
 		return unGenero;
 	}
 

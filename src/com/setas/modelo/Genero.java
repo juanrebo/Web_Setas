@@ -53,7 +53,7 @@ public class Genero implements java.io.Serializable {
 		this.idgenero = idgenero;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idfamilia", nullable = false)
 	public Familia getFamilia() {
 		return this.familia;

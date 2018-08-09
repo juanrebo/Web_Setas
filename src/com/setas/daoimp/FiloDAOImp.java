@@ -29,7 +29,6 @@ public class FiloDAOImp implements FiloDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Filo u order by filo");
 		List<Filo> lista = (List<Filo>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
-		sf.getCurrentSession().close();
 		return lista;
 	}
 
@@ -52,9 +51,9 @@ public class FiloDAOImp implements FiloDAO {
 		sf.getCurrentSession().beginTransaction();
 		Query q = sf.getCurrentSession().createQuery("select u from Filo u where filo=:filo");
 		q.setParameter("filo", filo);
-		Filo unaFilo = (Filo) q.getSingleResult();
-		sf.getCurrentSession().close();
-		return unaFilo;
+		Filo unFilo = (Filo) q.getSingleResult();
+		sf.getCurrentSession().getTransaction().commit();
+		return unFilo;
 	}
 
 }

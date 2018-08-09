@@ -30,9 +30,14 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher despachador=null;		
 		String url=request.getServletPath();
-		despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(1, url.length()-3)).ejecutar(request, response));
-		despachador.forward(request,response);
+		if(url.contains("admin")) {
+			despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(7, url.length()-3)).ejecutar(request, response));
+			despachador.forward(request,response);
+		}else {			
+			despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(1, url.length()-3)).ejecutar(request, response));
+			despachador.forward(request,response);
 		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

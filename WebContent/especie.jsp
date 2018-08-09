@@ -16,7 +16,7 @@
 	<a href="genero.do?familia=${familia.familia}">${familia.familia}</a> >
 	${genero.genero}
 	<c:forEach var="l" items="${listaSeta}">
-		<p><a href="especie.do?genero=${genero}&especie=${l.especie}">${l.especie}</a>
+		<p><a href="seta.do?genero=${genero.genero}&especie=${l.especie}">${l.especie}</a>
 		<c:if test="${rol == 'admin'}">
 			<form method="post" action="modificarEspecie.do">
 				<input type="text" name="modificar${l.especie}">

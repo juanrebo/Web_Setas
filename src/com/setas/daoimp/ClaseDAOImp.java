@@ -61,7 +61,8 @@ public class ClaseDAOImp implements ClaseDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Clase u where clase=:clase");
 		q.setParameter("clase", clase);
 		Clase unaClase = (Clase) q.getSingleResult();
-		sf.getCurrentSession().close();
+		unaClase.getFilo();
+		sf.getCurrentSession().getTransaction().commit();
 		return unaClase;
 	}
 

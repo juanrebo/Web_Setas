@@ -10,7 +10,7 @@
 <body>
 	<h2>Filos</h2>
 	<p>${rol}
-	Fungi >
+	<p>Fungi >
 	<c:forEach var="l" items="${listaFilo}">
 		<p><a href="clase.do?filo=${l.filo}">${l.filo}</a>
 		<c:if test="${rol == 'admin'}">

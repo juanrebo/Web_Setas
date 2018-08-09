@@ -42,8 +42,8 @@ public class UsuarioDAOImp implements UsuarioDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Usuario u where nombre=:nombre");
 		q.setParameter("nombre", nombre);
 		Usuario usuario = (Usuario) q.getSingleResult();
+		usuario.getRol();
 		sf.getCurrentSession().getTransaction().commit();
 		return usuario;
 	}
-
 }

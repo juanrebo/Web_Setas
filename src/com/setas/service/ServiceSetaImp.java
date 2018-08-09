@@ -36,8 +36,8 @@ public class ServiceSetaImp implements ServiceSeta {
 	}
 
 	@Override
-	public Seta recuperaSeta(String genero, String especie) {
-		return sd.recuperaSeta(genero, especie);
+	public Seta recuperaSeta(int idgenero, String especie) {
+		return sd.recuperaSeta(idgenero, especie);
 	}
 
 }

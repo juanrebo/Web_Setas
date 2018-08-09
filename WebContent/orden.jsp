@@ -8,7 +8,7 @@
 <title>Órdenes</title>
 </head>
 <body>
-<h2>Clases</h2>
+<h2>Órdenes</h2>
 	<p>${rol}</p>
 	<a href="filo.do">Fungi</a> > 
 	<a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > 

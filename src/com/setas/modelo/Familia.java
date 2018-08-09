@@ -53,7 +53,7 @@ public class Familia implements java.io.Serializable {
 		this.idfamilia = idfamilia;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idorden", nullable = false)
 	public Orden getOrden() {
 		return this.orden;

@@ -56,7 +56,7 @@ public class Foto implements java.io.Serializable {
 		this.seta = seta;
 	}
 
-	@Column(name = "ruta", length = 45)
+	@Column(name = "ruta", length = 200)
 	public String getRuta() {
 		return this.ruta;
 	}

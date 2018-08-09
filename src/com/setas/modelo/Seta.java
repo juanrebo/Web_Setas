@@ -80,7 +80,7 @@ public class Seta implements java.io.Serializable {
 		this.idseta = idseta;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idgenero", nullable = false)
 	public Genero getGenero() {
 		return this.genero;
