@@ -24,29 +24,29 @@
 		</select>
 		 Especie: <input type="text" name="especie" value="${seta.especie}">
 		<p>Cuerpo fructífero:
-		<p><textarea rows="5" maxlength="500" name="cuerpoFructifero" form="modificarSeta">${seta.cuerpoFructifero}</textarea>
+		<p><textarea  rows="5" cols="50" maxlength="500" name="cuerpoFructifero" form="modificarSeta">${seta.cuerpoFructifero}</textarea>
 		<p>Sombrero:
-		<p><textarea rows="5" maxlength="500" name="sombrero" form="modificarSeta">${seta.sombrero}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="sombrero" form="modificarSeta">${seta.sombrero}</textarea>
 		<p>Himenio:
-		<p><textarea rows="5" maxlength="500" name="himenio" form="modificarSeta">${seta.himenio}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="himenio" form="modificarSeta">${seta.himenio}</textarea>
 		<p>Gleba:
-		<p><textarea rows="5" maxlength="500" name="gleba" form="modificarSeta">${seta.gleba}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="gleba" form="modificarSeta">${seta.gleba}</textarea>
 		<p>Estroma:
-		<p><textarea rows="5" maxlength="500" name="estroma" form="modificarSeta">${seta.estroma}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="estroma" form="modificarSeta">${seta.estroma}</textarea>
 		<p>Láminas:
-		<p><textarea rows="5" maxlength="500" name="laminas" form="modificarSeta">${seta.laminas}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="laminas" form="modificarSeta">${seta.laminas}</textarea>
 		<p>Tubos:
-		<p><textarea rows="5" maxlength="500" name="tubos" form="modificarSeta">${seta.tubos}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="tubos" form="modificarSeta">${seta.tubos}</textarea>
 		<p>Pie:
-		<p><textarea rows="5" maxlength="500" name="pie" form="modificarSeta">${seta.pie}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="pie" form="modificarSeta">${seta.pie}</textarea>
 		<p>Carne
-		<p><textarea rows="5" maxlength="500" name="carne" form="modificarSeta">${seta.carne}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="carne" form="modificarSeta">${seta.carne}</textarea>
 		<p>Esporada:
-		<p><textarea rows="5" maxlength="500" name="esporas" form="modificarSeta">${seta.esporas}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="esporas" form="modificarSeta">${seta.esporas}</textarea>
 		<p>Hábitat
-		<p><textarea rows="5" maxlength="500" name="habitat" form="modificarSeta">${seta.habitat}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="habitat" form="modificarSeta">${seta.habitat}</textarea>
 		<p>Comestibilidad:
-		<p><textarea rows="5" maxlength="500" name="comestibilidad" form="modificarSeta">${seta.comestibilidad}</textarea>
+		<p><textarea rows="5" cols="50" maxlength="500" name="comestibilidad" form="modificarSeta">${seta.comestibilidad}</textarea>
 		<p>Foto: <input type="text" name="ruta">
 		<p><input type="submit" value="Editar seta">
 	</form>

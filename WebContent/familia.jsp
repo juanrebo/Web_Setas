@@ -8,24 +8,32 @@
 <title>Familias</title>
 </head>
 <body>
-<h2>Familias</h2>
+	<h2>Familias</h2>
 	<p>${rol}</p>
-	<a href="filo.do">Fungi</a> > 
-	<a href="clase.do?filo=${filo.filo}">${filo.filo}</a> > 
-	<a href="orden.do?clase=${clase.clase}">${clase.clase}</a> > 
-	${orden.orden}
+	
+	<div class="atajosClasificacion">
+		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
+		<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
+		<a href="orden.do?clase=${clase.clase}" class="clasificacionAtajo">${clase.clase}</a> > 
+		<span class="clasificacionAtajoActivo">${orden.orden}</span>
+	</div>
+	
 	<c:forEach var="l" items="${listaFamilia}">
-		<p><a href="genero.do?familia=${l.familia}">${l.familia}</a>
-		<c:if test="${rol == 'admin'}">
-			<form method="post" action="modificarFamilia.do">
-				<input type="text" name="modificar${l.familia}">
-				<input type="submit" value="modificar">
-			</form>
-			<form method="post" action="eliminarFamilia.do">
-				<input type="submit" name="eliminar${l.familia}" value="Eliminar">
-			</form>
-		</c:if>
+		<div class="clasificacion">
+			<a href="genero.do?familia=${l.familia}" class="enlaceClasificacion">${l.familia}</a>
+			<c:if test="${rol == 'admin'}">
+				<form method="post" action="modificarFamilia.do">
+					<input type="text" name="modificar${l.familia}">
+					<input type="submit" value="modificar">
+				</form>
+				<form method="post" action="eliminarFamilia.do">
+					<input type="submit" name="eliminar${l.familia}" value="Eliminar">
+				</form>
+			</c:if>
+		</div>
+		<p>
 	</c:forEach>
+	
 	<c:if test="${rol == 'admin'}">
 		<form method="post" action="insertarFamilia.do">
 			<input type="text" name="nuevaFamilia">
@@ -33,4 +41,5 @@
 		</form>
 	</c:if>
 </body>
+<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

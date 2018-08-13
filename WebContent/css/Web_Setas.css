@@ -1,0 +1,99 @@
+html, div, img, p {
+    font-family: arial;
+    color: black;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: #DDDDE1;
+}
+
+h1 {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    display: inline-block;
+}
+
+form {
+    display: inline;
+}
+
+input[type=submit] {
+    background-color: lightgreen;
+    border: 1px solid green;
+    padding: 2px 5px;
+    color: gray;
+}
+
+
+/*Clasificaciones*/
+
+.atajosClasificacion {
+    background-color: #E1EEE1;
+    font-family: tahoma;
+}
+
+.clasificacion {
+    display: inline-block;
+}
+
+.clasificacionAtajo {
+    color: darkblue;
+}
+
+.clasificacionAtajoActivo {
+    font-weight: bold;
+}
+
+.enlaceClasificacion {
+    color: red;
+    display: inline;
+}
+
+
+/*Seta*/
+.nombreSeta {
+    font-style: oblique;
+    font-size: 2em;
+}
+
+.fichaSeta {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fichaFoto {
+    margin: auto;
+    flex: 1 25%;
+    height: 250px;
+}
+.fichaFoto img{
+	height: 250px;
+	padding: 2px;
+	border: 1px solid black;
+}
+
+.fichaClasif {
+    margin: auto;
+    flex: 3 75%;
+    width: 100%;
+}
+
+.imagenesSetas {}
+
+.contImgSeta a {
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+}
+
+.imagenSeta {
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+}

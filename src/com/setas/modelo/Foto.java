@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 02-ago-2018 19:14:14 by Hibernate Tools 5.2.10.Final
+// Generated 13-ago-2018 20:23:50 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,17 +21,20 @@ public class Foto implements java.io.Serializable {
 	private Integer idfoto;
 	private Seta seta;
 	private String ruta;
+	private String derecho;
 
 	public Foto() {
-	}
-
-	public Foto(Seta seta) {
-		this.seta = seta;
 	}
 
 	public Foto(Seta seta, String ruta) {
 		this.seta = seta;
 		this.ruta = ruta;
+	}
+
+	public Foto(Seta seta, String ruta, String derecho) {
+		this.seta = seta;
+		this.ruta = ruta;
+		this.derecho = derecho;
 	}
 
 	@Id
@@ -56,13 +59,22 @@ public class Foto implements java.io.Serializable {
 		this.seta = seta;
 	}
 
-	@Column(name = "ruta", length = 200)
+	@Column(name = "ruta", nullable = false, length = 200)
 	public String getRuta() {
 		return this.ruta;
 	}
 
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
+	}
+
+	@Column(name = "derecho", length = 200)
+	public String getDerecho() {
+		return this.derecho;
+	}
+
+	public void setDerecho(String derecho) {
+		this.derecho = derecho;
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 02-ago-2018 19:14:14 by Hibernate Tools 5.2.10.Final
+// Generated 13-ago-2018 20:23:50 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -53,7 +53,7 @@ public class Genero implements java.io.Serializable {
 		this.idgenero = idgenero;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idfamilia", nullable = false)
 	public Familia getFamilia() {
 		return this.familia;

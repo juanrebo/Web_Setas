@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 02-ago-2018 19:14:14 by Hibernate Tools 5.2.10.Final
+// Generated 13-ago-2018 20:23:50 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,15 +22,17 @@ public class Localizacion implements java.io.Serializable {
 	private Integer idlocalizacion;
 	private Coleccion coleccion;
 	private Lugar lugar;
-	private String coordenadas;
+	private String latitud;
+	private String longitud;
 
 	public Localizacion() {
 	}
 
-	public Localizacion(Coleccion coleccion, Lugar lugar, String coordenadas) {
+	public Localizacion(Coleccion coleccion, Lugar lugar, String latitud, String longitud) {
 		this.coleccion = coleccion;
 		this.lugar = lugar;
-		this.coordenadas = coordenadas;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
 	@Id
@@ -66,13 +68,22 @@ public class Localizacion implements java.io.Serializable {
 		this.lugar = lugar;
 	}
 
-	@Column(name = "coordenadas", nullable = false, length = 50)
-	public String getCoordenadas() {
-		return this.coordenadas;
+	@Column(name = "latitud", nullable = false, length = 25)
+	public String getLatitud() {
+		return this.latitud;
 	}
 
-	public void setCoordenadas(String coordenadas) {
-		this.coordenadas = coordenadas;
+	public void setLatitud(String latitud) {
+		this.latitud = latitud;
+	}
+
+	@Column(name = "longitud", nullable = false, length = 25)
+	public String getLongitud() {
+		return this.longitud;
+	}
+
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
 	}
 
 }

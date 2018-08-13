@@ -9,26 +9,27 @@
 </head>
 <body>
 	<a href="Inicio.html">Inicio</a>
-	<h2>${seta.genero.genero} ${seta.especie}</h2>
+	<h2 class="nombreSeta">${seta.genero.genero} ${seta.especie}</h2>
 	<c:if test="${rol == 'admin'}">
 		<a href="editarSeta.do">Editar seta</a>
-		<!--a href="admin/EditarSeta.jsp?genero=${genero.genero}&especie=${seta.especie}">Editar</a-->
 	</c:if>
-	<div>
-	<p><img src="${listaFotos.get(0).ruta}" width="25%" display="inline">
-	</div>
-	<div display="inline">
-	<p>Reino: <a href="filo.do">Fungi</a>
-	<p>Filo: <a href="clase.do?filo=${filo.filo}">${filo.filo}</a></p>
-	<p>Clase: <a href="orden.do?clase=${clase.clase}">${clase.clase}</a></p>
-	<p>Orden: <a href="familia.do?orden=${orden.orden}">${orden.orden}</a></p>
-	<p>Familia: <a href="genero.do?familia=${familia.familia}">${familia.familia}</a></p>
-	<p>Género: <a href="especie.do?genero=${genero.genero}">${genero.genero}</a></p>
+	<div class="fichaSeta">
+		<div class="fichaFoto">
+			<p><img src="${listaFotos.get(0).ruta}">
+		</div>
+		<div class="fichaClasif">
+			<p>Reino: <a href="filo.do">Fungi</a>
+			<p>Filo: <a href="clase.do?filo=${filo.filo}">${filo.filo}</a></p>
+			<p>Clase: <a href="orden.do?clase=${clase.clase}">${clase.clase}</a></p>
+			<p>Orden: <a href="familia.do?orden=${orden.orden}">${orden.orden}</a></p>
+			<p>Familia: <a href="genero.do?familia=${familia.familia}">${familia.familia}</a></p>
+			<p>Género: <a href="especie.do?genero=${genero.genero}">${genero.genero}</a></p>
+		</div>
 	</div>
 	
 	<c:if test="${seta.cuerpoFructifero ne ''}" >
 		<h3>Cuerpo fructífero</h3>
-		<p>${seta.cuerpoFructifero.replaceAll('\\n','<br/>')}</p>
+		<p>${seta.cuerpoFructifero}</p>
 	</c:if>
 	
 	<c:if test="${seta.sombrero ne ''}" >
@@ -91,8 +92,14 @@
 		<p>${seta.comestibilidad}</p>
 	</c:if>
 	
-	<c:forEach var="f" items="${listaFotos}">
-		<img src="${f.ruta}">
-	</c:forEach>
+	<div class="imagenesSetas">
+		<c:forEach var="f" items="${listaFotos}">
+				<a href="${f.ruta}">
+					<img src="${f.ruta}" class="imagenSeta">
+				</a>
+		</c:forEach>
+	</div>
+	
 </body>
+<link rel="stylesheet" href="css/Web_Setas.css">
 </html>
