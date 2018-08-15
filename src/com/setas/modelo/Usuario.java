@@ -59,7 +59,7 @@ public class Usuario implements java.io.Serializable {
 		this.idusuario = idusuario;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idrol", nullable = false)
 	public Rol getRol() {
 		return this.rol;

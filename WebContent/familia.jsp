@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h2>Familias</h2>
-	<p>${rol}</p>
+	<p>${sessionScope.usuario.nombre}
+	<p>${sessionScope.rol.rol}
 	
 	<div class="atajosClasificacion">
 		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
@@ -21,7 +22,7 @@
 	<c:forEach var="l" items="${listaFamilia}">
 		<div class="clasificacion">
 			<a href="genero.do?familia=${l.familia}" class="enlaceClasificacion">${l.familia}</a>
-			<c:if test="${rol == 'admin'}">
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarFamilia.do">
 					<input type="text" name="modificar${l.familia}">
 					<input type="submit" value="modificar">
@@ -34,7 +35,7 @@
 		<p>
 	</c:forEach>
 	
-	<c:if test="${rol == 'admin'}">
+	<c:if test="${sessionScope.rol.rol == 'admin'}">
 		<form method="post" action="insertarFamilia.do">
 			<input type="text" name="nuevaFamilia">
 			<input type="submit" value="+">

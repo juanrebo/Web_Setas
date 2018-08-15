@@ -9,16 +9,16 @@
 </head>
 <body>
 	<h2>Filos</h2>
-	<p>${rol}
+	<p>${sessionScope.usuario.nombre}
+	<p>${sessionScope.rol.rol}
 	
 	<div class="atajosClasificacion">
 		<p><span class="clasificacionActivo">Fungi</span>
 	</div>
-	
 	<c:forEach var="l" items="${listaFilo}">
 		<div class="clasificacion">
 			<a href="clase.do?filo=${l.filo}" class="enlaceClasificacion">${l.filo}</a>
-			<c:if test="${rol == 'admin'}">
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarFilo.do">
 					<input type="text" name="modificar${l.filo}">
 					<input type="submit" value="modificar">
@@ -31,13 +31,12 @@
 		<p>
 	</c:forEach>
 	
-	<c:if test="${rol == 'admin'}">
+	<c:if test="${sessionScope.rol.rol == 'admin'}">
 		<form method="post" action="insertarFilo.do">
 			<input type="text" name="nuevoFilo">
 			<input type="submit" value="+">
 		</form>
-	</c:if>
-	
+	</c:if>	
 </body>
 <link rel="stylesheet" href="css/Web_Setas.css">
 </html>

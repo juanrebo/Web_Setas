@@ -25,6 +25,7 @@ import com.setas.accionClasificacion.ModificarFiloAccion;
 import com.setas.accionClasificacion.ModificarGeneroAccion;
 import com.setas.accionClasificacion.ModificarOrdenAccion;
 import com.setas.accionClasificacion.OrdenAccion;
+import com.setas.accionLocalizacion.InsertarLocalizacionAccion;
 import com.setas.accionSetas.EditarSetaAccion;
 import com.setas.accionSetas.EliminarSetaAccion;
 import com.setas.accionSetas.InsertarSetaAccion;
@@ -158,6 +159,10 @@ public abstract class Accion {
 		
 		if(tipo.equals("insertarSeta")) {
 			accion = new InsertarSetaAccion();
+		}
+		
+		if(tipo.equals("insertarLocalizacion")) {
+				accion = new InsertarLocalizacionAccion();
 		}
 		
 		return accion;

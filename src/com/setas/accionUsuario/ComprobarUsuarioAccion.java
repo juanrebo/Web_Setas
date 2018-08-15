@@ -20,8 +20,10 @@ public class ComprobarUsuarioAccion extends Accion {
 			respuesta = "login.html";
 		}else {
 			if (usuario.getContrasena().equals(request.getParameter("contrasena"))){
-				request.getSession().setAttribute("nombre", usuario.getNombre());
-				request.getSession().setAttribute("rol", usuario.getRol().getRol());
+				request.getSession().setAttribute("usuario", usuario);
+				request.getSession().setAttribute("rol", usuario.getRol());
+				/*request.getSession().setAttribute("nombre", usuario.getNombre());
+				request.getSession().setAttribute("rol", usuario.getRol().getRol());*/
 				respuesta = "Inicio.html";
 			}else {
 				respuesta = "login.html";

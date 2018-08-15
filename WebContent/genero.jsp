@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h2>Géneros</h2>
-	<p>${rol}</p>
+	<p>${sessionScope.usuario.nombre}
+	<p>${sessionScope.rol.rol}
 	
 	<div class="atajosClasificacion">
 		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
@@ -22,7 +23,7 @@
 	<c:forEach var="l" items="${listaGenero}">
 		<div class="clasificacion">
 			<a href="especie.do?genero=${l.genero}" class="enlaceClasificacion">${l.genero}</a>
-			<c:if test="${rol == 'admin'}">
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarGenero.do">
 					<input type="text" name="modificar${l.genero}">
 					<input type="submit" value="modificar">
@@ -35,7 +36,7 @@
 		<p>
 	</c:forEach>
 	
-	<c:if test="${rol == 'admin'}">
+	<c:if test="${sessionScope.rol.rol == 'admin'}">
 		<form method="post" action="insertarGenero.do">
 			<input type="text" name="nuevoGenero">
 			<input type="submit" value="+">
