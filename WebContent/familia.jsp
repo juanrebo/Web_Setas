@@ -8,9 +8,35 @@
 <title>Familias</title>
 </head>
 <body>
+	<div class="encabezado">
+		<div class="nombre">
+			<a href="Inicio.jsp">micoPedia</a>
+		</div>
+		<div class="registro">
+		<c:choose>
+		<c:when test="${sessionScope.usuario eq null}">
+		<div class="botonEncabezado">
+			<a href="registro.html">REGISTRO</a>
+		</div>	    
+		<div class="botonEncabezado">
+			<a href="login.html">INICIAR SESIÓN</a>
+		</div>
+		</c:when>
+		<c:otherwise>
+		<div class="sesionIniciada">
+			<div class="botonEncabezado">
+				<a href="cerrarSesion.do">Cerrar sesión</a>
+			</div>
+			<div class="nombreUsuario">
+				${sessionScope.usuario.nombre}
+			</div>
+		</div>
+		</c:otherwise>
+		</c:choose>
+		</div>
+	</div>
+	
 	<h2>Familias</h2>
-	<p>${sessionScope.usuario.nombre}
-	<p>${sessionScope.rol.rol}
 	
 	<div class="atajosClasificacion">
 		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Baumans');
+@charset "ISO-8859-1";
+
+.todasSetas{
+	background-color: #FFD6AC;
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: flex-start;
+}
+
+.todasSetas a{
+	flex-basis: 200px;
+	flex-grow: 1;
+	margin: 5px;
+}
+
+.fichaSeta{
+	background-color: white;
+	flex-grow: 1;
+	margin: 5px;
+	border: 1px solid #BC8145;
+	display: flex;
+	flex-direction: column;
+	flex-basis: 200px;
+	width: 100%;
+	transition: all 0.25s ease;
+}
+.fichaSeta:hover{
+	box-shadow: 5px 5px #AAAAAA;
+	
+}
+.fichaSetaImagen img{
+	height: 200px;
+	width: 100%;
+	object-fit: cover
+}
+.fichaSetaTexto{
+	width: 100%;
+}
+.fichaSetaTexto p{
+	padding: 5px;
+	color: #35527C;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 15pt;
+	font-style: oblique;
+	font-align: justify;
+	display: inline-block
+}

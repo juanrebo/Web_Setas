@@ -5,7 +5,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Filos</title>
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Ficha.css">
+	<title>Setas</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -36,33 +38,20 @@
 		</div>
 	</div>
 	
-	<h2>Filos</h2>
-	
-	<div class="atajosClasificacion">
-		<p><span class="clasificacionActivo">Fungi</span>
+	<div class="todasSetas">
+		<c:forEach var="c" items="${sessionScope.todasSetas}">
+			<a href="seta.do?genero=${c.genero.genero}+&especie=${c.especie}">
+				<div class="fichaSeta">
+					<c:set var="foto" scope="session" value="${c.fotos.iterator()}"/>
+					<div class="fichaSetaImagen">
+						<img src="${foto.next().ruta}"></img>
+					</div>
+					<div class="fichaSetaTexto">
+						<p>${c.genero.genero} ${c.especie}</p>
+					</div>
+				</div>
+			</a>
+		</c:forEach>
 	</div>
-	<c:forEach var="l" items="${listaFilo}">
-		<div class="clasificacion">
-			<a href="clase.do?filo=${l.filo}" class="enlaceClasificacion">${l.filo}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
-				<form method="post" action="modificarFilo.do">
-					<input type="text" name="modificar${l.filo}">
-					<input type="submit" value="modificar">
-				</form>
-				<form method="post" action="eliminarFilo.do">
-					<input type="submit" name="eliminar${l.filo}" value="Eliminar">
-				</form>
-			</c:if>
-		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarFilo.do">
-			<input type="text" name="nuevoFilo">
-			<input type="submit" value="+">
-		</form>
-	</c:if>	
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

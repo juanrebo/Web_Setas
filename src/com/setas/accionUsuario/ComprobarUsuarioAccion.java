@@ -1,5 +1,6 @@
 package com.setas.accionUsuario;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,21 +15,25 @@ public class ComprobarUsuarioAccion extends Accion {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		String respuesta = "";
 		ServiceUsuario su = new ServiceUsuarioImp();
-		Usuario usuario = su.obtenerUsuario(request.getParameter("nombre"));
-		
-		if(usuario == null) {
+		Usuario usuario = null;
+
+		try{
+			usuario = su.obtenerUsuario(request.getParameter("nombre"));
+		}catch(NoResultException e) {
 			respuesta = "login.html";
-		}else {
-			if (usuario.getContrasena().equals(request.getParameter("contrasena"))){
-				request.getSession().setAttribute("usuario", usuario);
-				request.getSession().setAttribute("rol", usuario.getRol());
-				/*request.getSession().setAttribute("nombre", usuario.getNombre());
-				request.getSession().setAttribute("rol", usuario.getRol().getRol());*/
-				respuesta = "Inicio.html";
-			}else {
-				respuesta = "login.html";
-			}
 		}
+
+		if (usuario.getContrasena().equals(request.getParameter("contrasena"))){
+			request.getSession().setAttribute("usuario", usuario);
+			request.getSession().setAttribute("rol", usuario.getRol());
+			/*request.getSession().setAttribute("nombre", usuario.getNombre());
+			request.getSession().setAttribute("rol", usuario.getRol().getRol());*/
+			respuesta = "Inicio.jsp";
+			
+		}else {
+			respuesta = "login.html";
+		}
+
 		return respuesta;
 	}
 

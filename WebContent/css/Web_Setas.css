@@ -1,33 +1,141 @@
-html, div, img, p {
-    font-family: arial;
+@import url('https://fonts.googleapis.com/css?family=Baumans');
+@charset "ISO-8859-1";
+
+html {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     color: black;
     margin: 0;
     border: 0;
     padding: 0;
-    background-color: #DDDDE1;
+    background-color: #FFD6AC;
+    max-width: 1200px;
+    margin: auto
+}
+div, img, p, a{
+	margin: 0;
+    border: 0;
+    padding: 0
 }
 
-h1 {
-    color: blue;
+.encabezado{
+	background-color: #CBDD74;
+	padding: 0px 10px 5px 10px;
+	display: flex;
+	align-items: flex-end;
+	height: 100px;
+	margin-bottom: 20px;
+	border: solid 3px #A2B643;
+	border-radius: 7px;
+	box-shadow: 5px 5px #BBBBBB
+}
+.encabezado .nombre{
+	display: inline;
+	flex: 3 0 70%
+}
+.encabezado .nombre a {
+	font-size: 40pt;
+	font-family: Baumans, Arial;
+	color: #7D9120;
+}
+.encabezado .registro{
+	flex: 1 0 30%;
+	display: flex;
+	justify-content: space-around
+}
+.encabezado .registro .sesionIniciada{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	width: 100%
+}
+.encabezado .registro .botonEncabezado{
+	font-size: 10pt;
+	text-align: center;
+	width: 50%;
+	margin: 5px
+}
+.encabezado .registro a{
+	background-color: #1D3963;
+	color: #B4C2D7;
+	border-radius: 7px;
+	display: block;
+	padding: 10px 0;
+	transition: all 0.25s ease
+}
+.encabezado .registro a:hover{
+	background-color: #B4C2D7;
+	color: #1D3963
+}
+.encabezado .registro .nombreUsuario{
+	text-align: center;
+	font-weight: bold;
+	font-size: 10pt;
+	margin: 5px
+}
+.menu{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around
+}
+
+.menu .botonMenu{
+	text-align: center;
+	width: 200px;
+	margin: 10px;
+	height: 100px;
+	box-shadow: 5px 5px #AAAAAA;
+	transition: all 0.25s ease
+}
+.menu .botonMenu:hover{
+	box-shadow: 10px 10px 5px #AAAAAA;
+}
+.menu .botonMenu a{
+	background-color: #E5AF78;
+	color: #F9F9F9;
+	display: block;
+	width: 100%;
+	font-size: 15pt;
+	line-height: 100px;
+	border: 1px solid #BC8145;
+}
+
+.menu .botonMenuDesactivado{
+	text-align: center;
+	width: 200px;
+	margin: 10px;
+	height: 100px;
+	box-shadow: 5px 5px #AAAAAA;
+}
+
+.menu .botonMenuDesactivado a{
+	background-color: #FFD6AC;
+	color: #F9F9F9;
+	display: block;
+	width: 100%;
+	font-size: 15pt;
+	line-height: 100px;
+	border: 1px solid #FFD6AC;
+	
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none
 }
 
 input {
-    display: inline-block;
+    display: inline-block
 }
 
 form {
-    display: inline;
+    display: inline
 }
 
 input[type=submit] {
     background-color: lightgreen;
     border: 1px solid green;
     padding: 2px 5px;
-    color: gray;
+    color: gray
 }
 
 
@@ -35,53 +143,53 @@ input[type=submit] {
 
 .atajosClasificacion {
     background-color: #E1EEE1;
-    font-family: tahoma;
+    font-family: tahoma
 }
 
 .clasificacion {
-    display: inline-block;
+    display: inline-block
 }
 
 .clasificacionAtajo {
-    color: darkblue;
+    color: darkblue
 }
 
 .clasificacionAtajoActivo {
-    font-weight: bold;
+    font-weight: bold
 }
 
 .enlaceClasificacion {
     color: red;
-    display: inline;
+    display: inline
 }
 
 
 /*Seta*/
 .nombreSeta {
     font-style: oblique;
-    font-size: 2em;
+    font-size: 2em
 }
 
 .fichaSeta {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .fichaFoto {
     margin: auto;
     flex: 1 25%;
-    height: 250px;
+    height: 250px
 }
 .fichaFoto img{
 	height: 250px;
 	padding: 2px;
-	border: 1px solid black;
+	border: 1px solid black
 }
 
 .fichaClasif {
     margin: auto;
     flex: 3 75%;
-    width: 100%;
+    width: 100%
 }
 
 .imagenesSetas {}
@@ -89,11 +197,6 @@ input[type=submit] {
 .contImgSeta a {
     display: inline-block;
     width: 250px;
-    height: 250px;
+    height: 250px
 }
 
-.imagenSeta {
-    object-fit: cover;
-    width: 250px;
-    height: 250px;
-}

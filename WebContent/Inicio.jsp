@@ -5,7 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Filos</title>
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<title>Inicio</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -36,33 +37,46 @@
 		</div>
 	</div>
 	
-	<h2>Filos</h2>
-	
-	<div class="atajosClasificacion">
-		<p><span class="clasificacionActivo">Fungi</span>
-	</div>
-	<c:forEach var="l" items="${listaFilo}">
-		<div class="clasificacion">
-			<a href="clase.do?filo=${l.filo}" class="enlaceClasificacion">${l.filo}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
-				<form method="post" action="modificarFilo.do">
-					<input type="text" name="modificar${l.filo}">
-					<input type="submit" value="modificar">
-				</form>
-				<form method="post" action="eliminarFilo.do">
-					<input type="submit" name="eliminar${l.filo}" value="Eliminar">
-				</form>
-			</c:if>
+	<div class="menu">
+		<div class="botonMenu">
+	    	<a href="verSetas.do">SETAS</a>
+	    </div>
+	    <div class="botonMenu">
+	    	<a href="filo.do">CLASIFICACIONES</a>
+	    </div>
+	    
+		<c:choose>
+		<c:when test="${sessionScope.rol.rol eq 'user'}">
+		<div class="botonMenu">
+			<a>FAVORITOS</a>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarFilo.do">
-			<input type="text" name="nuevoFilo">
-			<input type="submit" value="+">
-		</form>
-	</c:if>	
+		<div class="botonMenu">
+			<a>LOCALIZACIONES</a>
+		</div>
+		<div class="botonMenu">
+			<a>MAPA</a>
+		</div>
+		</c:when>
+		<c:when test="${sessionScope.rol.rol eq 'admin'}">
+		<div class="botonMenu">
+			<a href="insertarSeta.do">INSERTAR SETAS</a>
+		</div>
+		<div class="botonMenu">
+			<a href="editarSeta.do">EDITAR SETAS</a>
+		</div>
+		</c:when>
+		<c:otherwise>
+		<div class="botonMenuDesactivado">
+			<a>FAVORITOS</a>
+		</div>
+		<div class="botonMenuDesactivado">
+			<a>LOCALIZACIONES</a>
+		</div>
+		<div class="botonMenuDesactivado">
+			<a>MAPA</a>
+		</div>
+		</c:otherwise>
+		</c:choose>		
+    </div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

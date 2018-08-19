@@ -30,7 +30,7 @@ public class SetaDAOImp implements SetaDAO {
 	public List<Seta> getSeta() {
 		ArrayList<Seta> lista = new ArrayList<Seta>();
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("Select u from setas u");
+		Query q = sf.getCurrentSession().createQuery("Select u from Seta u order by genero.genero, especie");
 		lista = (ArrayList<Seta>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return lista;

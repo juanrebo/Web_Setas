@@ -53,7 +53,7 @@ public class Clase implements java.io.Serializable {
 		this.idclase = idclase;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idfilo", nullable = false)
 	public Filo getFilo() {
 		return this.filo;

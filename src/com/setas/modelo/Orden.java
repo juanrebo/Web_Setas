@@ -53,7 +53,7 @@ public class Orden implements java.io.Serializable {
 		this.idorden = idorden;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idclase", nullable = false)
 	public Clase getClase() {
 		return this.clase;

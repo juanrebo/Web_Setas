@@ -57,7 +57,7 @@ public class Filo implements java.io.Serializable {
 		this.filo = filo;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "filo")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "filo")
 	public Set<Clase> getClases() {
 		return this.clases;
 	}
