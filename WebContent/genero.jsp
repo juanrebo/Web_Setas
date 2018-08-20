@@ -4,8 +4,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Géneros</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Clasificaciones.css">
+	<title>Géneros</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -36,38 +38,41 @@
 		</div>
 	</div>
 	
-	<h2>Géneros</h2>
-	
-	<div class="atajosClasificacion">
-		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
-		<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
-		<a href="orden.do?clase=${clase.clase}" class="clasificacionAtajo">${clase.clase}</a> > 
-		<a href="familia.do?orden=${orden.orden}" class="clasificacionAtajo">${orden.orden}</a> >
-		<span class="clasificacionAtajoActivo">${familia.familia}</span>
-	</div>
-	
-	<c:forEach var="l" items="${listaGenero}">
-		<div class="clasificacion">
-			<a href="especie.do?genero=${l.genero}" class="enlaceClasificacion">${l.genero}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
+	<div class="cuerpo">
+		<h2>Géneros</h2>
+		
+		<div class="atajosClasificacion">
+			<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
+			<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
+			<a href="orden.do?clase=${clase.clase}" class="clasificacionAtajo">${clase.clase}</a> > 
+			<a href="familia.do?orden=${orden.orden}" class="clasificacionAtajo">${orden.orden}</a> >
+			<span class="clasificacionAtajoActivo">${familia.familia}</span>
+		</div>
+		
+		<div class="clasificaciones">
+			<c:forEach var="l" items="${listaGenero}">
+			<div class="clasificacion">
+				<a href="especie.do?genero=${l.genero}" class="enlaceClasificacion">${l.genero}</a>
+				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarGenero.do">
 					<input type="text" name="modificar${l.genero}">
-					<input type="submit" value="modificar">
+					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarGenero.do">
-					<input type="submit" name="eliminar${l.genero}" value="Eliminar">
+					<input type="submit" name="eliminar${l.genero}" value="ELIMINAR">
 				</form>
+				</c:if>
+			</div>
+			<p>
+			</c:forEach>
+		
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
+			<form method="post" action="insertarGenero.do">
+				<input type="text" name="nuevoGenero">
+				<input type="submit" value="AÑADIR">
+			</form>
 			</c:if>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarGenero.do">
-			<input type="text" name="nuevoGenero">
-			<input type="submit" value="+">
-		</form>
-	</c:if>
+	</div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

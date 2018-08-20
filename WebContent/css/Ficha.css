@@ -21,7 +21,6 @@
 	background-color: white;
 	flex-grow: 1;
 	margin: 5px;
-	border: 1px solid #BC8145;
 	display: flex;
 	flex-direction: column;
 	flex-basis: 200px;

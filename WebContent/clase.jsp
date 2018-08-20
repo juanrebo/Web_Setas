@@ -5,6 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Clasificaciones.css">
 	<title>Clases</title>
 </head>
 <body>
@@ -36,35 +38,38 @@
 		</div>
 	</div>
 	
-	<h2>Clases</h2>
-	
-	<div class="atajosClasificacion">
-		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
-		<span class="clasificacionAtajoActivo">${filo.filo}</span>
-	</div>
-	
-	<c:forEach var="l" items="${listaClase}">
-		<div class="clasificacion">
-			<a href="orden.do?clase=${l.clase}" class="enlaceClasificacion">${l.clase}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
+	<div class="cuerpo">
+		<h2>Clases</h2>
+		
+		<div class="atajosClasificacion">
+			<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
+			<span class="clasificacionAtajoActivo">${filo.filo}</span>
+		</div>
+		
+		<div class="clasificaciones">
+			<c:forEach var="l" items="${listaClase}">
+			<div class="clasificacion">
+				<a href="orden.do?clase=${l.clase}" class="enlaceClasificacion">${l.clase}</a>
+				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarClase.do">
 					<input type="text" name="modificar${l.clase}">
-					<input type="submit" value="modificar">
+					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarClase.do">
-					<input type="submit" name="eliminar${l.clase}" value="Eliminar">
+					<input type="submit" name="eliminar${l.clase}" value="ELIMINAR">
 				</form>
+				</c:if>
+			</div>
+			<p>
+			</c:forEach>
+		
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
+			<form method="post" action="insertarClase.do">
+				<input type="text" name="nuevaClase">
+				<input type="submit" value="AÑADIR">
+			</form>
 			</c:if>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarClase.do">
-			<input type="text" name="nuevaClase">
-			<input type="submit" value="+">
-		</form>
-	</c:if>
+	</div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

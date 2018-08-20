@@ -5,6 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Clasificaciones.css">
 	<title>Filos</title>
 </head>
 <body>
@@ -36,33 +38,37 @@
 		</div>
 	</div>
 	
-	<h2>Filos</h2>
-	
-	<div class="atajosClasificacion">
-		<p><span class="clasificacionActivo">Fungi</span>
-	</div>
-	<c:forEach var="l" items="${listaFilo}">
-		<div class="clasificacion">
-			<a href="clase.do?filo=${l.filo}" class="enlaceClasificacion">${l.filo}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
+	<div class="cuerpo">
+		<h2>Filos</h2>
+		
+		<div class="atajosClasificacion">
+			<p><span class="clasificacionAtajoActivo">Fungi</span>
+		</div>
+		
+		<div class="clasificaciones">
+			<c:forEach var="l" items="${listaFilo}">
+			<div class="clasificacion">
+				<a href="clase.do?filo=${l.filo}" class="enlaceClasificacion">${l.filo}</a>
+				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarFilo.do">
 					<input type="text" name="modificar${l.filo}">
-					<input type="submit" value="modificar">
+					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarFilo.do">
-					<input type="submit" name="eliminar${l.filo}" value="Eliminar">
+					<input type="submit" name="eliminar${l.filo}" value="ELIMINAR">
 				</form>
+				</c:if>
+			</div>
+			<p>
+			</c:forEach>
+			
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
+			<form method="post" action="insertarFilo.do">
+				<input type="text" name="nuevoFilo">
+				<input type="submit" value="AÑADIR">
+			</form>
 			</c:if>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarFilo.do">
-			<input type="text" name="nuevoFilo">
-			<input type="submit" value="+">
-		</form>
-	</c:if>	
+	</div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

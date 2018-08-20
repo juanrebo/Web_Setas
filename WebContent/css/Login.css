@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+.login{
+	background-color: white;
+	padding: 30px 20px;
+	max-width: 400px;
+	margin-left:auto;
+	margin-right:auto;
+	display: block;
+	margin-top: 100px;
+	box-shadow: 5px 5px #BBBBBB
+}
+.login h2{
+	border-bottom: 1px solid #1D3963;
+	margin-top: 0px;
+	padding: 0px 0px 10px 0px;
+}
+.login form{
+	display: table;
+	width: 100%;
+}
+.login form p{
+	display: table-row;
+}
+.login form span{
+	display: table-cell;
+	padding: 10px 0px;
+}
+.login form input{
+	display: table-row;
+	width: 100%;
+}

@@ -38,19 +38,28 @@
 	margin-top: 10px;
 	margin-bottom: 5px;
 }
-
-.fichaSetaEncabezado .fichaSetaTexto td{
+.fichaSetaEncabezado .fichaSetaClasif{
+	display: table;
+}
+.fichaSetaEncabezado .fichaSetaClasif p{
+	display: table-row
+}
+.fichaSetaEncabezado .fichaSetaClasif span{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	font-size: 15pt;
-	font-weight: bold;
+	font-weight: normal;
 	text-align: left;
+	display: table-cell;
 }
-.fichaSetaEncabezado .fichaSetaTexto a{
+.fichaSetaEncabezado .fichaSetaClasif a{
 	color: #557097;
+	font-size: 15pt;
+	font-weight: bold;
 	padding-left: 10px;
 	font-weight: normal;
+	display: table-cell;
 }
-.fichaSetaEncabezado .fichaSetaTexto a:visited{
+.fichaSetaEncabezado .fichaSetaClasif a:visited{
 	color: #557097;
 }
 
@@ -59,6 +68,7 @@
 	margin-top: 10px;
 	box-shadow: 5px 5px #AAAAAA;
 	padding: 5px;
+	width: 100%;
 }
 .fichaSetaDatos h3{
 	color: #35527C;
@@ -71,6 +81,7 @@
 	box-shadow: 5px 5px #AAAAAA;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-around;
 	align-content: flex-start;
 }

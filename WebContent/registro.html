@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Registro</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Login.css"><title>Registro</title>
 </head>
 <body>
-	<form method="post" action="insertarUsuario.do">
-		<p>Nombre: <input type="text" name="nombre">
-		<p>Correo electrónico: <input type="text" name="correo">
-		<p>Contraseña: <input type="text" name="contrasena">
-		<p>Repetir contraseña: <input type="text" name="contrasena2">
-		<p><input type="submit" value="Registrase">
-	</form>
+	<div class="encabezado">
+		<div class="nombre">
+			<a href="Inicio.jsp">micoPedia</a>
+		</div>
+		<div class="registro">
+			<div class="botonEncabezado">
+			<a href="login.html">INICIAR SESIÓN</a>
+		</div>
+		</div>
+	</div>
+	
+	<div class="login">
+		<h2>Registro</h2>
+		<form method="post" action="insertarUsuario.do">
+			<p><span>Nombre: </span><input type="text" name="nombre"></p>
+			<p><span>Correo electrónico: </span><input type="text" name="correo"></p>
+			<p><span>Contraseña: </span><input type="text" name="contrasena"></p>
+			<p><span>Repetir contraseña: </span><input type="text" name="contrasena2"></p>
+			<br/>
+			<p><input type="submit" value="Registrarse"></p>
+		</form>
+	</div>
 </body>
 </html>

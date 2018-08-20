@@ -73,51 +73,6 @@ div, img, p, a{
 	font-size: 10pt;
 	margin: 5px
 }
-.menu{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around
-}
-
-.menu .botonMenu{
-	text-align: center;
-	width: 200px;
-	margin: 10px;
-	height: 100px;
-	box-shadow: 5px 5px #AAAAAA;
-	transition: all 0.25s ease
-}
-.menu .botonMenu:hover{
-	box-shadow: 10px 10px 5px #AAAAAA;
-}
-.menu .botonMenu a{
-	background-color: #E5AF78;
-	color: #F9F9F9;
-	display: block;
-	width: 100%;
-	font-size: 15pt;
-	line-height: 100px;
-	border: 1px solid #BC8145;
-}
-
-.menu .botonMenuDesactivado{
-	text-align: center;
-	width: 200px;
-	margin: 10px;
-	height: 100px;
-	box-shadow: 5px 5px #AAAAAA;
-}
-
-.menu .botonMenuDesactivado a{
-	background-color: #FFD6AC;
-	color: #F9F9F9;
-	display: block;
-	width: 100%;
-	font-size: 15pt;
-	line-height: 100px;
-	border: 1px solid #FFD6AC;
-	
-}
 
 a {
     text-decoration: none
@@ -130,73 +85,16 @@ input {
 form {
     display: inline
 }
-
 input[type=submit] {
-    background-color: lightgreen;
-    border: 1px solid green;
-    padding: 2px 5px;
-    color: gray
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #B4C2D7;
+    background-color: #1D3963;
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.25s ease;
 }
-
-
-/*Clasificaciones*/
-
-.atajosClasificacion {
-    background-color: #E1EEE1;
-    font-family: tahoma
+input[type=submit]:hover{
+	color: #1D3963;
+	background-color: #B4C2D7;
 }
-
-.clasificacion {
-    display: inline-block
-}
-
-.clasificacionAtajo {
-    color: darkblue
-}
-
-.clasificacionAtajoActivo {
-    font-weight: bold
-}
-
-.enlaceClasificacion {
-    color: red;
-    display: inline
-}
-
-
-/*Seta*/
-.nombreSeta {
-    font-style: oblique;
-    font-size: 2em
-}
-
-.fichaSeta {
-    display: flex;
-    flex-wrap: wrap
-}
-
-.fichaFoto {
-    margin: auto;
-    flex: 1 25%;
-    height: 250px
-}
-.fichaFoto img{
-	height: 250px;
-	padding: 2px;
-	border: 1px solid black
-}
-
-.fichaClasif {
-    margin: auto;
-    flex: 3 75%;
-    width: 100%
-}
-
-.imagenesSetas {}
-
-.contImgSeta a {
-    display: inline-block;
-    width: 250px;
-    height: 250px
-}
-

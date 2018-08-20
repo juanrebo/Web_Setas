@@ -4,8 +4,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Familias</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Clasificaciones.css">
+	<title>Familias</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -36,37 +38,40 @@
 		</div>
 	</div>
 	
-	<h2>Familias</h2>
-	
-	<div class="atajosClasificacion">
-		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
-		<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
-		<a href="orden.do?clase=${clase.clase}" class="clasificacionAtajo">${clase.clase}</a> > 
-		<span class="clasificacionAtajoActivo">${orden.orden}</span>
-	</div>
-	
-	<c:forEach var="l" items="${listaFamilia}">
-		<div class="clasificacion">
-			<a href="genero.do?familia=${l.familia}" class="enlaceClasificacion">${l.familia}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
+	<div class="cuerpo">
+		<h2>Familias</h2>
+		
+		<div class="atajosClasificacion">
+			<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
+			<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
+			<a href="orden.do?clase=${clase.clase}" class="clasificacionAtajo">${clase.clase}</a> > 
+			<span class="clasificacionAtajoActivo">${orden.orden}</span>
+		</div>
+		
+		<div class="clasificaciones">
+			<c:forEach var="l" items="${listaFamilia}">
+			<div class="clasificacion">
+				<a href="genero.do?familia=${l.familia}" class="enlaceClasificacion">${l.familia}</a>
+				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarFamilia.do">
 					<input type="text" name="modificar${l.familia}">
-					<input type="submit" value="modificar">
+					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarFamilia.do">
-					<input type="submit" name="eliminar${l.familia}" value="Eliminar">
+					<input type="submit" name="eliminar${l.familia}" value="ELIMINAR">
 				</form>
+				</c:if>
+			</div>
+			<p>
+			</c:forEach>
+		
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
+			<form method="post" action="insertarFamilia.do">
+				<input type="text" name="nuevaFamilia">
+				<input type="submit" value="AÑADIR">
+			</form>
 			</c:if>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarFamilia.do">
-			<input type="text" name="nuevaFamilia">
-			<input type="submit" value="+">
-		</form>
-	</c:if>
+	</div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

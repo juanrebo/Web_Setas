@@ -37,9 +37,13 @@
 		</c:choose>
 		</div>
 	</div>
-	<c:if test="${rol.rol == 'admin'}">
-		<a href="editarSeta.do">Editar seta</a>
-	</c:if>
+			<c:if test="${rol.rol == 'admin'}">
+			<form method="post" action="editarSeta.do">
+				<input type="submit" value="EDITAR SETA">
+			</form>
+			<br/>
+			<br/>
+			</c:if>
 	
 	<div class="fichaSeta">
 		<div class="fichaSetaEncabezado">
@@ -48,33 +52,13 @@
 			</div>
 			<div class="fichaSetaTexto">
 				<h2>${seta.genero.genero} ${seta.especie}</h2>
-				<div>
-					<table>
-						<tr>
-							<td>Reino:</td>
-							<td><a href="filo.do">Fungi</a></td>
-						</tr>
-						<tr>
-							<td>Filo:</td>
-							<td><a href="clase.do?filo=${filo.filo}">${filo.filo}</a></td>
-						</tr>
-						<tr>
-							<td>Clase:</td>
-							<td><a href="orden.do?clase=${clase.clase}">${clase.clase}</a></td>
-						</tr>
-						<tr>
-							<td>Orden:</td>
-							<td><a href="familia.do?orden=${orden.orden}">${orden.orden}</a></td>
-						</tr>
-						<tr>
-							<td>Familia:</td>
-							<td><a href="genero.do?familia=${familia.familia}">${familia.familia}</a></td>
-						</tr>
-						<tr>
-							<td>Género:</td>
-							<td><a href="especie.do?genero=${genero.genero}">${genero.genero}</a></td>
-						</tr>
-					</table>
+				<div class="fichaSetaClasif">
+					<p><span>Reino: </span><a href="filo.do">Fungi</a></p>
+					<p><span>Filo: </span><a href="clase.do?filo=${filo.filo}">${filo.filo}</a></p>
+					<p><span>Clase: </span><a href="orden.do?clase=${clase.clase}">${clase.clase}</a></p>
+					<p><span>Orden: </span><a href="familia.do?orden=${orden.orden}">${orden.orden}</a></p>
+					<p><span>Familia: </span><a href="genero.do?familia=${familia.familia}">${familia.familia}</a>
+					<p><span>Género: </span><a href="especie.do?genero=${genero.genero}">${genero.genero}</a>
 				</div>
 			</div>
 		</div>

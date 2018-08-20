@@ -5,6 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Clasificaciones.css">
 	<title>Órdenes</title>
 </head>
 <body>
@@ -36,36 +38,39 @@
 		</div>
 	</div>
 	
-	<h2>Órdenes</h2>
-	
-	<div class="atajosClasificacion">
-		<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
-		<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
-		<span class="clasificacionAtajoActivo">${clase.clase}</span>
-	</div>
-	
-	<c:forEach var="l" items="${listaOrden}">
-		<div class="clasificacion">
-			<a href="familia.do?orden=${l.orden}" class="enlaceClasificacion">${l.orden}</a>
-			<c:if test="${sessionScope.rol.rol == 'admin'}">
+	<div class="cuerpo">
+		<h2>Órdenes</h2>
+		
+		<div class="atajosClasificacion">
+			<p><a href="filo.do" class="clasificacionAtajo">Fungi</a> > 
+			<a href="clase.do?filo=${filo.filo}" class="clasificacionAtajo">${filo.filo}</a> > 
+			<span class="clasificacionAtajoActivo">${clase.clase}</span>
+		</div>
+		
+		<div class="clasificaciones">
+			<c:forEach var="l" items="${listaOrden}">
+			<div class="clasificacion">
+				<a href="familia.do?orden=${l.orden}" class="enlaceClasificacion">${l.orden}</a>
+				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarOrden.do">
 					<input type="text" name="modificar${l.orden}">
-					<input type="submit" value="modificar">
+					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarOrden.do">
-					<input type="submit" name="eliminar${l.orden}" value="Eliminar">
+					<input type="submit" name="eliminar${l.orden}" value="ELIMINAR">
 				</form>
+				</c:if>
+			</div>
+			<p>
+			</c:forEach>
+		
+			<c:if test="${sessionScope.rol.rol == 'admin'}">
+			<form method="post" action="insertarOrden.do">
+				<input type="text" name="nuevoOrden">
+				<input type="submit" value="AÑADIR">
+			</form>
 			</c:if>
 		</div>
-		<p>
-	</c:forEach>
-	
-	<c:if test="${sessionScope.rol.rol == 'admin'}">
-		<form method="post" action="insertarOrden.do">
-			<input type="text" name="nuevoOrden">
-			<input type="submit" value="+">
-		</form>
-	</c:if>
+	</div>
 </body>
-<link rel="stylesheet" href="css/Web_Setas.css">
 </html>

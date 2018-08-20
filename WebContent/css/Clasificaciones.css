@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+.cuerpo{
+	background-color: white;
+	box-shadow: 5px 5px #AAAAAA;
+	padding: 10px 10px;
+}
+.cuerpo h2{
+	margin: 5px 0px;
+}
+.cuerpo .atajosClasificacion {
+	background-color: white;
+    font-family: tahoma;
+    font-size: 12pt;
+    line-height: 25px;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #1D3963
+}
+.cuerpo .clasificaciones{
+	display: table;
+}
+.cuerpo .clasificacion {
+	display: table-row;
+}
+.cuerpo .clasificacion a{
+	display: table-cell;
+	color: #35527C;
+	font-size: 14pt;
+	padding: 10px 0px;
+}
+.cuerpo .clasificacion form{
+	display: table-cell;
+	padding: 0px 5px;
+}
+.cuerpo .clasificacion input{
+	display: inline;
+}
+.cuerpo .clasificacion a:visited{
+	color: #35527C;
+}
+.cuerpo .clasificacionAtajo {
+    color: #35527C;    
+}
+
+.cuerpo .clasificacionAtajoActivo {
+	color: #1D3963;
+    font-weight: bold
+}
+
+.cuerpo .enlaceClasificacion {
+    color: red;
+    display: inline
+}
