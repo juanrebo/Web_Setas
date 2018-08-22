@@ -32,7 +32,6 @@ import com.setas.accionSetas.InsertarSetaAccion;
 import com.setas.accionSetas.ModificarSetaAccion;
 import com.setas.accionSetas.NuevaSetaAccion;
 import com.setas.accionSetas.SetaAccion;
-import com.setas.accionSetas.VerSetasAccion;
 import com.setas.accionUsuario.CerrarUsuarioAccion;
 import com.setas.accionUsuario.ComprobarUsuarioAccion;
 import com.setas.accionUsuario.InsertarUsuarioAccion;
@@ -165,10 +164,6 @@ public abstract class Accion {
 		
 		if(tipo.equals("insertarSeta")) {
 			accion = new InsertarSetaAccion();
-		}
-		
-		if(tipo.equals("verSetas")) {
-			accion = new VerSetasAccion();
 		}
 		
 		if(tipo.equals("insertarLocalizacion")) {

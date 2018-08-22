@@ -37,10 +37,10 @@
 		</c:choose>
 		</div>
 	</div>
-	
+
 	<div class="menu">
 		<div class="botonMenu">
-	    	<a href="verSetas.do">SETAS</a>
+	    	<a href="setas.jsp">SETAS</a>
 	    </div>
 	    <div class="botonMenu">
 	    	<a href="filo.do">CLASIFICACIONES</a>
@@ -55,7 +55,7 @@
 			<a>LOCALIZACIONES</a>
 		</div>
 		<div class="botonMenu">
-			<a href="Mapa.jsp">MAPA</a>
+			<a href="user/Mapa.jsp">MAPA</a>
 		</div>
 		</c:when>
 		<c:when test="${sessionScope.rol.rol eq 'admin'}">

@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.setas.modelo.Rol;
+
 /**
  * Servlet Filter implementation class FiltroLog
  */
@@ -41,10 +43,11 @@ public class FiltroLog implements Filter {
 		boolean autorizado = false;
 		String url = req.getServletPath();
 		
-		if(req.getSession().getAttribute("nombre")==null)
+		if(req.getSession().getAttribute("usuario")==null)
 			res.sendRedirect(req.getContextPath()+"/login.html");
 		else {
-			if(url.contains((String) req.getSession().getAttribute("rol")))
+			Rol rol = (Rol) req.getSession().getAttribute("rol");
+			if(url.contains(rol.getRol()))
 				autorizado = true;
 			if(autorizado)
 				chain.doFilter(request, response);

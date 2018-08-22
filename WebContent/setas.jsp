@@ -39,7 +39,7 @@
 	</div>
 	
 	<div class="todasSetas">
-		<c:forEach var="c" items="${sessionScope.todasSetas}">
+		<c:forEach var="c" items="${applicationScope.todasSetas}">
 			<a href="seta.do?genero=${c.genero.genero}+&especie=${c.especie}">
 				<div class="fichaSeta">
 					<c:set var="foto" scope="session" value="${c.fotos.iterator()}"/>

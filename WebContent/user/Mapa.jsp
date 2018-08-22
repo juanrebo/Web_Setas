@@ -4,23 +4,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Mapa</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-   crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-   crossorigin=""></script>
-<script src="js/localizacion.js"></script>
-	<link rel="stylesheet" href="css/Web_Setas.css">
-	<link rel="stylesheet" href="css/Mapa.css">
+	<meta charset="ISO-8859-1">
+	<title>Mapa</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+	   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	   crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+	   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+	   crossorigin=""></script>
+	<script src="../js/localizacion.js"></script>
+	<link rel="stylesheet" href="../css/Web_Setas.css">
+	<link rel="stylesheet" href="../css/Mapa.css">
 </head>
 
 <body>
 <div class="encabezado">
 		<div class="nombre">
-			<a href="Inicio.jsp">micoPedia</a>
+			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
 		<div class="registro">
 		<c:choose>
@@ -51,7 +51,7 @@
 	 	<br/>
 	 	<form id="nuevoPunto" action="insertarLocalizacion.do">
 	 		<select type="select" form="nuevoPunto">
-	 			<c:forEach var="s" items="${sessionScope.todasSetas}">
+	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
 	 			<option value="${s.idseta}">${s.genero.genero} ${s.especie}</option>
 	 			</c:forEach>
 	 		</select>
