@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+.mapa{
+	background-color: white;
+	padding: 30px 20px;
+	max-width: 1000px;
+	heigth: 1000px; 
+	margin-left:auto;
+	margin-right:auto;
+	display: block;
+	box-shadow: 5px 5px #BBBBBB
+}
+.mapa input{
+	margin-left: 10px;
+	font-size: 12pt;
+}
+.mapa label{
+	margin-right: 5px;
+}
+.mapa select{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 12pt;
+}

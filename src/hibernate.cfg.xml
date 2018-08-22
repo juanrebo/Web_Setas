@@ -2,26 +2,17 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">laboral1</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/setasdb</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.search.autoregister_listeners">true</property>
-        <property name="hibernate.validator.apply_to_ddl">false</property>
-		<property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.setas.modelo.Seta"/>
-        <mapping class="com.setas.modelo.Coleccion"/>
-        <mapping class="com.setas.modelo.Usuario"/>
-        <mapping class="com.setas.modelo.Lugar"/>
-        <mapping class="com.setas.modelo.Foto"/>
-        <mapping class="com.setas.modelo.Genero"/>
-        <mapping class="com.setas.modelo.Familia"/>
-        <mapping class="com.setas.modelo.Filo"/>
-        <mapping class="com.setas.modelo.Localizacion"/>
-        <mapping class="com.setas.modelo.Orden"/>
-        <mapping class="com.setas.modelo.Rol"/>
-        <mapping class="com.setas.modelo.Clase"/>
+        <mapping resource="com/setas/modelo/Seta.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Coleccion.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Usuario.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Lugar.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Foto.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Genero.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Familia.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Filo.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Localizacion.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Orden.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Rol.hbm.xml"/>
+        <mapping resource="com/setas/modelo/Clase.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

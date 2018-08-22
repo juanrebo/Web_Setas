@@ -55,7 +55,7 @@
 			<a>LOCALIZACIONES</a>
 		</div>
 		<div class="botonMenu">
-			<a>MAPA</a>
+			<a href="Mapa.jsp">MAPA</a>
 		</div>
 		</c:when>
 		<c:when test="${sessionScope.rol.rol eq 'admin'}">

@@ -24,8 +24,6 @@ div, img, p, a{
 	align-items: flex-end;
 	height: 100px;
 	margin-bottom: 20px;
-	border: solid 3px #A2B643;
-	border-radius: 7px;
 	box-shadow: 5px 5px #BBBBBB
 }
 .encabezado .nombre{
@@ -35,7 +33,7 @@ div, img, p, a{
 .encabezado .nombre a {
 	font-size: 40pt;
 	font-family: Baumans, Arial;
-	color: #7D9120;
+	color: #1D3963;
 }
 .encabezado .registro{
 	flex: 1 0 30%;
@@ -97,4 +95,13 @@ input[type=submit] {
 input[type=submit]:hover{
 	color: #1D3963;
 	background-color: #B4C2D7;
+}
+button {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #B4C2D7;
+    background-color: #1D3963;
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.25s ease;
 }

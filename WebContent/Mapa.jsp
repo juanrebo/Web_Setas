@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -43,8 +46,21 @@
 		</div>
 	</div>
 	
- 	<div id="mapid" style="height: 500px"></div>
- 	<br/>
- 	<button onclick="CrearPunto()">Crear punto</button>
+	<div class="mapa">
+ 		<div id="mapid" style="height: 500px"></div>
+	 	<br/>
+	 	<form id="nuevoPunto" action="insertarLocalizacion.do">
+	 		<select type="select" form="nuevoPunto">
+	 			<c:forEach var="s" items="${sessionScope.todasSetas}">
+	 			<option value="${s.idseta}">${s.genero.genero} ${s.especie}</option>
+	 			</c:forEach>
+	 		</select>
+	 		<input type="hidden" id="coords">
+	 		<input type="radio" id="coordsUsu" name="centroCoords" value="" checked="checked">Ubicación usuario
+	 		<input type="radio" id="coordsMap" name="centroCoords" value="">Centro mapa
+	 		<input type="submit" value="NUEVA UBICACION">
+	 	</form>
+ 	</div>
+ 	
 </body>
 </html>
