@@ -60,7 +60,7 @@
 		</c:when>
 		<c:when test="${sessionScope.rol.rol eq 'admin'}">
 		<div class="botonMenu">
-			<a href="insertarSeta.do">INSERTAR SETAS</a>
+			<a href="nuevaSeta.do">INSERTAR SETAS</a>
 		</div>
 		<div class="botonMenu">
 			<a href="editarSeta.do">EDITAR SETAS</a>

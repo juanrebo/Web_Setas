@@ -49,6 +49,10 @@ public class InsertarSetaAccion extends Accion {
 			foto.setSeta(seta);
 			sf.insertarFoto(foto);
 		}
+		
+		List<Seta> todasSetas = ss.getSeta();
+		request.getServletContext().setAttribute("todasSetas", todasSetas);
+		
 		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getEspecie();
 	}
 

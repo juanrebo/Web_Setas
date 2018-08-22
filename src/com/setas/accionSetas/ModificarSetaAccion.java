@@ -62,6 +62,10 @@ public class ModificarSetaAccion extends Accion{
 			}
 		}
 		ss.modificarSeta(seta);
+		
+		List<Seta> todasSetas = ss.getSeta();
+		request.getServletContext().setAttribute("todasSetas", todasSetas);
+		
 		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getEspecie();
 	}
 
