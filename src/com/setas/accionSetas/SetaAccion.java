@@ -60,7 +60,7 @@ public class SetaAccion extends Accion {
 		List<Foto> listaFotos = null;
 		listaFotos = (List<Foto>) sf.recuperaFoto(unaSeta.getIdseta());
 		if(!listaFotos.isEmpty()) {
-			request.setAttribute("listaFotos", listaFotos);
+			request.getSession().setAttribute("listaFotos", listaFotos);
 		}
 		
 		return "seta.jsp";
