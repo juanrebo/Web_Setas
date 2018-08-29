@@ -10,6 +10,7 @@ public interface LocalizacionDAO {
 	public void insertarLocalizacion(Localizacion localizacion);
 	public void eliminarLocalizacion(Localizacion localizacion);
 	public void modificarLocalizacion(Localizacion localizacion);
+	public Localizacion recuperarLocalizacion(int idlocalizacion);
 	public List<Localizacion> recuperarLocalizaUsu(Usuario usuario);
 	public List<Localizacion> recuperarLocalizaSeta(Usuario usuario, Seta seta);
 }

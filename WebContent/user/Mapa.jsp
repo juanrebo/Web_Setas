@@ -80,6 +80,11 @@
 			<div class="popupLat">${l.latitud}</div>
 			<div class="popupLon">${l.longitud}</div>
  		</div>
+		<div class="eliminarLocalizacion">
+			<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
+				<input type="submit" value="x"/>			
+			</form>
+		</div>
  		</c:forEach>
  	</div>
 </body>

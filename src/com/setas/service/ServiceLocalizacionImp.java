@@ -25,6 +25,11 @@ public class ServiceLocalizacionImp implements ServiceLocalizacion {
 	public void modificarLocalizacion(Localizacion localizacion) {
 		ld.modificarLocalizacion(localizacion);
 	}
+	
+	@Override
+	public Localizacion recuperarLocalizacion(int idlocalizacion) {
+		return ld.recuperarLocalizacion(idlocalizacion);
+	}
 
 	@Override
 	public List<Localizacion> recuperarLocalizaUsu(Usuario usuario) {
