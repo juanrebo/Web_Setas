@@ -11,10 +11,32 @@ html {
     max-width: 1200px;
     margin: auto
 }
+
+body{
+	margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
 div, img, p, a{
 	margin: 0;
     border: 0;
     padding: 0
+}
+
+h1{
+	font-size: 1.8em;
+	margin-top: 0px;
+	background-color: #EAF7A7;
+	color: #35527C;
+	padding: 5px 0px 0px 5px;
+	box-shadow: 5px 5px #BBBBBB
+}
+
+h2{
+	font-size: 1.5em;
+	padding: 5px 0px 0px 5px;
 }
 
 .encabezado{
@@ -23,7 +45,7 @@ div, img, p, a{
 	display: flex;
 	align-items: flex-end;
 	height: 100px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	box-shadow: 5px 5px #BBBBBB
 }
 .encabezado .nombre{
@@ -71,11 +93,9 @@ div, img, p, a{
 	font-size: 10pt;
 	margin: 5px
 }
-
 a {
     text-decoration: none
 }
-
 input {
     display: inline-block
 }

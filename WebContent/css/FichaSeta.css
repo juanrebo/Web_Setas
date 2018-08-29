@@ -59,6 +59,9 @@
 	font-weight: normal;
 	display: table-cell;
 }
+.fichaSetaEncabezado .fichaSetaClasif a:hover{
+	text-decoration: underline;
+}
 .fichaSetaEncabezado .fichaSetaClasif a:visited{
 	color: #557097;
 }
@@ -77,7 +80,7 @@
 
 .fichaSetaFotos{
 	background-color: white;
-	margin-top: 10px;
+	margin: 10px 0px;
 	box-shadow: 5px 5px #AAAAAA;
 	display: flex;
 	flex-direction: row;
@@ -85,16 +88,26 @@
 	justify-content: space-around;
 	align-content: flex-start;
 }
-.fichaSetaFotos a{
-	flex-grow: 1;
-	flex-basis: 250px;
-    height: 250px;
+.fichaSetaFotos .fichaSetaFoto{
     padding: 5px;
+    flex-basis: 250px;
+	flex-grow: 1;
+    display:flex;
+    flex-direction: column
+}
+.fichaSetaFotos .fichaSetaFoto a{
+	flex-basis: 250px;
+	flex-grow: 1;
+	height: 250px;
+	width: 100%;
 }
 
-.fichaSetaFotos img{
+.fichaSetaFotos .fichaSetaFoto img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
+}
+
+.fichaSetaFotos .fichaSetaFoto .derecho{
+    font-size: 0.75em;
 }

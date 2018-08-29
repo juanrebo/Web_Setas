@@ -167,9 +167,12 @@
 	
 	<div class="fichaSetaFotos">
 		<c:forEach var="f" items="${listaFotos}">
-				<a href="${f.ruta}">
-					<img src="${f.ruta}">
-				</a>
+		<div class="fichaSetaFoto">
+			<a href="${f.ruta}">
+				<img src="${f.ruta}">
+			</a>
+			<div class="derecho">${f.derecho}</div>
+		</div>
 		</c:forEach>
 	</div>
 	

@@ -16,19 +16,19 @@
 			</c:forEach>
 		</select>
 		<p>Especie: <input type="text" name="especie">
-		<p>Cuerpo fructífero: <textarea rows="5" maxlength="500" name="cuerpoFructifero" form="insertarSeta"></textarea>
-		<p>Sombrero: <textarea rows="5" maxlength="500" name="sombrero" form="insertarSeta"></textarea>
-		<p>Himenio: <textarea rows="5" maxlength="500" name="himenio" form="insertarSeta"></textarea>
-		<p>Gleba: <textarea rows="5" maxlength="500" name="gleba" form="insertarSeta"></textarea>
-		<p>Estroma: <textarea rows="5" maxlength="500" name="estroma" form="insertarSeta"></textarea>
-		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"></textarea>
-		<p>Láminas: <textarea rows="5" maxlength="500" name="laminas" form="insertarSeta"></textarea>
-		<p>Tubos: <textarea rows="5" maxlength="500" name="tubos" form="insertarSeta"></textarea>
-		<p>Pie: <textarea rows="5" maxlength="500" name="pie" form="insertarSeta"></textarea>
-		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"></textarea>
-		<p>Esporada: <textarea rows="5" maxlength="500" name="esporada" form="insertarSeta"></textarea>
-		<p>Hábitat: <textarea rows="5" maxlength="500" name="habitat" form="insertarSeta"></textarea>
-		<p>Comestibilidad: <textarea rows="5" maxlength="500" name="comestibilidad" form="insertarSeta"></textarea>
+		<p>Cuerpo fructífero: <textarea rows="5" maxlength="500" name="cuerpoFructifero" form="insertarSeta"/>
+		<p>Sombrero: <textarea rows="5" maxlength="500" name="sombrero" form="insertarSeta"/>
+		<p>Himenio: <textarea rows="5" maxlength="500" name="himenio" form="insertarSeta"/>
+		<p>Gleba: <textarea rows="5" maxlength="500" name="gleba" form="insertarSeta"/>
+		<p>Estroma: <textarea rows="5" maxlength="500" name="estroma" form="insertarSeta"/>
+		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"/>
+		<p>Láminas: <textarea rows="5" maxlength="500" name="laminas" form="insertarSeta"/>
+		<p>Tubos: <textarea rows="5" maxlength="500" name="tubos" form="insertarSeta"/>
+		<p>Pie: <textarea rows="5" maxlength="500" name="pie" form="insertarSeta"/>
+		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"/>
+		<p>Esporada: <textarea rows="5" maxlength="500" name="esporada" form="insertarSeta"/>
+		<p>Hábitat: <textarea rows="5" maxlength="500" name="habitat" form="insertarSeta"/>
+		<p>Comestibilidad: <textarea rows="5" maxlength="500" name="comestibilidad" form="insertarSeta"/>
 		<p>Foto: <input type="text" name="ruta">
 		<p><input type="submit" value="Insertar seta">
 	</form>

@@ -17,6 +17,9 @@
     margin-bottom: 10px;
     border-bottom: 1px solid #1D3963
 }
+.cuerpo .atajosClasificacion a:hover{
+	text-decoration: underline;
+}
 .cuerpo .clasificaciones{
 	display: table;
 }
@@ -35,6 +38,9 @@
 }
 .cuerpo .clasificacion input{
 	display: inline;
+}
+.cuerpo .clasificacion a:hover{
+	text-decoration: underline;
 }
 .cuerpo .clasificacion a:visited{
 	color: #35527C;

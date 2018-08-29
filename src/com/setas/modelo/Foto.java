@@ -59,7 +59,7 @@ public class Foto implements java.io.Serializable {
 		this.seta = seta;
 	}
 
-	@Column(name = "ruta", nullable = false, length = 200)
+	@Column(name = "ruta", nullable = false, length = 250)
 	public String getRuta() {
 		return this.ruta;
 	}
@@ -68,7 +68,7 @@ public class Foto implements java.io.Serializable {
 		this.ruta = ruta;
 	}
 
-	@Column(name = "derecho", length = 200)
+	@Column(name = "derecho", length = 500)
 	public String getDerecho() {
 		return this.derecho;
 	}

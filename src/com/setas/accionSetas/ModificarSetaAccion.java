@@ -44,6 +44,7 @@ public class ModificarSetaAccion extends Accion{
 		
 		ServiceFoto sf = new ServiceFotoImp();
 		String ruta = request.getParameter("ruta");
+		String derecho = request.getParameter("derecho");
 		if(ruta != null) {
 			List<Foto> listaFotos = sf.recuperaFoto(seta.getIdseta());
 			Foto foto = new Foto();
@@ -52,12 +53,14 @@ public class ModificarSetaAccion extends Accion{
 				if(f.getRuta().equals(ruta)) {
 					existe = true;
 					f.setSeta(seta);
+					f.setDerecho(derecho);
 					sf.modificarFoto(f);
 				}
 			}
 			if(!existe) {
 				foto.setRuta(ruta);
 				foto.setSeta(seta);
+				foto.setDerecho(derecho);
 				sf.insertarFoto(foto);
 			}
 		}
