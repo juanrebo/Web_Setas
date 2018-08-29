@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 11:06:04 by Hibernate Tools 5.2.10.Final
+// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,7 +58,7 @@ public class Localizacion implements java.io.Serializable {
 		this.lugar = lugar;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "seta_idseta", nullable = false)
 	public Seta getSeta() {
 		return this.seta;

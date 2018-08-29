@@ -33,6 +33,9 @@ public class Controller extends HttpServlet {
 		if(url.contains("admin")) {
 			despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(7, url.length()-3)).ejecutar(request, response));
 			despachador.forward(request,response);
+		}else if(url.contains("user")) {
+			despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(6, url.length()-3)).ejecutar(request, response));
+			despachador.forward(request,response);
 		}else {			
 			despachador=request.getRequestDispatcher(Accion.getAccion(url.substring(1, url.length()-3)).ejecutar(request, response));
 			despachador.forward(request,response);

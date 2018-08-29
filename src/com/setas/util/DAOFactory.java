@@ -5,20 +5,24 @@ import org.hibernate.cfg.Configuration;
 
 import com.setas.dao.ClaseDAO;
 import com.setas.dao.FamiliaDAO;
+import com.setas.dao.FavoritoDAO;
 import com.setas.dao.FiloDAO;
 import com.setas.dao.FotoDAO;
 import com.setas.dao.GeneroDAO;
 import com.setas.dao.LocalizacionDAO;
+import com.setas.dao.LugarDAO;
 import com.setas.dao.OrdenDAO;
 import com.setas.dao.RolDAO;
 import com.setas.dao.SetaDAO;
 import com.setas.dao.UsuarioDAO;
 import com.setas.daoimp.ClaseDAOImp;
 import com.setas.daoimp.FamiliaDAOImp;
+import com.setas.daoimp.FavoritoDAOImp;
 import com.setas.daoimp.FiloDAOImp;
 import com.setas.daoimp.FotoDAOImp;
 import com.setas.daoimp.GeneroDAOImp;
 import com.setas.daoimp.LocalizacionDAOImp;
+import com.setas.daoimp.LugarDAOImp;
 import com.setas.daoimp.OrdenDAOImp;
 import com.setas.daoimp.RolDAOImp;
 import com.setas.daoimp.SetaDAOImp;
@@ -74,5 +78,13 @@ public class DAOFactory {
 	
 	public LocalizacionDAO getLocalizacion() {
 		return new LocalizacionDAOImp(sf);
+	}
+	
+	public LugarDAO getLugar() {
+		return new LugarDAOImp(sf);
+	}
+	
+	public FavoritoDAO getFavorito() {
+		return new FavoritoDAOImp(sf);
 	}
 }

@@ -27,7 +27,7 @@
 		<c:otherwise>
 		<div class="sesionIniciada">
 			<div class="botonEncabezado">
-				<a href="cerrarSesion.do">Cerrar sesión</a>
+				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
 			</div>
 			<div class="nombreUsuario">
 				${sessionScope.usuario.nombre}
@@ -49,10 +49,10 @@
 		<c:choose>
 		<c:when test="${sessionScope.rol.rol eq 'user'}">
 		<div class="botonMenu">
-			<a>FAVORITOS</a>
+			<a href="user/Favoritos.jsp">FAVORITOS</a>
 		</div>
 		<div class="botonMenu">
-			<a>LOCALIZACIONES</a>
+			<a href="user/Localizaciones.jsp">LOCALIZACIONES</a>
 		</div>
 		<div class="botonMenu">
 			<a href="user/Mapa.jsp">MAPA</a>

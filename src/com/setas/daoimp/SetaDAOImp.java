@@ -61,6 +61,16 @@ public class SetaDAOImp implements SetaDAO {
 	}
 
 	@Override
+	public Seta recuperaSetaId(int idseta) {
+		sf.getCurrentSession().beginTransaction();
+		Query q = sf.getCurrentSession().createQuery("select u from Seta u where idseta=:idseta");
+		q.setParameter("idseta", idseta);
+		Seta seta = (Seta) q.getSingleResult();
+		sf.getCurrentSession().getTransaction().commit();
+		return seta;
+	}
+	
+	@Override
 	public Seta recuperaSeta(int idgenero, String especie) {
 		sf.getCurrentSession().beginTransaction();
 		Query q = sf.getCurrentSession().createQuery("select u from Seta u where idgenero=:idgenero and especie=:especie order by genero, especie");

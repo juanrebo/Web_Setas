@@ -12,6 +12,7 @@
 	<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
 	   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
 	   crossorigin=""></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="../js/localizacion.js"></script>
 	<link rel="stylesheet" href="../css/Web_Setas.css">
 	<link rel="stylesheet" href="../css/Mapa.css">
@@ -49,18 +50,37 @@
 	<div class="mapa">
  		<div id="mapid" style="height: 500px"></div>
 	 	<br/>
-	 	<form id="nuevoPunto" action="insertarLocalizacion.do">
-	 		<select type="select" form="nuevoPunto">
+	 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
+	 	<br/>
+	 	<br/>
+	 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do">
+	 		<select name="setaLocalizacion" form="nuevoPunto">
 	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
 	 			<option value="${s.idseta}">${s.genero.genero} ${s.especie}</option>
 	 			</c:forEach>
 	 		</select>
-	 		<input type="hidden" id="coords">
-	 		<input type="radio" id="coordsUsu" name="centroCoords" value="" checked="checked">Ubicación usuario
-	 		<input type="radio" id="coordsMap" name="centroCoords" value="">Centro mapa
-	 		<input type="submit" value="NUEVA UBICACION">
+	 		<input type="hidden" id="latUbi" name="latUbi" value=""/>
+	 		<input type="hidden" id="lonUbi" name="lonUbi" value=""/>
+	 		<input type="radio" id="coordsUsu" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
+	 		<input type="radio" id="coordsMap" name="centroCoords" value="mapa">Centro mapa
+	 		<button type="button" onclick="InsertarLocalizacion()">NUEVA UBICACION</button>
 	 	</form>
  	</div>
  	
+ 	<div class="popups">
+ 		<c:forEach var="l" items="${listaLocalizacion}">
+ 		<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
+ 			<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
+ 			<div class="popupContenido">
+				<div class="popupFoto">
+					<img src="${foto.next().ruta}"></img>
+				</div>
+				<div class="popupTexto">${l.seta.genero.genero} ${l.seta.especie}</div>
+			</div>
+			<div class="popupLat">${l.latitud}</div>
+			<div class="popupLon">${l.longitud}</div>
+ 		</div>
+ 		</c:forEach>
+ 	</div>
 </body>
 </html>

@@ -27,7 +27,7 @@
 		<c:otherwise>
 		<div class="sesionIniciada">
 			<div class="botonEncabezado">
-				<a href="cerrarSesion.do">Cerrar sesión</a>
+				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
 			</div>
 			<div class="nombreUsuario">
 				${sessionScope.usuario.nombre}
@@ -37,13 +37,47 @@
 		</c:choose>
 		</div>
 	</div>
-			<c:if test="${rol.rol == 'admin'}">
-			<form method="post" action="editarSeta.do">
-				<input type="submit" value="EDITAR SETA">
+	
+	<c:if test="${rol.rol == 'admin'}">
+	<form method="post" action="editarSeta.do">
+		<input type="submit" value="EDITAR SETA">
+	</form>
+	<br/>
+	<br/>
+	</c:if>
+	
+	<c:if test="${rol.rol == 'user'}">
+	<c:choose>
+		<c:when test="${listaFavorito.isEmpty()}">
+			<form method="post" action="anadirFavorito.do">
+				<input type="submit" value="AÑADIR FAVORITO">
 			</form>
-			<br/>
-			<br/>
-			</c:if>
+		</c:when>
+		
+		<c:otherwise>
+			<c:set var="existe" scope="session" value="noexiste"/>
+			<c:forEach var="f" items="${sessionScope.listaFavorito}">
+				<c:if test="${f.seta.idseta eq seta.idseta}">
+					<c:set var="existe" scope="session" value="existe"/>
+				</c:if>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${existe == 'existe'}">
+					<form method="post" action="eliminarFavorito.do">
+						<input type="submit" value="ELIMINAR FAVORITO">
+					</form>
+				</c:when>
+				<c:otherwise>
+				<form method="post" action="anadirFavorito.do">
+					<input type="submit" value="AÑADIR FAVORITO">
+				</form>
+				</c:otherwise>
+			</c:choose>
+		</c:otherwise>
+	</c:choose>
+	<br/>
+	<br/>
+	</c:if>
 	
 	<div class="fichaSeta">
 		<div class="fichaSetaEncabezado">

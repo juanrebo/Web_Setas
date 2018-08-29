@@ -3,6 +3,8 @@ package com.setas.util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.setas.acccionFavoritos.EliminarFavoritoAccion;
+import com.setas.acccionFavoritos.InsertarFavoritoAccion;
 import com.setas.accionClasificacion.ClaseAccion;
 import com.setas.accionClasificacion.EliminarClaseAccion;
 import com.setas.accionClasificacion.EliminarFamiliaAccion;
@@ -168,6 +170,14 @@ public abstract class Accion {
 		
 		if(tipo.equals("insertarLocalizacion")) {
 				accion = new InsertarLocalizacionAccion();
+		}
+		
+		if(tipo.equals("anadirFavorito")) {
+			accion = new InsertarFavoritoAccion();
+		}
+		
+		if(tipo.equals("eliminarFavorito")) {
+			accion = new EliminarFavoritoAccion();
 		}
 		
 		return accion;

@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 11:06:04 by Hibernate Tools 5.2.10.Final
+// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +28,7 @@ public class Usuario implements java.io.Serializable {
 	private String contrasena;
 	private String email;
 	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
-	private Set<Coleccion> coleccions = new HashSet<Coleccion>(0);
+	private Set<Favorito> favoritos = new HashSet<Favorito>(0);
 
 	public Usuario() {
 	}
@@ -41,13 +41,13 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(Rol rol, String nombre, String contrasena, String email, Set<Localizacion> localizacions,
-			Set<Coleccion> coleccions) {
+			Set<Favorito> favoritos) {
 		this.rol = rol;
 		this.nombre = nombre;
 		this.contrasena = contrasena;
 		this.email = email;
 		this.localizacions = localizacions;
-		this.coleccions = coleccions;
+		this.favoritos = favoritos;
 	}
 
 	@Id
@@ -109,12 +109,12 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Coleccion> getColeccions() {
-		return this.coleccions;
+	public Set<Favorito> getFavoritos() {
+		return this.favoritos;
 	}
 
-	public void setColeccions(Set<Coleccion> coleccions) {
-		this.coleccions = coleccions;
+	public void setFavoritos(Set<Favorito> favoritos) {
+		this.favoritos = favoritos;
 	}
 
 }

@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas.css">
-	<link rel="stylesheet" href="css/Ficha.css">
-	<title>Setas</title>
+	<link rel="stylesheet" href="../css/Web_Setas.css">
+	<link rel="stylesheet" href="../css/Ficha.css">
+	<title>Favoritos</title>
 </head>
 <body>
 	<div class="encabezado">
 		<div class="nombre">
-			<a href="Inicio.jsp">micoPedia</a>
+			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
 		<div class="registro">
 		<c:choose>
@@ -39,19 +39,20 @@
 	</div>
 	
 	<div class="todasSetas">
-		<c:forEach var="c" items="${applicationScope.todasSetas}">
-			<a href="seta.do?genero=${c.genero.genero}+&especie=${c.especie}">
+		<c:forEach var="f" items="${sessionScope.listaFavorito}">
+			<a href="../seta.do?genero=${f.seta.genero.genero}+&especie=${f.seta.especie}">
 				<div class="fichaSeta">
-					<c:set var="foto" scope="session" value="${c.fotos.iterator()}"/>
+					<c:set var="foto" scope="session" value="${f.seta.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
 						<img src="${foto.next().ruta}"></img>
 					</div>
 					<div class="fichaSetaTexto">
-						<p>${c.genero.genero} ${c.especie}</p>
+						<p>${f.seta.genero.genero} ${f.seta.especie}</p>
 					</div>
 				</div>
 			</a>
 		</c:forEach>
 	</div>
+	
 </body>
 </html>

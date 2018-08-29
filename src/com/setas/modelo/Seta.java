@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 11:06:04 by Hibernate Tools 5.2.10.Final
+// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class Seta implements java.io.Serializable {
 	private String habitat;
 	private String comestibilidad;
 	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
-	private Set<Coleccion> coleccions = new HashSet<Coleccion>(0);
+	private Set<Favorito> favoritos = new HashSet<Favorito>(0);
 	private Set<Foto> fotos = new HashSet<Foto>(0);
 
 	public Seta() {
@@ -50,7 +50,7 @@ public class Seta implements java.io.Serializable {
 
 	public Seta(Genero genero, String especie, String cuerpoFructifero, String sombrero, String himenio, String laminas,
 			String tubos, String gleba, String estroma, String pie, String carne, String esporas, String habitat,
-			String comestibilidad, Set<Localizacion> localizacions, Set<Coleccion> coleccions, Set<Foto> fotos) {
+			String comestibilidad, Set<Localizacion> localizacions, Set<Favorito> favoritos, Set<Foto> fotos) {
 		this.genero = genero;
 		this.especie = especie;
 		this.cuerpoFructifero = cuerpoFructifero;
@@ -66,7 +66,7 @@ public class Seta implements java.io.Serializable {
 		this.habitat = habitat;
 		this.comestibilidad = comestibilidad;
 		this.localizacions = localizacions;
-		this.coleccions = coleccions;
+		this.favoritos = favoritos;
 		this.fotos = fotos;
 	}
 
@@ -219,12 +219,12 @@ public class Seta implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "seta")
-	public Set<Coleccion> getColeccions() {
-		return this.coleccions;
+	public Set<Favorito> getFavoritos() {
+		return this.favoritos;
 	}
 
-	public void setColeccions(Set<Coleccion> coleccions) {
-		this.coleccions = coleccions;
+	public void setFavoritos(Set<Favorito> favoritos) {
+		this.favoritos = favoritos;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "seta")

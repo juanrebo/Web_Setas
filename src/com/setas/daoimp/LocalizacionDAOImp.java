@@ -15,7 +15,7 @@ public class LocalizacionDAOImp implements LocalizacionDAO {
 	SessionFactory sf;
 	
 	public LocalizacionDAOImp(SessionFactory sf) {
-		sf = this.sf;
+		this.sf = sf;
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class LocalizacionDAOImp implements LocalizacionDAO {
 	@Override
 	public List<Localizacion> recuperarLocalizaUsu(Usuario usuario) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Localizacion u where idusuario=:idusuario");
-		q.setParameter("idusuario", usuario.getIdusuario());
+		Query q = sf.getCurrentSession().createQuery("select u from Localizacion u where usuario=:usuario");
+		q.setParameter("usuario", usuario);
 		List<Localizacion> listaLocalizacionUsu = (List<Localizacion>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return listaLocalizacionUsu;

@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 11:06:04 by Hibernate Tools 5.2.10.Final
+// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -57,7 +57,7 @@ public class Filo implements java.io.Serializable {
 		this.filo = filo;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "filo")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "filo")
 	public Set<Clase> getClases() {
 		return this.clases;
 	}

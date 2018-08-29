@@ -7,8 +7,6 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 
 import com.setas.dao.FamiliaDAO;
-import com.setas.modelo.Coleccion;
-import com.setas.modelo.ColeccionId;
 import com.setas.modelo.Familia;
 import com.setas.modelo.Orden;
 
