@@ -11,6 +11,7 @@ import com.setas.dao.FotoDAO;
 import com.setas.dao.GeneroDAO;
 import com.setas.dao.LocalizacionDAO;
 import com.setas.dao.LugarDAO;
+import com.setas.dao.NombreDAO;
 import com.setas.dao.OrdenDAO;
 import com.setas.dao.RolDAO;
 import com.setas.dao.SetaDAO;
@@ -23,6 +24,7 @@ import com.setas.daoimp.FotoDAOImp;
 import com.setas.daoimp.GeneroDAOImp;
 import com.setas.daoimp.LocalizacionDAOImp;
 import com.setas.daoimp.LugarDAOImp;
+import com.setas.daoimp.NombreDAOImp;
 import com.setas.daoimp.OrdenDAOImp;
 import com.setas.daoimp.RolDAOImp;
 import com.setas.daoimp.SetaDAOImp;
@@ -46,6 +48,10 @@ public class DAOFactory {
 	
 	public SetaDAO getSeta() {
 		return new SetaDAOImp(sf);
+	}
+	
+	public NombreDAO getNombre() {
+		return new NombreDAOImp(sf);
 	}
 	
 	public UsuarioDAO getUsuario() {

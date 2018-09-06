@@ -53,38 +53,55 @@
 	 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
 	 	<br/>
 	 	<br/>
-	 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do">
-	 		<select name="setaLocalizacion" form="nuevoPunto">
-	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
-	 			<option value="${s.idseta}">${s.genero.genero} ${s.especie}</option>
+	 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do"></form>
+	 	<form id="nuevoLugar" method="post" action="insertarLugar.do"></form>
+	 	
+	 		<select name="lugarLocalizacion" form="nuevoPunto">
+	 			<c:forEach var="l" items="${sessionScope.listaLugar}">
+	 			<option value="${l.idlugar}">${l.lugar}</option>
 	 			</c:forEach>
 	 		</select>
+	 		
+	 		<input type="text" form="nuevoLugar" name="nuevoLugar">
+	 		<input type="submit" form="nuevoLugar" value="NUEVO LUGAR">
+
+	 		<select name="setaLocalizacion" form="nuevoPunto">
+	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
+	 			<option value="${s.id}">${s.genero.genero} ${s.id.especie}</option>
+	 			</c:forEach>
+	 		</select>
+	 		
 	 		<input type="hidden" id="latUbi" name="latUbi" value=""/>
 	 		<input type="hidden" id="lonUbi" name="lonUbi" value=""/>
-	 		<input type="radio" id="coordsUsu" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
-	 		<input type="radio" id="coordsMap" name="centroCoords" value="mapa">Centro mapa
-	 		<button type="button" onclick="InsertarLocalizacion()">NUEVA UBICACION</button>
-	 	</form>
+	 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
+	 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Centro mapa
+	 		<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">NUEVA UBICACION</button>
+
  	</div>
  	
  	<div class="popups">
  		<c:forEach var="l" items="${listaLocalizacion}">
+ 		<c:if test="${param['localizacion'] eq l.lugar.idlugar.toString() or param['localizacion']==null}">
  		<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
  			<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
  			<div class="popupContenido">
 				<div class="popupFoto">
 					<img src="${foto.next().ruta}"></img>
 				</div>
-				<div class="popupTexto">${l.seta.genero.genero} ${l.seta.especie}</div>
+				<div class="popupTexto">
+					<div class="popupNombre">${l.seta.genero.genero} ${l.seta.id.especie}</div>
+					<div class="popupLugar">${l.lugar.lugar}</div>
+					<div class="popupLat" latitud="${l.latitud}">Latitud: ${l.latitud.substring(0,10)}</div>
+					<div class="popupLon" longitud="${l.longitud}">Longitud: ${l.longitud.substring(0,10)}</div>
+				</div>
 			</div>
-			<div class="popupLat">${l.latitud}</div>
-			<div class="popupLon">${l.longitud}</div>
+				<div class="popupEliminar">
+					<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
+						<input type="submit" value="X"/>			
+					</form>
+				</div>
  		</div>
-		<div class="eliminarLocalizacion">
-			<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
-				<input type="submit" value="x"/>			
-			</form>
-		</div>
+ 		</c:if>
  		</c:forEach>
  	</div>
 </body>

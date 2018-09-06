@@ -23,14 +23,14 @@
 	margin: 5px;
 	display: flex;
 	flex-direction: column;
-	flex-basis: 200px;
+	flex-basis: 1;
 	flex-wrap: wrap;
 	width: 100%;
+	max-width: 400px;
 	transition: all 0.25s ease;
 }
 .fichaSeta:hover{
 	box-shadow: 5px 5px #AAAAAA;
-	
 }
 .fichaSetaImagen img{
 	height: 200px;

@@ -39,15 +39,15 @@
 	</div>
 	
 	<div class="todasSetas">
-		<c:forEach var="c" items="${applicationScope.todasSetas}">
-			<a href="seta.do?genero=${c.genero.genero}+&especie=${c.especie}">
+		<c:forEach var="ts" items="${applicationScope.todasSetas}">
+			<a href="seta.do?genero=${ts.genero.genero}+&especie=${ts.id.especie}">
 				<div class="fichaSeta">
-					<c:set var="foto" scope="session" value="${c.fotos.iterator()}"/>
+					<c:set var="foto" scope="session" value="${ts.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
 						<img src="${foto.next().ruta}"></img>
 					</div>
 					<div class="fichaSetaTexto">
-						<p>${c.genero.genero} ${c.especie}</p>
+						<p>${ts.genero.genero} ${ts.id.especie}</p>
 					</div>
 				</div>
 			</a>

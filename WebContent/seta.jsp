@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css/Web_Setas.css">
 	<link rel="stylesheet" href="css/FichaSeta.css">
-	<title>${seta.genero.genero} ${seta.especie}</title>
+	<title>${seta.genero.genero} ${seta.id.especie}</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -57,7 +57,7 @@
 		<c:otherwise>
 			<c:set var="existe" scope="session" value="noexiste"/>
 			<c:forEach var="f" items="${sessionScope.listaFavorito}">
-				<c:if test="${f.seta.idseta eq seta.idseta}">
+				<c:if test="${f.seta.id eq seta.id}">
 					<c:set var="existe" scope="session" value="existe"/>
 				</c:if>
 			</c:forEach>
@@ -85,7 +85,10 @@
 				<p><img src="${listaFotos.get(0).ruta}">
 			</div>
 			<div class="fichaSetaTexto">
-				<h2>${seta.genero.genero} ${seta.especie}</h2>
+				<h2>${seta.genero.genero} ${seta.id.especie}</h2>
+				<h3><c:forEach var="n" items="${seta.nombres}">
+				${n.idioma}: ${n.nombre}.
+				</c:forEach></h3>
 				<div class="fichaSetaClasif">
 					<p><span>Reino: </span><a href="filo.do">Fungi</a></p>
 					<p><span>Filo: </span><a href="clase.do?filo=${filo.filo}">${filo.filo}</a></p>

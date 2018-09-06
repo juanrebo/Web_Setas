@@ -3,3 +3,16 @@
 h1{
 	background-color: ;
 }
+
+p{
+	margin-top: 10px;
+}
+
+.cuerpo{
+	background-color: white;
+	box-shadow: 5px 5px #BBBBBB;
+	padding: 20px;
+	max-width: 1200px;
+	box-shadow: 5px 5px #BBBBBB;
+	margin-bottom: 20px;
+}

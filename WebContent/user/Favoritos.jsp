@@ -38,16 +38,18 @@
 		</div>
 	</div>
 	
+	<h1>Favoritos</h1>
+	
 	<div class="todasSetas">
 		<c:forEach var="f" items="${sessionScope.listaFavorito}">
-			<a href="../seta.do?genero=${f.seta.genero.genero}+&especie=${f.seta.especie}">
+			<a href="../seta.do?genero=${f.seta.genero.genero}+&especie=${f.seta.id.especie}">
 				<div class="fichaSeta">
 					<c:set var="foto" scope="session" value="${f.seta.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
 						<img src="${foto.next().ruta}"></img>
 					</div>
 					<div class="fichaSetaTexto">
-						<p>${f.seta.genero.genero} ${f.seta.especie}</p>
+						<p>${f.seta.genero.genero} ${f.seta.id.especie}</p>
 					</div>
 				</div>
 			</a>

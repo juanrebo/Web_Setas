@@ -7,7 +7,7 @@ html {
     margin: 0;
     border: 0;
     padding: 0;
-    background-color: #FFD6AC;
+    background-color: #F8E6D4;
     max-width: 1200px;
     margin: auto
 }
@@ -28,7 +28,7 @@ div, img, p, a{
 h1{
 	font-size: 1.8em;
 	margin: 0px 0px 10px 0px;
-	background-color: #EAF7A7;
+	background-color: #F9FBEE;
 	color: #35527C;
 	padding: 5px 0px 0px 5px;
 	box-shadow: 5px 5px #BBBBBB
@@ -40,7 +40,8 @@ h2{
 }
 
 .encabezado{
-	background-color: #CBDD74;
+	background-color: #E9EFCD;
+	border: 1px solid #808B49;
 	padding: 0px 10px 5px 10px;
 	display: flex;
 	align-items: flex-end;

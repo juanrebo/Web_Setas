@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.setas.dao.FotoDAO;
 import com.setas.modelo.Foto;
+import com.setas.modelo.Seta;
 import com.setas.util.DAOFactory;
 
 public class ServiceFotoImp implements ServiceFoto {
@@ -25,8 +26,8 @@ public class ServiceFotoImp implements ServiceFoto {
 	}
 
 	@Override
-	public List<Foto> recuperaFoto(int idseta) {
-		return fd.recuperaFoto(idseta);
+	public List<Foto> recuperaFoto(Seta seta) {
+		return fd.recuperaFoto(seta);
 	}
 
 }

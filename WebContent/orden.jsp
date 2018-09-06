@@ -38,6 +38,8 @@
 		</div>
 	</div>
 	
+	<h1>Clasificación</h1>
+	
 	<div class="cuerpo">
 		<h2>Órdenes</h2>
 		

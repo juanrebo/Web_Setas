@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
+// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;

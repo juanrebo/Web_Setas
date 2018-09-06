@@ -33,7 +33,7 @@ public class InsertarLocalizacionAccion extends Accion {
 		localizacion.setSeta(seta);
 		
 		ServiceLugar sl = new ServiceLugarImp();
-		Lugar lugar = sl.getLugarId(1);
+		Lugar lugar = sl.recuperaLugar(1);
 		localizacion.setLugar(lugar);
 		
 		sf.insertarLocalizacion(localizacion);

@@ -5,6 +5,7 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 
 import com.setas.dao.UsuarioDAO;
+import com.setas.modelo.Rol;
 import com.setas.modelo.Usuario;
 
 public class UsuarioDAOImp implements UsuarioDAO {
@@ -42,7 +43,8 @@ public class UsuarioDAOImp implements UsuarioDAO {
 		Query q = sf.getCurrentSession().createQuery("select u from Usuario u where nombre=:nombre");
 		q.setParameter("nombre", nombre);
 		Usuario usuario = (Usuario) q.getSingleResult();
-		usuario.getRol();
+		/*Rol rol = usuario.getRol();
+		usuario.setRol(rol);*/
 		sf.getCurrentSession().getTransaction().commit();
 		return usuario;
 	}

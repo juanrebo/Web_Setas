@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
+// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -48,7 +49,7 @@ public class Localizacion implements java.io.Serializable {
 		this.idlocalizacion = idlocalizacion;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idlugar", nullable = false)
 	public Lugar getLugar() {
 		return this.lugar;
@@ -59,7 +60,8 @@ public class Localizacion implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "seta_idseta", nullable = false)
+	@JoinColumns({ @JoinColumn(name = "idgenero", referencedColumnName = "idgenero", nullable = false),
+			@JoinColumn(name = "especie", referencedColumnName = "especie", nullable = false) })
 	public Seta getSeta() {
 		return this.seta;
 	}
@@ -69,7 +71,7 @@ public class Localizacion implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_idusuario", nullable = false)
+	@JoinColumn(name = "idusuario", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Web_Setas_claro.css">
 	<link rel="stylesheet" href="css/Menu.css">
 	<title>Inicio</title>
 </head>
@@ -60,10 +60,7 @@
 		</c:when>
 		<c:when test="${sessionScope.rol.rol eq 'admin'}">
 		<div class="botonMenu">
-			<a href="nuevaSeta.do">INSERTAR SETAS</a>
-		</div>
-		<div class="botonMenu">
-			<a href="editarSeta.do">EDITAR SETAS</a>
+			<a href="nuevaSeta.do">INSERTAR SETA</a>
 		</div>
 		</c:when>
 		<c:otherwise>

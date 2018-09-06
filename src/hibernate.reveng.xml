@@ -10,6 +10,7 @@
   <table-filter match-catalog="setasdb" match-name="genero"/>
   <table-filter match-catalog="setasdb" match-name="localizacion"/>
   <table-filter match-catalog="setasdb" match-name="lugar"/>
+  <table-filter match-catalog="setasdb" match-name="nombre"/>
   <table-filter match-catalog="setasdb" match-name="orden"/>
   <table-filter match-catalog="setasdb" match-name="rol"/>
   <table-filter match-catalog="setasdb" match-name="seta"/>

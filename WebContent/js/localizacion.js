@@ -38,10 +38,11 @@ $(function(){
 		});
 		
 		$(".popup").each(function(index){
-			var popupCoords = $(this).children("popupCoords");
-			var popupLat = $(this).children(".popupLat").text();
-			var popupLon = $(this).children(".popupLon").text();
-			var popupHtml = $(this).children(".popupContenido").html();
+			var popupContenido = $(this).children(".popupContenido");
+			var popupHtml = popupContenido.html();
+			var popupTexto = popupContenido.children(".popupTexto");
+			var popupLat = popupTexto.children(".popupLat").attr("latitud");
+			var popupLon = popupTexto.children(".popupLon").attr("longitud");
 			var popups = L.marker([popupLat,popupLon],{icon: icono}).addTo(mymap).bindPopup(popupHtml);
 		});
 	});

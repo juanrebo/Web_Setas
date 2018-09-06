@@ -4,33 +4,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insertar seta</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insertar seta</title>
+	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/EditarSeta.css">
 </head>
 <body>
-	<form method="post" id="insertarSeta" action="insertarSeta.do">
-		<p>Genero:
-		<select name="genero" form="insertarSeta">
-			<c:forEach var="g" items="${todoGenero}">
-				<option value="${g.genero}">${g.genero}</option>
-			</c:forEach>
-		</select>
-		<p>Especie: <input type="text" name="especie">
-		<p>Cuerpo fructífero: <textarea rows="5" maxlength="500" name="cuerpoFructifero" form="insertarSeta"/>
-		<p>Sombrero: <textarea rows="5" maxlength="500" name="sombrero" form="insertarSeta"/>
-		<p>Himenio: <textarea rows="5" maxlength="500" name="himenio" form="insertarSeta"/>
-		<p>Gleba: <textarea rows="5" maxlength="500" name="gleba" form="insertarSeta"/>
-		<p>Estroma: <textarea rows="5" maxlength="500" name="estroma" form="insertarSeta"/>
-		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"/>
-		<p>Láminas: <textarea rows="5" maxlength="500" name="laminas" form="insertarSeta"/>
-		<p>Tubos: <textarea rows="5" maxlength="500" name="tubos" form="insertarSeta"/>
-		<p>Pie: <textarea rows="5" maxlength="500" name="pie" form="insertarSeta"/>
-		<p>Carne: <textarea rows="5" maxlength="500" name="carne" form="insertarSeta"/>
-		<p>Esporada: <textarea rows="5" maxlength="500" name="esporada" form="insertarSeta"/>
-		<p>Hábitat: <textarea rows="5" maxlength="500" name="habitat" form="insertarSeta"/>
-		<p>Comestibilidad: <textarea rows="5" maxlength="500" name="comestibilidad" form="insertarSeta"/>
-		<p>Foto: <input type="text" name="ruta">
-		<p><input type="submit" value="Insertar seta">
-	</form>
+	<div class="encabezado">
+		<div class="nombre">
+			<a href="Inicio.jsp">micoPedia</a>
+		</div>
+		<div class="registro">
+		<c:choose>
+		<c:when test="${sessionScope.usuario eq null}">
+		<div class="botonEncabezado">
+			<a href="registro.html">REGISTRO</a>
+		</div>	    
+		<div class="botonEncabezado">
+			<a href="login.html">INICIAR SESIÓN</a>
+		</div>
+		</c:when>
+		<c:otherwise>
+		<div class="sesionIniciada">
+			<div class="botonEncabezado">
+				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
+			</div>
+			<div class="nombreUsuario">
+				${sessionScope.usuario.nombre}
+			</div>
+		</div>
+		</c:otherwise>
+		</c:choose>
+		</div>
+	</div>
+	
+	<h1>Insertar seta</h1>
+	
+	<div class="cuerpo">
+		<form method="post" id="insertarSeta" action="insertarSeta.do"></form>
+			<p>Género:
+			<select name="genero" form="insertarSeta">
+				<c:forEach var="g" items="${todoGenero}">
+					<option value="${g.genero}">${g.genero}</option>
+				</c:forEach>
+			</select>
+			<button onclick="window.location.href='filo.do'">NUEVO GÉNERO</button>
+			 Especie: <input type="text" form="insertarSeta" name="especie">
+			<p>Cuerpo fructífero: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="cuerpoFructifero" form="insertarSeta"></textarea>
+			<p>Sombrero: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="sombrero" form="insertarSeta"></textarea>
+			<p>Himenio: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="himenio" form="insertarSeta"></textarea>
+			<p>Gleba: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="gleba" form="insertarSeta"></textarea>
+			<p>Estroma: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="estroma" form="insertarSeta"></textarea>
+			<p>Carne: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="carne" form="insertarSeta"></textarea>
+			<p>Láminas: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="laminas" form="insertarSeta"></textarea>
+			<p>Tubos: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="tubos" form="insertarSeta"></textarea>
+			<p>Pie: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="pie" form="insertarSeta"></textarea>
+			<p>Carne: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="carne" form="insertarSeta"></textarea>
+			<p>Esporada: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="esporada" form="insertarSeta"></textarea>
+			<p>Hábitat: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="habitat" form="insertarSeta"></textarea>
+			<p>Comestibilidad: 
+			<p><textarea rows="5" cols="50" maxlength="500" name="comestibilidad" form="insertarSeta"></textarea>
+			<p>Foto: <input type="text" name="ruta">
+			<p>
+			<p>Idioma: 
+			<select type="select" form="insertarSeta" name="idioma">
+				<option value="Es" selected="selected">Castellano</option>
+				<option value="Ga">Galego</option>
+				<option value="Eu">Euskera</option>
+				<option value="Ca">Catalán</option>
+			</select>  
+			 Nombre:<input type="text" form="insertarSeta" name="nombre">
+			<p><input type="submit" value="Insertar seta">
+	</div>
 </body>
 </html>

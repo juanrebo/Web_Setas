@@ -58,7 +58,7 @@ public class SetaAccion extends Accion {
 		
 		ServiceFoto sf = new ServiceFotoImp();
 		List<Foto> listaFotos = null;
-		listaFotos = (List<Foto>) sf.recuperaFoto(unaSeta.getIdseta());
+		listaFotos = (List<Foto>) sf.recuperaFoto(unaSeta);
 		if(!listaFotos.isEmpty()) {
 			request.getSession().setAttribute("listaFotos", listaFotos);
 		}

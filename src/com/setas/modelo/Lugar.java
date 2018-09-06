@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
+// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,17 +22,20 @@ import javax.persistence.Table;
 public class Lugar implements java.io.Serializable {
 
 	private Integer idlugar;
+	private Usuario usuario;
 	private String lugar;
 	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
 
 	public Lugar() {
 	}
 
-	public Lugar(String lugar) {
+	public Lugar(Usuario usuario, String lugar) {
+		this.usuario = usuario;
 		this.lugar = lugar;
 	}
 
-	public Lugar(String lugar, Set<Localizacion> localizacions) {
+	public Lugar(Usuario usuario, String lugar, Set<Localizacion> localizacions) {
+		this.usuario = usuario;
 		this.lugar = lugar;
 		this.localizacions = localizacions;
 	}
@@ -47,7 +52,17 @@ public class Lugar implements java.io.Serializable {
 		this.idlugar = idlugar;
 	}
 
-	@Column(name = "lugar", nullable = false, length = 30)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idusuario", nullable = false)
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@Column(name = "lugar", nullable = false, length = 50)
 	public String getLugar() {
 		return this.lugar;
 	}

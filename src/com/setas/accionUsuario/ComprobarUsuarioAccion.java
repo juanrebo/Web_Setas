@@ -9,6 +9,8 @@ import com.setas.service.ServiceFavorito;
 import com.setas.service.ServiceFavoritoImp;
 import com.setas.service.ServiceLocalizacion;
 import com.setas.service.ServiceLocalizacionImp;
+import com.setas.service.ServiceLugar;
+import com.setas.service.ServiceLugarImp;
 import com.setas.service.ServiceUsuario;
 import com.setas.service.ServiceUsuarioImp;
 import com.setas.util.Accion;
@@ -37,8 +39,10 @@ public class ComprobarUsuarioAccion extends Accion {
 			ServiceFavorito sf = new ServiceFavoritoImp();
 			request.getSession().setAttribute("listaFavorito", sf.recuperaFavoritos(usuario));
 			
-			respuesta = "Inicio.jsp";
+			ServiceLugar sg = new ServiceLugarImp();
+			request.getSession().setAttribute("listaLugar", sg.recuperaLugares(usuario));
 			
+			respuesta = "Inicio.jsp";
 		}else {
 			respuesta = "login.html";
 		}

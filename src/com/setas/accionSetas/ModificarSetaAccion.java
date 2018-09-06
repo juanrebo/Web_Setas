@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.setas.modelo.Foto;
 import com.setas.modelo.Genero;
+import com.setas.modelo.Nombre;
 import com.setas.modelo.Seta;
 import com.setas.service.ServiceFoto;
 import com.setas.service.ServiceFotoImp;
 import com.setas.service.ServiceGenero;
 import com.setas.service.ServiceGeneroImp;
+import com.setas.service.ServiceNombre;
+import com.setas.service.ServiceNombreImp;
 import com.setas.service.ServiceSeta;
 import com.setas.service.ServiceSetaImp;
 import com.setas.util.Accion;
@@ -22,12 +25,14 @@ public class ModificarSetaAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		ServiceSeta ss = new ServiceSetaImp();
 		Seta seta = (Seta) request.getSession().getAttribute("seta");
+		
 		ServiceGenero sg = new ServiceGeneroImp();
 		String generoNuevo = request.getParameter("generoNuevo");
 		Genero nuevoGenero = sg.recuperaGenero(generoNuevo);
 		seta.setGenero(nuevoGenero);
 		request.getSession().setAttribute("genero", nuevoGenero);
-		seta.setEspecie(request.getParameter("especie"));
+		
+		seta.getId().setEspecie(request.getParameter("especie"));
 		seta.setCuerpoFructifero(request.getParameter("cuerpoFructifero"));
 		seta.setSombrero(request.getParameter("sombrero"));
 		seta.setHimenio(request.getParameter("himenio"));
@@ -42,11 +47,11 @@ public class ModificarSetaAccion extends Accion{
 		seta.setHabitat(request.getParameter("habitat"));
 		seta.setComestibilidad(request.getParameter("comestibilidad"));
 		
-		ServiceFoto sf = new ServiceFotoImp();
 		String ruta = request.getParameter("ruta");
-		String derecho = request.getParameter("derecho");
 		if(ruta != null) {
-			List<Foto> listaFotos = sf.recuperaFoto(seta.getIdseta());
+			ServiceFoto sf = new ServiceFotoImp();
+			String derecho = request.getParameter("derecho");
+			List<Foto> listaFotos = sf.recuperaFoto(seta);
 			Foto foto = new Foto();
 			Boolean existe = false;
 			for(Foto f:listaFotos) {
@@ -64,12 +69,24 @@ public class ModificarSetaAccion extends Accion{
 				sf.insertarFoto(foto);
 			}
 		}
+		
+		String nombrereq = request.getParameter("nombre");
+		if(nombrereq != "") {
+			String idiomareq = request.getParameter("idioma");
+			Nombre nombre = new Nombre();
+			nombre.setIdioma(idiomareq);
+			nombre.setNombre(nombrereq);
+			nombre.setSeta(seta);
+			ServiceNombre sn = new ServiceNombreImp();
+			sn.insertarNombre(nombre);
+		}
+		
 		ss.modificarSeta(seta);
 		
 		List<Seta> todasSetas = ss.getSeta();
 		request.getServletContext().setAttribute("todasSetas", todasSetas);
 		
-		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getEspecie();
+		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();
 	}
 
 }

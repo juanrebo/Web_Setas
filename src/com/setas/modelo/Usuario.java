@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 22-ago-2018 17:30:24 by Hibernate Tools 5.2.10.Final
+// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +28,7 @@ public class Usuario implements java.io.Serializable {
 	private String contrasena;
 	private String email;
 	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
+	private Set<Lugar> lugars = new HashSet<Lugar>(0);
 	private Set<Favorito> favoritos = new HashSet<Favorito>(0);
 
 	public Usuario() {
@@ -41,12 +42,13 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(Rol rol, String nombre, String contrasena, String email, Set<Localizacion> localizacions,
-			Set<Favorito> favoritos) {
+			Set<Lugar> lugars, Set<Favorito> favoritos) {
 		this.rol = rol;
 		this.nombre = nombre;
 		this.contrasena = contrasena;
 		this.email = email;
 		this.localizacions = localizacions;
+		this.lugars = lugars;
 		this.favoritos = favoritos;
 	}
 
@@ -106,6 +108,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setLocalizacions(Set<Localizacion> localizacions) {
 		this.localizacions = localizacions;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	public Set<Lugar> getLugars() {
+		return this.lugars;
+	}
+
+	public void setLugars(Set<Lugar> lugars) {
+		this.lugars = lugars;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")

@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 
 import com.setas.dao.FotoDAO;
 import com.setas.modelo.Foto;
+import com.setas.modelo.Seta;
 
 public class FotoDAOImp implements FotoDAO {
 	SessionFactory sf;
@@ -38,10 +39,10 @@ public class FotoDAOImp implements FotoDAO {
 	}
 
 	@Override
-	public List<Foto> recuperaFoto(int idseta) {
+	public List<Foto> recuperaFoto(Seta seta) {
 		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Foto u where idseta=:idseta");
-		q.setParameter("idseta", idseta);
+		Query q = sf.getCurrentSession().createQuery("select u from Foto u where seta=:seta");
+		q.setParameter("seta", seta);
 		List<Foto> listaFotos = (List<Foto>) q.getResultList();
 		sf.getCurrentSession().getTransaction().commit();
 		return listaFotos;

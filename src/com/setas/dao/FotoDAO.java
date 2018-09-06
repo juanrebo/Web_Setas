@@ -9,5 +9,5 @@ public interface FotoDAO {
 	public void insertarFoto(Foto foto);
 	public void eliminarFoto(Foto foto);
 	public void modificarFoto(Foto foto);
-	public List<Foto> recuperaFoto(int idseta);
+	public List<Foto> recuperaFoto(Seta seta);
 }
