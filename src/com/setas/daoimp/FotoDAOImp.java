@@ -19,33 +19,53 @@ public class FotoDAOImp implements FotoDAO {
 
 	@Override
 	public void insertarFoto(Foto foto) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(foto);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(foto);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarFoto(Foto foto) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(foto);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(foto);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void modificarFoto(Foto foto) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().update(foto);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().update(foto);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Foto> recuperaFoto(Seta seta) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Foto u where seta=:seta");
-		q.setParameter("seta", seta);
-		List<Foto> listaFotos = (List<Foto>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return listaFotos;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Foto u where seta=:seta");
+			q.setParameter("seta", seta);
+			List<Foto> listaFotos = (List<Foto>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return listaFotos;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 }

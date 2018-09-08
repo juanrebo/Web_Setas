@@ -17,22 +17,31 @@ public class RolDAOImp implements RolDAO {
 
 	@Override
 	public Rol getRol(Usuario usuario) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Rol u where idRol := idRol");
-		q.setParameter("idRol", usuario.getRol());
-		Rol rol = (Rol) q.getSingleResult();
-		sf.getCurrentSession().getTransaction().commit();
-		return rol;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Rol u where idRol := idRol");
+			q.setParameter("idRol", usuario.getRol());
+			Rol rol = (Rol) q.getSingleResult();
+			sf.getCurrentSession().getTransaction().commit();
+			return rol;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public Rol getRol(int idrol) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Rol u where idrol=:idrol");
-		q.setParameter("idrol", idrol);
-		Rol rol = (Rol) q.getSingleResult();
-		sf.getCurrentSession().getTransaction().commit();
-		return rol;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Rol u where idrol=:idrol");
+			q.setParameter("idrol", idrol);
+			Rol rol = (Rol) q.getSingleResult();
+			sf.getCurrentSession().getTransaction().commit();
+			return rol;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
-
 }

@@ -17,35 +17,52 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 	@Override
 	public void insertarUsuario(Usuario usuario) {
-		sf.getCurrentSession().getTransaction().begin();
-		sf.getCurrentSession().save(usuario);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().getTransaction().begin();
+			sf.getCurrentSession().save(usuario);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void modificarUsuario(Usuario usuario) {
-		sf.getCurrentSession().getTransaction().begin();
-		sf.getCurrentSession().update(usuario);
-		sf.getCurrentSession().getTransaction().commit();
-
+		try {
+			sf.getCurrentSession().getTransaction().begin();
+			sf.getCurrentSession().update(usuario);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarUsuario(Usuario usuario) {
-		sf.getCurrentSession().getTransaction().begin();
-		sf.getCurrentSession().delete(usuario);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().getTransaction().begin();
+			sf.getCurrentSession().delete(usuario);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public Usuario obtenerUsuario(String nombre) {
-		sf.getCurrentSession().getTransaction().begin();
-		Query q = sf.getCurrentSession().createQuery("select u from Usuario u where nombre=:nombre");
-		q.setParameter("nombre", nombre);
-		Usuario usuario = (Usuario) q.getSingleResult();
-		/*Rol rol = usuario.getRol();
-		usuario.setRol(rol);*/
-		sf.getCurrentSession().getTransaction().commit();
-		return usuario;
+		try {
+			sf.getCurrentSession().getTransaction().begin();
+			Query q = sf.getCurrentSession().createQuery("select u from Usuario u where nombre=:nombre");
+			q.setParameter("nombre", nombre);
+			Usuario usuario = (Usuario) q.getSingleResult();
+			sf.getCurrentSession().getTransaction().commit();
+			return usuario;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 }

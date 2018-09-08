@@ -19,53 +19,82 @@ public class FamiliaDAOImp implements FamiliaDAO {
 	
 	@Override
 	public void insertarFamilia(Familia familia) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(familia);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(familia);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Familia> getFamilia() {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Familia u order by familia");
-		List<Familia> lista = (List<Familia>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Familia u order by familia");
+			List<Familia> lista = (List<Familia>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Familia> getFamiliaOrden(Orden orden) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Familia u where idorden=:idorden order by familia");
-		q.setParameter("idorden", orden.getIdorden().toString());
-		List<Familia> lista = (List<Familia>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Familia u where idorden=:idorden order by familia");
+			q.setParameter("idorden", orden.getIdorden().toString());
+			List<Familia> lista = (List<Familia>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void modificarFamilia(Familia familia) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().update(familia);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().update(familia);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarFamilia(Familia familia) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(familia);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(familia);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public Familia recuperaFamilia(String familia) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Familia u where familia=:familia");
-		q.setParameter("familia", familia);
-		Familia unaFamilia = (Familia) q.getSingleResult();
-		unaFamilia.getOrden();
-		sf.getCurrentSession().getTransaction().commit();
-		return unaFamilia;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Familia u where familia=:familia");
+			q.setParameter("familia", familia);
+			Familia unaFamilia = (Familia) q.getSingleResult();
+			unaFamilia.getOrden();
+			sf.getCurrentSession().getTransaction().commit();
+			return unaFamilia;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
-
 }

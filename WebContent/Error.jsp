@@ -5,13 +5,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas_claro.css">
-	<link rel="stylesheet" href="css/Ficha.css">
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-	<title>Setas</title>
+	<link rel="stylesheet" href="css/Error.css">
+	<title>Error</title>
 </head>
 <body>
-	<div class="encabezado">
+<div class="encabezado">
 		<div class="nombre">
 			<a href="Inicio.jsp">micoPedia</a>
 		</div>
@@ -38,22 +36,18 @@
 			</c:choose>
 		</div>
 	</div>
+	<h1>Error</h1>
+	
+	<div class="cuerpo">
+	<c:choose>
+		<c:when test="${error.toString().contains('Duplicate entry')}">
+		<p>Entrada duplicada</p>
+		</c:when>
 		
-	<div class="todasSetas">
-		<c:forEach var="ts" items="${applicationScope.todasSetas}">
-			<a href="seta.do?genero=${ts.genero.genero}+&especie=${ts.id.especie}">
-				<div class="fichaSeta">
-					<c:set var="foto" scope="session" value="${ts.fotos.iterator()}"/>
-					<div class="fichaSetaImagen">
-						<img src="${foto.next().ruta}"></img>
-					</div>
-					<div class="fichaSetaTexto">
-						<p>${ts.genero.genero} ${ts.id.especie}</p>
-					</div>
-				</div>
-			</a>
-		</c:forEach>
+		<c:otherwise>
+		<p>${error}</p>
+		</c:otherwise>
+	</c:choose>
 	</div>
 </body>
-<script src="js/relleno.js"></script>
 </html>

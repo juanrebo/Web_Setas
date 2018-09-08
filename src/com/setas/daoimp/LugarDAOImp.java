@@ -20,35 +20,55 @@ public class LugarDAOImp implements LugarDAO{
 	
 	@Override
 	public void insertarLugar(Lugar lugar) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(lugar);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(lugar);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 	
 	@Override
 	public void eliminarLugar(Lugar lugar) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(lugar);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(lugar);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public Lugar recuperaLugar(int idlugar) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Lugar u where idlugar=:idlugar");
-		q.setParameter("idlugar", idlugar);
-		Lugar lugar = (Lugar) q.getSingleResult();
-		sf.getCurrentSession().getTransaction().commit();
-		return lugar;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Lugar u where idlugar=:idlugar");
+			q.setParameter("idlugar", idlugar);
+			Lugar lugar = (Lugar) q.getSingleResult();
+			sf.getCurrentSession().getTransaction().commit();
+			return lugar;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Lugar> recuperaLugares(Usuario usuario) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Lugar u where usuario=:usuario");
-		q.setParameter("usuario", usuario);
-		List<Lugar> lugares = (List<Lugar>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lugares;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Lugar u where usuario=:usuario");
+			q.setParameter("usuario", usuario);
+			List<Lugar> lugares = (List<Lugar>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lugares;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 }

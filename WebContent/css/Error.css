@@ -7,7 +7,7 @@ html {
     margin: 0;
     border: 0;
     padding: 0;
-    background-color: #F8E6D4;
+    background-color: #FFD6AC;
     max-width: 1200px;
     margin: auto
 }
@@ -28,7 +28,7 @@ div, img, p, a{
 h1{
 	font-size: 1.8em;
 	margin: 0px 0px 10px 0px;
-	background-color: #F9FBEE;
+	background-color: #EAF7A7;
 	color: #35527C;
 	padding: 5px 0px 0px 5px;
 	box-shadow: 5px 5px #BBBBBB
@@ -40,13 +40,11 @@ h2{
 }
 
 .encabezado{
-	background-color: #1D3963;
-	border: 1px solid #808B49;
+	background-color: #CBDD74;
 	padding: 0px 10px 5px 10px;
 	display: flex;
 	align-items: flex-end;
-	height: 75px;
-	margin-top: 5px;
+	height: 100px;
 	margin-bottom: 10px;
 	box-shadow: 5px 5px #BBBBBB
 }
@@ -57,12 +55,12 @@ h2{
 .encabezado .nombre a {
 	font-size: 40pt;
 	font-family: Baumans, Arial;
-	color: #B4C2D7;
+	color: #1D3963;
 }
 .encabezado .registro{
 	flex: 1 0 30%;
 	display: flex;
-	justify-content: space-around
+	justify-content: flex-end
 }
 .encabezado .registro .sesionIniciada{
 	display:flex;
@@ -77,18 +75,15 @@ h2{
 	width: 50%;
 	margin: 5px
 }
-
 .encabezado .registro a{
 	background-color: #1D3963;
 	color: #B4C2D7;
-	border: 1px solid #B4C2D7;
 	display: block;
-	padding: 7px 0;
+	padding: 10px 0;
 	transition: all 0.25s ease
 }
 .encabezado .registro a:hover{
 	background-color: #B4C2D7;
-	border: 1px solid #1D3963;
 	color: #1D3963
 }
 .encabezado .registro .nombreUsuario{
@@ -129,4 +124,9 @@ button {
 }
 button:hover{
 	cursor: pointer;
+}
+.cuerpo{
+	background-color: white;
+	box-shadow: 5px 5px #AAAAAA;
+	padding: 10px;
 }

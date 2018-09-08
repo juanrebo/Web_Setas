@@ -7,7 +7,7 @@ html {
     margin: 0;
     border: 0;
     padding: 0;
-    background-color: #F8E6D4;
+    background-color: #F1FAA7;
     max-width: 1200px;
     margin: auto
 }
@@ -40,15 +40,14 @@ h2{
 }
 
 .encabezado{
-	background-color: #1D3963;
-	border: 1px solid #808B49;
+	background-color: #25676A;
 	padding: 0px 10px 5px 10px;
 	display: flex;
 	align-items: flex-end;
 	height: 75px;
 	margin-top: 5px;
 	margin-bottom: 10px;
-	box-shadow: 5px 5px #BBBBBB
+	box-shadow: 5px 5px #104F52;
 }
 .encabezado .nombre{
 	display: inline;
@@ -57,7 +56,7 @@ h2{
 .encabezado .nombre a {
 	font-size: 40pt;
 	font-family: Baumans, Arial;
-	color: #B4C2D7;
+	color: #6B9D9F;
 }
 .encabezado .registro{
 	flex: 1 0 30%;

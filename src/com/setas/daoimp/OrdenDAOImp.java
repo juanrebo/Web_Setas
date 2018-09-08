@@ -18,52 +18,82 @@ public class OrdenDAOImp implements OrdenDAO {
 	}
 	@Override
 	public void insertarOrden(Orden orden) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(orden);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(orden);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Orden> getOrden() {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Orden u order by orden");
-		List<Orden> lista = (List<Orden>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Orden u order by orden");
+			List<Orden> lista = (List<Orden>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Orden> getOrdenClase(Clase clase) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Orden u where idclase=:idclase order by orden");
-		q.setParameter("idclase", clase.getIdclase().toString());
-		List<Orden> lista = (List<Orden>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Orden u where idclase=:idclase order by orden");
+			q.setParameter("idclase", clase.getIdclase().toString());
+			List<Orden> lista = (List<Orden>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void modificarOrden(Orden orden) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().update(orden);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().update(orden);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarOrden(Orden orden) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(orden);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(orden);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
+	
 	@Override
 	public Orden recuperaOrden(String orden) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Orden u where orden=:orden");
-		q.setParameter("orden", orden);
-		Orden unOrden = (Orden) q.getSingleResult();
-		unOrden.getClase();
-		sf.getCurrentSession().getTransaction().commit();
-		return unOrden;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Orden u where orden=:orden");
+			q.setParameter("orden", orden);
+			Orden unOrden = (Orden) q.getSingleResult();
+			unOrden.getClase();
+			sf.getCurrentSession().getTransaction().commit();
+			return unOrden;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
-
 }

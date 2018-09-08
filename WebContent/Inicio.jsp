@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas_claro.css">
+	<link rel="stylesheet" href="css/Web_Setas_Verde.css">
 	<link rel="stylesheet" href="css/Menu.css">
 	<title>Inicio</title>
 </head>

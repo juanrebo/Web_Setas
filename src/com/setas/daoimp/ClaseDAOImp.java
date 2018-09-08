@@ -16,54 +16,85 @@ public class ClaseDAOImp implements ClaseDAO {
 	public ClaseDAOImp(SessionFactory sf){
 		this.sf = sf;
 	}
+	
 	@Override
 	public void insertarClase(Clase clase) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(clase);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(clase);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Clase> getClase() {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Clase u order by clase");
-		List<Clase> lista = (List<Clase>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Clase u order by clase");
+			List<Clase> lista = (List<Clase>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Clase> getClaseFilo(Filo filo) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Clase u where idfilo=:idfilo order by clase");
-		q.setParameter("idfilo", filo.getIdfilo().toString());
-		List<Clase> lista = (List<Clase>) q.getResultList();
-		sf.getCurrentSession().getTransaction().commit();
-		return lista;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Clase u where idfilo=:idfilo order by clase");
+			q.setParameter("idfilo", filo.getIdfilo().toString());
+			List<Clase> lista = (List<Clase>) q.getResultList();
+			sf.getCurrentSession().getTransaction().commit();
+			return lista;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void modificarClase(Clase clase) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().update(clase);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().update(clase);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarClase(Clase clase) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(clase);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(clase);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 	@Override
 	public Clase recuperaClase(String clase) {
-		sf.getCurrentSession().beginTransaction();
-		Query q = sf.getCurrentSession().createQuery("select u from Clase u where clase=:clase");
-		q.setParameter("clase", clase);
-		Clase unaClase = (Clase) q.getSingleResult();
-		unaClase.getFilo();
-		sf.getCurrentSession().getTransaction().commit();
-		return unaClase;
+		try {
+			sf.getCurrentSession().beginTransaction();
+			Query q = sf.getCurrentSession().createQuery("select u from Clase u where clase=:clase");
+			q.setParameter("clase", clase);
+			Clase unaClase = (Clase) q.getSingleResult();
+			unaClase.getFilo();
+			sf.getCurrentSession().getTransaction().commit();
+			return unaClase;
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 }

@@ -14,16 +14,25 @@ public class NombreDAOImp implements NombreDAO {
 	
 	@Override
 	public void insertarNombre(Nombre nombre) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().save(nombre);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().save(nombre);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
 
 	@Override
 	public void eliminarNombre(Nombre nombre) {
-		sf.getCurrentSession().beginTransaction();
-		sf.getCurrentSession().delete(nombre);
-		sf.getCurrentSession().getTransaction().commit();
+		try {
+			sf.getCurrentSession().beginTransaction();
+			sf.getCurrentSession().delete(nombre);
+			sf.getCurrentSession().getTransaction().commit();
+		}catch(Exception e) {
+			sf.getCurrentSession().getTransaction().rollback();
+			throw e;
+		}
 	}
-
 }
