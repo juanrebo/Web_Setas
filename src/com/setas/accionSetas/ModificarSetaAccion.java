@@ -83,8 +83,7 @@ public class ModificarSetaAccion extends Accion{
 		
 		ss.modificarSeta(seta);
 		
-		return "../Inicio.jsp";
-		/*return "../seta.jsp?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();*/
+		return "REDIRECT ../seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();
 	}
 
 }

@@ -15,11 +15,11 @@ $(".todasSetas").on("resize", creaSetas());
 /*document.getElementsByTagName("BODY")[0].onresize = function() {myFunction()};*/
 
 
-/*document.getElementsByTagName("body")[0].onresize = function() {myFunction()};*/
+document.getElementsByTagName("body")[0].onresize = function() {myFunction()};
+function myFunction() {
+	$("#demo").html($(".todasSetas").width());
+}
 /*$("body").on('resize', myFunction());*/
 $("body").on('resize',function(){
-	$(".test").html($(".todasSetas").width());
+	$("#demo").html($(".todasSetas").width());
 	});
-/*function myFunction() {
-    $("#demo").html($(".todasSetas").width());
-}*/
