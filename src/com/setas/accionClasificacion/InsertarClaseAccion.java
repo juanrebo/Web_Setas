@@ -13,13 +13,17 @@ public class InsertarClaseAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceClase sc = new ServiceClaseImp();
-		Filo filo = (Filo) request.getSession().getAttribute("filo");
-		Clase clase = new Clase();
-		clase.setClase(request.getParameter("nuevaClase"));
-		clase.setFilo(filo);
-		sc.insertarClase(clase);
-		return "clase.do?filo="+filo.getFilo().toString();
+		try {
+			ServiceClase sc = new ServiceClaseImp();
+			Filo filo = (Filo) request.getSession().getAttribute("filo");
+			Clase clase = new Clase();
+			clase.setClase(request.getParameter("nuevaClase"));
+			clase.setFilo(filo);
+			sc.insertarClase(clase);
+			return "clase.do?filo="+filo.getFilo().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
 	}
-
 }

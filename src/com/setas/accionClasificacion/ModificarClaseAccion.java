@@ -15,19 +15,19 @@ public class ModificarClaseAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceClase sc = new ServiceClaseImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String clase = parametro.substring(9, parametro.length());
-			String nuevaClase = request.getParameter("modificar"+clase);
+		try {
+			ServiceClase sc = new ServiceClaseImp();
+			String clase = request.getParameter("actual");
 			Clase unaClase = sc.recuperaClase(clase);
+			String nuevaClase = request.getParameter("nuevo");
 			unaClase.setClase(nuevaClase);
 			sc.modificarClase(unaClase);
+			
+			Filo filo = (Filo) request.getSession().getAttribute("filo");
+			return "clase.do?filo="+filo.getFilo().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Filo filo = (Filo) request.getSession().getAttribute("filo");
-		return "clase.do?filo="+filo.getFilo().toString();
 	}
-
 }

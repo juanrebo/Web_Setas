@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas.css">
-	<link rel="stylesheet" href="css/EditarSeta.css">
+	<link rel="stylesheet" href="../css/Web_Setas.css">
+	<link rel="stylesheet" href="../css/EditarSeta.css">
 	<title>Editar seta</title>
 </head>
 <body>

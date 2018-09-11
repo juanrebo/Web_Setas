@@ -12,11 +12,16 @@ public class EliminarFiloAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceFilo sf = new ServiceFiloImp();
-		String filo = request.getParameter("actual");
-		Filo unFilo = sf.recuperaFilo(filo);
-		sf.eliminarFilo(unFilo);
-		return "filo.do";
+		try {
+			ServiceFilo sf = new ServiceFiloImp();
+			String filo = request.getParameter("actual");
+			Filo unFilo = sf.recuperaFilo(filo);
+			sf.eliminarFilo(unFilo);
+			return "filo.do";
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
 	}
 
 }

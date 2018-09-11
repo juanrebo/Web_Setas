@@ -48,7 +48,7 @@ public class ModificarSetaAccion extends Accion{
 		seta.setComestibilidad(request.getParameter("comestibilidad"));
 		
 		String ruta = request.getParameter("ruta");
-		if(ruta != null) {
+		if(ruta != "") {
 			ServiceFoto sf = new ServiceFotoImp();
 			String derecho = request.getParameter("derecho");
 			List<Foto> listaFotos = sf.recuperaFoto(seta);
@@ -83,10 +83,8 @@ public class ModificarSetaAccion extends Accion{
 		
 		ss.modificarSeta(seta);
 		
-		List<Seta> todasSetas = ss.getSeta();
-		request.getServletContext().setAttribute("todasSetas", todasSetas);
-		
-		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();
+		return "../Inicio.jsp";
+		/*return "../seta.jsp?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();*/
 	}
 
 }

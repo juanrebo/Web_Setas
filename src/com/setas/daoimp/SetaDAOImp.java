@@ -85,7 +85,7 @@ public class SetaDAOImp implements SetaDAO {
 		}
 	}
 
-	@Override
+	/*@Override
 	public Seta recuperaSetaId(int idseta) {
 		try {
 			sf.getCurrentSession().beginTransaction();
@@ -98,7 +98,7 @@ public class SetaDAOImp implements SetaDAO {
 			sf.getCurrentSession().getTransaction().rollback();
 			throw e;
 		}
-	}
+	}*/
 	
 	@Override
 	public Seta recuperaSeta(int idgenero, String especie) {

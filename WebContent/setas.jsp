@@ -45,7 +45,9 @@
 				<div class="fichaSeta">
 					<c:set var="foto" scope="session" value="${ts.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
+					<c:if test="${not empty ts.fotos}">
 						<img src="${foto.next().ruta}"></img>
+					</c:if>
 					</div>
 					<div class="fichaSetaTexto">
 						<p>${ts.genero.genero} ${ts.id.especie}</p>

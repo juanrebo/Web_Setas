@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Web_Setas_Verde.css">
 	<link rel="stylesheet" href="css/FichaSeta.css">
 	<title>${seta.genero.genero} ${seta.id.especie}</title>
 </head>
@@ -39,11 +39,14 @@
 	</div>
 	
 	<c:if test="${rol.rol == 'admin'}">
-	<form method="post" action="editarSeta.do">
-		<input type="submit" value="EDITAR SETA">
-	</form>
-	<br/>
-	<br/>
+	<div class="admin">
+		<form method="post" action="admin/editarSeta.do">
+			<input type="submit" value="EDITAR SETA">
+		</form>
+		<form method="post" action="admin/eliminarSeta.do">
+			<input type="submit" value="ELIMINAR SETA">
+		</form>
+	</div>
 	</c:if>
 	
 	<c:if test="${rol.rol == 'user'}">

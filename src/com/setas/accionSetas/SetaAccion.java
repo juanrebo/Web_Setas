@@ -57,10 +57,11 @@ public class SetaAccion extends Accion {
 		request.getSession().setAttribute("filo", filo);
 		
 		ServiceFoto sf = new ServiceFotoImp();
-		List<Foto> listaFotos = null;
-		listaFotos = (List<Foto>) sf.recuperaFoto(unaSeta);
+		List<Foto> listaFotos = (List<Foto>) sf.recuperaFoto(unaSeta);
 		if(!listaFotos.isEmpty()) {
 			request.getSession().setAttribute("listaFotos", listaFotos);
+		}else {
+			request.getSession().removeAttribute("listaFotos");
 		}
 		
 		return "seta.jsp";

@@ -54,11 +54,13 @@
 				<a href="orden.do?clase=${l.clase}" class="enlaceClasificacion">${l.clase}</a>
 				<c:if test="${sessionScope.rol.rol == 'admin'}">
 				<form method="post" action="modificarClase.do">
-					<input type="text" name="modificar${l.clase}">
+					<input type="hidden" name="actual" value="${l.clase}">
+					<input type="text" name="nuevo">
 					<input type="submit" value="MODIFICAR">
 				</form>
 				<form method="post" action="eliminarClase.do">
-					<input type="submit" name="eliminar${l.clase}" value="ELIMINAR">
+					<input type="hidden" name="actual" value="${l.clase}">
+					<input type="submit" value="ELIMINAR">
 				</form>
 				</c:if>
 			</div>

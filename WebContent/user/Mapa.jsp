@@ -53,6 +53,7 @@
 	 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
 	 	<br/>
 	 	<br/>
+	 	
 	 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do"></form>
 	 	<form id="nuevoLugar" method="post" action="insertarLugar.do"></form>
 	 	
@@ -67,12 +68,12 @@
 
 	 		<select name="setaLocalizacion" form="nuevoPunto">
 	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
-	 			<option value="${s.id}">${s.genero.genero} ${s.id.especie}</option>
+	 			<option value="${s.genero.genero} ${s.id.especie}">${s.genero.genero} ${s.id.especie}</option>
 	 			</c:forEach>
 	 		</select>
 	 		
-	 		<input type="hidden" id="latUbi" name="latUbi" value=""/>
-	 		<input type="hidden" id="lonUbi" name="lonUbi" value=""/>
+	 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
+	 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">
 	 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
 	 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Centro mapa
 	 		<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">NUEVA UBICACION</button>

@@ -15,17 +15,17 @@ public class EliminarClaseAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceClase sc = new ServiceClaseImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String clase = parametro.substring(8, parametro.length());
+		try {
+			ServiceClase sc = new ServiceClaseImp();
+			String clase = request.getParameter("actual");
 			Clase unaClase = sc.recuperaClase(clase);
 			sc.eliminarClase(unaClase);
+			
+			Filo filo = (Filo) request.getSession().getAttribute("filo");
+			return "clase.do?filo="+filo.getFilo().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Filo filo = (Filo) request.getSession().getAttribute("filo");
-		return "clase.do?filo="+filo.getFilo().toString();
 	}
-
 }

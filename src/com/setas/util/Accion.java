@@ -22,6 +22,7 @@ import com.setas.accionClasificacion.InsertarFiloAccion;
 import com.setas.accionClasificacion.InsertarGeneroAccion;
 import com.setas.accionClasificacion.InsertarOrdenAccion;
 import com.setas.accionClasificacion.ModificarClaseAccion;
+import com.setas.accionClasificacion.ModificarEspecieAccion;
 import com.setas.accionClasificacion.ModificarFamiliaAccion;
 import com.setas.accionClasificacion.ModificarFiloAccion;
 import com.setas.accionClasificacion.ModificarGeneroAccion;
@@ -30,6 +31,7 @@ import com.setas.accionClasificacion.OrdenAccion;
 import com.setas.accionLocalizacion.EliminarLocalizacionAccion;
 import com.setas.accionLocalizacion.InsertarLocalizacionAccion;
 import com.setas.accionLugares.InsertarLugarAccion;
+import com.setas.accionSetas.EditarSetaAccion;
 import com.setas.accionSetas.EliminarSetaAccion;
 import com.setas.accionSetas.InsertarSetaAccion;
 import com.setas.accionSetas.ModificarSetaAccion;
@@ -145,12 +147,20 @@ public abstract class Accion {
 			accion = new InsertarEspecieAccion();
 		}
 		
+		if(tipo.equals("modificarEspecie")) {
+			accion = new ModificarEspecieAccion();
+		}
+		
 		if(tipo.equals("seta")) {
 			accion = new SetaAccion();
 		}
 
 		if(tipo.equals("modificarSeta")) {
 			accion = new ModificarSetaAccion();
+		}
+		
+		if(tipo.equals("editarSeta")) {
+			accion = new EditarSetaAccion();
 		}
 		
 		if(tipo.equals("eliminarSeta")) {

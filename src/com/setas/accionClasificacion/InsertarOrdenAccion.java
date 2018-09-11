@@ -13,13 +13,17 @@ public class InsertarOrdenAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceOrden so = new ServiceOrdenImp();
-		Clase clase = (Clase) request.getSession().getAttribute("clase");
-		Orden orden = new Orden();
-		orden.setOrden(request.getParameter("nuevoOrden"));
-		orden.setClase(clase);
-		so.insertarOrden(orden);
-		return "orden.do?clase="+clase.getClase().toString();
+		try {
+			ServiceOrden so = new ServiceOrdenImp();
+			Clase clase = (Clase) request.getSession().getAttribute("clase");
+			Orden orden = new Orden();
+			orden.setOrden(request.getParameter("nuevoOrden"));
+			orden.setClase(clase);
+			so.insertarOrden(orden);
+			return "orden.do?clase="+clase.getClase().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
 	}
-
 }

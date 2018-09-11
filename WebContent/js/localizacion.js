@@ -60,12 +60,12 @@ function CrearPunto(){
 
 function InsertarLocalizacion(){
 	if($("input:radio[name=centroCoords]:checked").val() == "usuario"){
-		$("#latUbi").attr('value',marker.getLatLng().lat);
-		$("#lonUbi").attr('value',marker.getLatLng().lng);
+		$("#latUbi").attr("value",marker.getLatLng().lat);
+		$("#lonUbi").attr("value",marker.getLatLng().lng);
 	}
 	if($("input:radio[name=centroCoords]:checked").val() == "mapa"){
-		$("#latUbi").attr('value',mymap.getCenter().lat);
-		$("#lonUbi").attr('value',mymap.getCenter().lng);
+		$("#latUbi").attr("value",mymap.getCenter().lat);
+		$("#lonUbi").attr("value",mymap.getCenter().lng);
 	}
 	$("#nuevoPunto").submit();
 }

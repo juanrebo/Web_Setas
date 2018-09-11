@@ -11,6 +11,6 @@ public interface ServiceSeta {
 	public List<Seta> getSetaGenero(Genero genero);
 	public void modificarSeta(Seta seta);
 	public void eliminarSeta(Seta seta);
-	public Seta recuperaSetaId(int idseta);
+	/*public Seta recuperaSetaId(int idseta);*/
 	public Seta recuperaSeta(int idgenero, String especie);
 }

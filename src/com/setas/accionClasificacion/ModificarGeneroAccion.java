@@ -15,19 +15,19 @@ public class ModificarGeneroAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceGenero sg = new ServiceGeneroImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String genero = parametro.substring(9, parametro.length());
-			String nuevoGenero = request.getParameter("modificar"+genero);
+		try {
+			ServiceGenero sg = new ServiceGeneroImp();
+			String genero = request.getParameter("actual");
 			Genero unGenero = sg.recuperaGenero(genero);
+			String nuevoGenero = request.getParameter("nuevo");
 			unGenero.setGenero(nuevoGenero);
 			sg.modificarGenero(unGenero);
+			
+			Familia familia = (Familia) request.getSession().getAttribute("familia");
+			return "genero.do?familia="+familia.getFamilia().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Familia familia = (Familia) request.getSession().getAttribute("familia");
-		return "genero.do?familia="+familia.getFamilia().toString();
 	}
-
 }

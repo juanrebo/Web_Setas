@@ -15,19 +15,19 @@ public class ModificarFamiliaAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceFamilia sf = new ServiceFamiliaImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String familia = parametro.substring(9, parametro.length());
-			String nuevaFamilia = request.getParameter("modificar"+familia);
+		try {
+			ServiceFamilia sf = new ServiceFamiliaImp();
+			String familia = request.getParameter("actual");
 			Familia unaFamilia = sf.recuperaFamilia(familia);
+			String nuevaFamilia = request.getParameter("nuevo");
 			unaFamilia.setFamilia(nuevaFamilia);
 			sf.modificarFamilia(unaFamilia);
+	
+			Orden orden = (Orden) request.getSession().getAttribute("orden");
+			return "familia.do?orden="+orden.getOrden().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Orden orden = (Orden) request.getSession().getAttribute("orden");
-		return "familia.do?orden="+orden.getOrden().toString();
 	}
-
 }

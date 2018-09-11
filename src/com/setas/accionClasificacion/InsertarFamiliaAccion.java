@@ -13,13 +13,17 @@ public class InsertarFamiliaAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceFamilia sf = new ServiceFamiliaImp();
-		Orden orden = (Orden) request.getSession().getAttribute("orden");
-		Familia familia = new Familia();
-		familia.setFamilia(request.getParameter("nuevaFamilia"));
-		familia.setOrden(orden);
-		sf.insertarFamilia(familia);
-		return "familia.do?orden="+orden.getOrden().toString();
+		try {
+			ServiceFamilia sf = new ServiceFamiliaImp();
+			Orden orden = (Orden) request.getSession().getAttribute("orden");
+			Familia familia = new Familia();
+			familia.setFamilia(request.getParameter("nuevaFamilia"));
+			familia.setOrden(orden);
+			sf.insertarFamilia(familia);
+			return "familia.do?orden="+orden.getOrden().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
 	}
-
 }

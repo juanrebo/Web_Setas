@@ -12,12 +12,17 @@ public class ModificarFiloAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceFilo sf = new ServiceFiloImp();
-		String filo = request.getParameter("actual");
-		Filo unFilo = sf.recuperaFilo(filo);
-		String nuevoFilo = request.getParameter("nuevo");
-		unFilo.setFilo(nuevoFilo);
-		sf.modificarFilo(unFilo);
-		return "filo.do";
+		try {
+			ServiceFilo sf = new ServiceFiloImp();
+			String filo = request.getParameter("actual");
+			Filo unFilo = sf.recuperaFilo(filo);
+			String nuevoFilo = request.getParameter("nuevo");
+			unFilo.setFilo(nuevoFilo);
+			sf.modificarFilo(unFilo);
+			return "filo.do";
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
 	}
 }

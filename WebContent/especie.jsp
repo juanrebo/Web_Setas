@@ -56,15 +56,7 @@
 			<c:forEach var="l" items="${listaSeta}">
 			<div class="clasificacion">
 				<a href="seta.do?genero=${genero.genero}&especie=${l.id.especie}" class="enlaceClasificacion">${l.id.especie}</a>
-				<c:if test="${sessionScope.rol.rol == 'admin'}">
-				<form method="post" action="modificarEspecie.do">
-					<input type="text" name="modificar${l.id.especie}">
-					<input type="submit" value="MODIFICAR">
-				</form>
-				<form method="post" action="eliminarEspecie.do">
-					<input type="submit" name="eliminar${l.id.especie}" value="ELIMINAR">
-				</form>
-				</c:if>
+				
 			</div>
 			<p>
 			</c:forEach>

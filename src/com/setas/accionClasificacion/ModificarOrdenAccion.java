@@ -15,19 +15,19 @@ public class ModificarOrdenAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceOrden so = new ServiceOrdenImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String orden = parametro.substring(9, parametro.length());
-			String nuevoOrden = request.getParameter("modificar"+orden);
+		try {
+			ServiceOrden so = new ServiceOrdenImp();
+			String orden = request.getParameter("actual");
 			Orden unOrden = so.recuperaOrden(orden);
+			String nuevoOrden = request.getParameter("nuevo");
 			unOrden.setOrden(nuevoOrden);
 			so.modificarOrden(unOrden);
+			
+			Clase clase = (Clase) request.getSession().getAttribute("clase");
+			return "orden.do?clase="+clase.getClase().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Clase clase = (Clase) request.getSession().getAttribute("clase");
-		return "orden.do?clase="+clase.getClase().toString();
 	}
-
 }

@@ -15,17 +15,18 @@ public class EliminarFamiliaAccion extends Accion {
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceFamilia sf = new ServiceFamiliaImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String familia = parametro.substring(8, parametro.length());
+		try {
+			ServiceFamilia sf = new ServiceFamiliaImp();
+			String familia = request.getParameter("actual");
 			Familia unaFamilia = sf.recuperaFamilia(familia);
 			sf.eliminarFamilia(unaFamilia);
+			
+			Orden orden = (Orden) request.getSession().getAttribute("orden");
+			return "familia.do?orden="+orden.getOrden().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Orden orden = (Orden) request.getSession().getAttribute("orden");
-		return "familia.do?orden="+orden.getOrden().toString();
 	}
 
 }

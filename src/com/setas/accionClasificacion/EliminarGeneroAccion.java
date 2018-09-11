@@ -15,17 +15,17 @@ public class EliminarGeneroAccion extends Accion{
 
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-		ServiceGenero sg = new ServiceGeneroImp();
-		Enumeration<String> parametros = request.getParameterNames();
-		String parametro;
-		while(parametros.hasMoreElements()) {
-			parametro = parametros.nextElement();
-			String genero = parametro.substring(8, parametro.length());
+		try {
+			ServiceGenero sg = new ServiceGeneroImp();
+			String genero = request.getParameter("actual");
 			Genero unGenero = sg.recuperaGenero(genero);
 			sg.eliminarGenero(unGenero);
+			
+			Familia familia = (Familia) request.getSession().getAttribute("familia");
+			return "genero.do?familia="+familia.getFamilia().toString();
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
 		}
-		Familia familia = (Familia) request.getSession().getAttribute("familia");
-		return "genero.do?familia="+familia.getFamilia().toString();
 	}
-
 }
