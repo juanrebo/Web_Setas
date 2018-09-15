@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas_claro.css">
-	<link rel="stylesheet" href="css/Ficha.css">
+	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
+	<link rel="stylesheet" href="css/Setas.css">
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<title>Setas</title>
 </head>
@@ -27,11 +27,11 @@
 			</c:when>
 			<c:otherwise>
 			<div class="sesionIniciada">
+				<div class="nombreUsuario">
+					Hola, ${sessionScope.usuario.nombre}
+				</div>
 				<div class="botonEncabezado">
 					<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-				</div>
-				<div class="nombreUsuario">
-					${sessionScope.usuario.nombre}
 				</div>
 			</div>
 			</c:otherwise>
@@ -41,16 +41,33 @@
 		
 	<div class="todasSetas">
 		<c:forEach var="ts" items="${applicationScope.todasSetas}">
-			<a href="seta.do?genero=${ts.genero.genero}+&especie=${ts.id.especie}">
+			<a href="seta.do?genero=${ts.genero.genero}+&especie=${ts.especie}">
 				<div class="fichaSeta">
-					<c:set var="foto" scope="session" value="${ts.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
 					<c:if test="${not empty ts.fotos}">
+						<c:set var="foto" scope="session" value="${ts.fotos.iterator()}"/>
 						<img src="${foto.next().ruta}"></img>
 					</c:if>
 					</div>
 					<div class="fichaSetaTexto">
-						<p>${ts.genero.genero} ${ts.id.especie}</p>
+						<p>${ts.genero.genero} ${ts.especie}</p>
+					</div>
+					<div class="fichaSetaNombre">
+					<c:if test="${not empty ts.nombres}">
+						<c:set var="masNombres" scope="session" value="0"/>
+						<c:forEach var="sn" items="${ts.nombres}">
+						<c:if test="${sn.idioma eq 'Es'}">
+							<c:if test="${masNombres == 0}">
+								<c:set var="ns" scope="session" value="${sn.nombre}"/>
+							</c:if>
+							<c:if test="${masNombres == 1}">
+								<c:set var="ns" scope="session" value="${ns}, ${sn.nombre}"/>
+							</c:if>
+							<c:set var="masNombres" scope="session" value="1"/>
+						</c:if>
+						</c:forEach>
+						${ns}.
+					</c:if>
 					</div>
 				</div>
 			</a>

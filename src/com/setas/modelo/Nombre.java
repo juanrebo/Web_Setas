@@ -1,14 +1,11 @@
 package com.setas.modelo;
-// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
+// Generated 12-sep-2018 1:15:09 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "nombre", catalog = "setasdb")
 public class Nombre implements java.io.Serializable {
 
-	private Integer idnombre;
+	private int idnombre;
 	private Seta seta;
 	private String nombre;
 	private String idioma;
@@ -27,31 +24,31 @@ public class Nombre implements java.io.Serializable {
 	public Nombre() {
 	}
 
-	public Nombre(Seta seta) {
+	public Nombre(int idnombre, Seta seta) {
+		this.idnombre = idnombre;
 		this.seta = seta;
 	}
 
-	public Nombre(Seta seta, String nombre, String idioma) {
+	public Nombre(int idnombre, Seta seta, String nombre, String idioma) {
+		this.idnombre = idnombre;
 		this.seta = seta;
 		this.nombre = nombre;
 		this.idioma = idioma;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idnombre", unique = true, nullable = false)
-	public Integer getIdnombre() {
+	public int getIdnombre() {
 		return this.idnombre;
 	}
 
-	public void setIdnombre(Integer idnombre) {
+	public void setIdnombre(int idnombre) {
 		this.idnombre = idnombre;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({ @JoinColumn(name = "idgenero", referencedColumnName = "idgenero", nullable = false),
-			@JoinColumn(name = "especie", referencedColumnName = "especie", nullable = false) })
+	@JoinColumn(name = "idseta", nullable = false)
 	public Seta getSeta() {
 		return this.seta;
 	}

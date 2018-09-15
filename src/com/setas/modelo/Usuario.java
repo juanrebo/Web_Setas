@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
+// Generated 12-sep-2018 1:15:09 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -61,6 +61,7 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public void setIdusuario(Integer idusuario) {
+		
 		this.idusuario = idusuario;
 	}
 
@@ -74,7 +75,7 @@ public class Usuario implements java.io.Serializable {
 		this.rol = rol;
 	}
 
-	@Column(name = "nombre", nullable = false, length = 20)
+	@Column(name = "nombre", unique = true, nullable = false, length = 20)
 	public String getNombre() {
 		return this.nombre;
 	}

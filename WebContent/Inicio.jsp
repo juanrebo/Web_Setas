@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas_Verde.css">
+	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="css/Menu.css">
 	<title>Inicio</title>
 </head>
@@ -26,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -60,7 +60,7 @@
 		</c:when>
 		<c:when test="${sessionScope.rol.rol eq 'admin'}">
 		<div class="botonMenu">
-			<a href="nuevaSeta.do">INSERTAR SETA</a>
+			<a href="admin/InsertarSeta.jsp">INSERTAR SETA</a>
 		</div>
 		</c:when>
 		<c:otherwise>

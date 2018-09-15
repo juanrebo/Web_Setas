@@ -5,9 +5,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas_Verde.css">
+	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="css/FichaSeta.css">
-	<title>${seta.genero.genero} ${seta.id.especie}</title>
+	<title>${seta.genero.genero} ${seta.especie}</title>
 </head>
 <body>
 	<div class="encabezado">
@@ -30,7 +30,7 @@
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
 			</div>
 			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
+				Hola, ${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -38,60 +38,60 @@
 		</div>
 	</div>
 	
-	<c:if test="${rol.rol == 'admin'}">
-	<div class="admin">
-		<form method="post" action="admin/editarSeta.do">
-			<input type="submit" value="EDITAR SETA">
-		</form>
-		<form method="post" action="admin/eliminarSeta.do">
-			<input type="submit" value="ELIMINAR SETA">
-		</form>
-	</div>
-	</c:if>
-	
-	<c:if test="${rol.rol == 'user'}">
-	<c:choose>
-		<c:when test="${listaFavorito.isEmpty()}">
-			<form method="post" action="anadirFavorito.do">
-				<input type="submit" value="AÑADIR FAVORITO">
-			</form>
-		</c:when>
-		
-		<c:otherwise>
-			<c:set var="existe" scope="session" value="noexiste"/>
-			<c:forEach var="f" items="${sessionScope.listaFavorito}">
-				<c:if test="${f.seta.id eq seta.id}">
-					<c:set var="existe" scope="session" value="existe"/>
-				</c:if>
-			</c:forEach>
-			<c:choose>
-				<c:when test="${existe == 'existe'}">
-					<form method="post" action="eliminarFavorito.do">
-						<input type="submit" value="ELIMINAR FAVORITO">
-					</form>
-				</c:when>
-				<c:otherwise>
-				<form method="post" action="anadirFavorito.do">
-					<input type="submit" value="AÑADIR FAVORITO">
-				</form>
-				</c:otherwise>
-			</c:choose>
-		</c:otherwise>
-	</c:choose>
-	<br/>
-	<br/>
-	</c:if>
-	
 	<div class="fichaSeta">
 		<div class="fichaSetaEncabezado">
 			<div class="fichaSetaFoto">
 				<p><img src="${listaFotos.get(0).ruta}">
 			</div>
 			<div class="fichaSetaTexto">
-				<h2>${seta.genero.genero} ${seta.id.especie}</h2>
+				<h2>${seta.genero.genero} ${seta.especie}</h2>
+				<c:set var="esCont" value="0"/>
+				<c:set var="gaCont" value="0"/>
+				<c:set var="caCont" value="0"/>
+				<c:set var="euCont" value="0"/>
 				<h3><c:forEach var="n" items="${seta.nombres}">
-				${n.idioma}: ${n.nombre}.
-				</c:forEach></h3>
+				<c:if test="${n.idioma eq 'Es'}">
+					<c:if test="${esCont == 0}">
+					<c:set var="es" value="ES: ${n.nombre}"/>
+					</c:if>
+					<c:if test="${esCont == 1}">
+					<c:set var="es" value="${es}, ${n.nombre}"/>
+					</c:if>
+					<c:set var="esCont" value="1"/>
+				</c:if>
+				<c:if test="${n.idioma eq 'Ga'}">
+					<c:if test="${gaCont == 0}">
+					<c:set var="ga" value="GA: ${n.nombre}"/>
+					</c:if>
+					<c:if test="${gaCont == 1}">
+					<c:set var="ga" value="${ga}, ${n.nombre}"/>
+					</c:if>
+					<c:set var="gaCont" value="1"/>
+				</c:if>
+				<c:if test="${n.idioma eq 'Eu'}">
+					<c:if test="${euCont == 0}">
+					<c:set var="eu" value="EU: ${n.nombre}"/>
+					</c:if>
+					<c:if test="${euCont == 1}">
+					<c:set var="eu" value="${eu}, ${n.nombre}"/>
+					</c:if>
+					<c:set var="euCont" value="1"/>
+				</c:if>
+				<c:if test="${n.idioma eq 'Ca'}">
+					<c:if test="${caCont == 0}">
+					<c:set var="ca" value="CA: ${n.nombre}"/>
+					</c:if>
+					<c:if test="${caCont == 1}">
+					<c:set var="ca" value="${ca}, ${n.nombre}"/>
+					</c:if>
+					<c:set var="caCont" value="1"/>
+				</c:if>
+				</c:forEach>
+				${es}<c:if test="${not empty es}">. </c:if>
+				${ga}<c:if test="${not empty ga}">. </c:if>
+				${eu}<c:if test="${not empty eu}">. </c:if>
+				${ca}<c:if test="${not empty ca}">. </c:if>
+				</h3>
 				<div class="fichaSetaClasif">
 					<p><span>Reino: </span><a href="filo.do">Fungi</a></p>
 					<p><span>Filo: </span><a href="clase.do?filo=${filo.filo}">${filo.filo}</a></p>
@@ -101,6 +101,41 @@
 					<p><span>Género: </span><a href="especie.do?genero=${genero.genero}">${genero.genero}</a>
 				</div>
 			</div>
+			<c:if test="${rol.rol == 'admin'}">
+			<div class="fichaSetaBoton">
+				<form method="post" action="admin/EditarSeta.jsp">
+					<input type="submit" value="EDITAR SETA">
+				</form>
+				<form method="post" action="admin/eliminarSeta.do">
+					<input type="submit" value="ELIMINAR SETA">
+				</form>
+			</div>
+			</c:if>
+			<c:if test="${rol.rol == 'user'}">
+				<c:set var="existe" scope="session" value="noexiste"/>
+				<c:forEach var="f" items="${sessionScope.listaFavorito}">
+					<c:if test="${f.seta.idseta eq seta.idseta}">
+						<c:set var="existe" scope="session" value="existe"/>
+					</c:if>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${existe == 'existe'}">
+						<div class="fichaSetaBoton">
+						<form method="post" action="eliminarFavorito.do">
+							<input type="submit" value="ELIMINAR FAVORITO">
+						</form>
+						</div>
+						</c:when>
+						<c:otherwise>
+						<div class="fichaSetaBoton">
+						<form method="post" action="anadirFavorito.do">
+							<input type="submit" value="AÑADIR FAVORITO">
+						</form>
+						</div>
+					</div>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
 		</div>
 		
 		<div class="fichaSetaDatos">

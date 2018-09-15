@@ -5,8 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="../css/Web_Setas.css">
-	<link rel="stylesheet" href="../css/Ficha.css">
+	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
+	<link rel="stylesheet" href="../css/Setas.css">
 	<title>Favoritos</title>
 </head>
 <body>
@@ -26,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -41,15 +41,34 @@
 	<h1>Favoritos</h1>
 	
 	<div class="todasSetas">
-		<c:forEach var="f" items="${sessionScope.listaFavorito}">
-			<a href="../seta.do?genero=${f.seta.genero.genero}+&especie=${f.seta.id.especie}">
+		<c:forEach var="ts" items="${sessionScope.listaFavorito}">
+			<a href="../seta.do?genero=${ts.seta.genero.genero}+&especie=${ts.seta.especie}">
 				<div class="fichaSeta">
-					<c:set var="foto" scope="session" value="${f.seta.fotos.iterator()}"/>
 					<div class="fichaSetaImagen">
+					<c:if test="${not empty ts.seta.fotos}">
+						<c:set var="foto" scope="session" value="${ts.seta.fotos.iterator()}"/>
 						<img src="${foto.next().ruta}"></img>
+					</c:if>
 					</div>
 					<div class="fichaSetaTexto">
-						<p>${f.seta.genero.genero} ${f.seta.id.especie}</p>
+						<p>${ts.seta.genero.genero} ${ts.seta.especie}</p>
+					</div>
+					<div class="fichaSetaNombre">
+					<c:if test="${not empty ts.seta.nombres}">
+						<c:set var="masNombres" scope="session" value="0"/>
+						<c:forEach var="sn" items="${ts.seta.nombres}">
+						<c:if test="${sn.idioma eq 'Es'}">
+							<c:if test="${masNombres == 0}">
+								<c:set var="ns" scope="session" value="${sn.nombre}"/>
+							</c:if>
+							<c:if test="${masNombres == 1}">
+								<c:set var="ns" scope="session" value="${ns}, ${sn.nombre}"/>
+							</c:if>
+							<c:set var="masNombres" scope="session" value="1"/>
+						</c:if>
+						</c:forEach>
+						${ns}.
+					</c:if>
 					</div>
 				</div>
 			</a>

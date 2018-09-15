@@ -1,31 +1,31 @@
 @charset "ISO-8859-1";
 
-.mapa{
-	background-color: white;
-	max-width: 1200px;
-	display: block;
-	box-shadow: 5px 5px #B3913D;
-	border-radius: 4px;
-}
-.mapa .controlesMapa{
-	padding: 10px;
-}
-.mapa input{
-	margin-left: 10px;
-}
-.mapa label{
-	margin-right: 5px;
-}
-.mapa select{
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-size: 12pt;
-}
-.popups{
+h3{
+	margin: 0;
+	color: #2C5673;
 	padding: 10px 0px 0px 10px;
+}
+
+.localizacion{
+	margin-top: 10px;
+	margin-bottom: 10px;
 	background-color: white;
 	box-shadow: 5px 5px #B3913D;
-	border-radius: 4px;
-	margin: 10px 0px;
+	border-radius: 4px;	
+}
+
+.localizacion h3{
+	font-weight: normal;
+	display: inline-block;
+	padding-bottom: 5px;
+}
+.localizacion h3:hover{
+	text-decoration: underline;
+}
+
+.popups{
+	padding-top: 5px;
+	margin: 0px 10px 0px 10px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -42,13 +42,12 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	margin: 0px 10px 10px 0px;
+	margin: 5px 10px 10px 0px;
 	border: 1px solid #9DB5C6;
 	box-shadow: 2px 2px #AAAAAA;
 	transition: all 0.25s ease;
 }
 .popup:hover{
-	cursor: pointer;
 	box-shadow: 5px 5px #AAAAAA;
 }
 .popupContenido{
@@ -62,8 +61,8 @@
 	flex-grow: 0;
 }
 .popupFoto img{
-	height: 100%;
 	width: 100%;
+	height: 100%;
 	display: inline-block;
 	object-fit: cover;
 }

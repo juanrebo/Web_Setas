@@ -17,7 +17,7 @@ public class EliminarFavoritoAccion extends Accion{
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		Seta seta = (Seta) request.getSession().getAttribute("seta");
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-		FavoritoId favoritoid = new FavoritoId(usuario.getIdusuario(),seta.getId().getIdgenero(),seta.getId().getEspecie());
+		FavoritoId favoritoid = new FavoritoId(usuario.getIdusuario(),seta.getIdseta());
 		Favorito favorito = new Favorito(favoritoid, seta, usuario);
 		
 		ServiceFavorito sf = new ServiceFavoritoImp();

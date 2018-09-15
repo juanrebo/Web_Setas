@@ -5,14 +5,14 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="../css/Web_Setas.css">
+	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="../css/EditarSeta.css">
 	<title>Editar seta</title>
 </head>
 <body>
 	<div class="encabezado">
 		<div class="nombre">
-			<a href="Inicio.jsp">micoPedia</a>
+			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
 		<div class="registro">
 		<c:choose>
@@ -26,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -41,12 +41,12 @@
 	<h1>Editar seta</h1>
 
 	<div class="cuerpo">
-		<h2>${seta.genero.genero} ${seta.id.especie}</h2>
+		<h2>${seta.genero.genero} ${seta.especie}</h2>
 		
 		<form method="post" id="modificarSeta" action="modificarSeta.do"></form>
 			<p>Género: 
 			<select name="generoNuevo" form="modificarSeta">
-				<c:forEach var="g" items="${listaGenero}">
+				<c:forEach var="g" items="${todoGenero}">
 					<c:choose>
 						<c:when test="${g.genero eq genero.genero}">
 							<option value="${g.genero}" selected="selected">${g.genero}</option>
@@ -58,7 +58,8 @@
 				</c:forEach>
 			</select>
 			<button onclick="window.location.href='filo.do'">NUEVO GÉNERO</button>
-			 Especie: <input type="text" form="modificarSeta" name="especie" value="${seta.id.especie}">
+			<br/><br/>
+			 Especie: <input type="text" form="modificarSeta" name="especie" value="${seta.especie}">
 			<br/><br/>
 			<p>Cuerpo fructífero:
 			<p><textarea  rows="5" cols="50" maxlength="500" name="cuerpoFructifero" form="modificarSeta">${seta.cuerpoFructifero}</textarea>
@@ -108,7 +109,7 @@
 					<option value="Ca">Catalán</option>
 				</select>  
 				 Nombre:<input type="text" form="modificarSeta" name="nombre">
-			<p><input type="submit" form="modificarSeta" value="Editar seta">
+			<p><input type="submit" form="modificarSeta" value="EDITAR SETA">
 		</div>
 </body>
 </html>

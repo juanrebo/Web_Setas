@@ -1,41 +1,35 @@
 @charset "ISO-8859-1";
 
 .fichaSeta{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
 }
 
 .fichaSetaEncabezado{
 	background-color: white;
 	display: flex;
 	align-items: center;
-	width: 100%;
-	box-shadow: 5px 5px #AAAAAA;
+	box-shadow: 5px 5px #B3913D;
+	border-radius: 4px;
 }
 .fichaSetaEncabezado .fichaSetaFoto{
 	flex: 1 1 250px;
-	display: inline-block;
 }
 
 .fichaSetaEncabezado .fichaSetaFoto img{
 	width: 100%;
 	height: 250px;
-	display: inline-block;
 	object-fit: cover;
+	border-radius: 4px 0px 0px 4px;
 }
 
 .fichaSetaEncabezado .fichaSetaTexto{
-	flex: 9;
-	display: inline-block;
-	padding: 10px 20px;
+	flex: 8;
+	padding: 5px 20px;
 }
 
 .fichaSetaEncabezado .fichaSetaTexto h2{
 	color: #35527C;
 	font-size: 25pt;
-	margin-top: 10px;
+	margin-top: 5px;
 	margin-bottom: 0px;
 	padding: 0px;
 }
@@ -47,7 +41,7 @@
 	display: table;
 }
 .fichaSetaEncabezado .fichaSetaClasif p{
-	display: table-row
+	display: table-row;
 }
 .fichaSetaEncabezado .fichaSetaClasif span{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -70,13 +64,21 @@
 .fichaSetaEncabezado .fichaSetaClasif a:visited{
 	color: #557097;
 }
-
+.fichaSetaEncabezado .fichaSetaBoton{
+	flex: 1;
+	align-self: flex-start;
+	margin: 5px 5px 0px 0px;
+}
+.fichaSetaEncabezado .fichaSetaBoton input[type=submit]{
+	width: 100%;
+	margin-bottom: 5px;
+}
 .fichaSetaDatos{
 	background-color: white;
 	margin-top: 10px;
-	box-shadow: 5px 5px #AAAAAA;
-	padding: 5px;
-	width: 100%;
+	box-shadow: 5px 5px #B3913D;
+	padding: 10px 20px 20px 20px;
+	border-radius: 4px;
 }
 .fichaSetaDatos h3{
 	color: #35527C;
@@ -85,24 +87,33 @@
 
 .fichaSetaFotos{
 	background-color: white;
+	padding: 10px 0px;
 	margin: 10px 0px;
-	box-shadow: 5px 5px #AAAAAA;
+	box-shadow: 5px 5px #B3913D;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
-	align-content: flex-start;
+	justify-content: flex-start;
+	border-radius: 4px;
 }
 .fichaSetaFotos .fichaSetaFoto{
     padding: 5px;
     flex-basis: 250px;
 	flex-grow: 1;
     display:flex;
-    flex-direction: column
+    flex-direction: column;
+	max-width: 300px;
+	border: 1px solid #9DB5C6;
+	box-shadow: 2px 2px #AAAAAA;
+	border-radius: 4px;
+	margin-left: 10px;
+	transition: all 0.25s ease;
+}
+.fichaSetaFotos .fichaSetaFoto:hover{
+	box-shadow: 5px 5px #AAAAAA;
 }
 .fichaSetaFotos .fichaSetaFoto a{
 	flex-basis: 250px;
-	flex-grow: 1;
 	height: 250px;
 	width: 100%;
 }
@@ -115,8 +126,4 @@
 
 .fichaSetaFotos .fichaSetaFoto .derecho{
     font-size: 0.75em;
-}
-
-.admin{
-	margin-bottom: 10px;
 }

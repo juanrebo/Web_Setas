@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
+// Generated 12-sep-2018 1:15:09 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -8,7 +8,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -36,8 +35,7 @@ public class Favorito implements java.io.Serializable {
 
 	@AttributeOverrides({
 			@AttributeOverride(name = "idusuario", column = @Column(name = "idusuario", nullable = false)),
-			@AttributeOverride(name = "idgenero", column = @Column(name = "idgenero", nullable = false)),
-			@AttributeOverride(name = "especie", column = @Column(name = "especie", nullable = false, length = 20)) })
+			@AttributeOverride(name = "idseta", column = @Column(name = "idseta", nullable = false)) })
 	public FavoritoId getId() {
 		return this.id;
 	}
@@ -47,9 +45,7 @@ public class Favorito implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumns({
-			@JoinColumn(name = "idgenero", referencedColumnName = "idgenero", nullable = false, insertable = false, updatable = false),
-			@JoinColumn(name = "especie", referencedColumnName = "especie", nullable = false, insertable = false, updatable = false) })
+	@JoinColumn(name = "idseta", nullable = false, insertable = false, updatable = false)
 	public Seta getSeta() {
 		return this.seta;
 	}

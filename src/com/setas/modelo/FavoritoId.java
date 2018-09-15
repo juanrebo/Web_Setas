@@ -1,5 +1,5 @@
 package com.setas.modelo;
-// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
+// Generated 12-sep-2018 1:15:09 by Hibernate Tools 5.2.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,16 +11,14 @@ import javax.persistence.Embeddable;
 public class FavoritoId implements java.io.Serializable {
 
 	private int idusuario;
-	private int idgenero;
-	private String especie;
+	private int idseta;
 
 	public FavoritoId() {
 	}
 
-	public FavoritoId(int idusuario, int idgenero, String especie) {
+	public FavoritoId(int idusuario, int idseta) {
 		this.idusuario = idusuario;
-		this.idgenero = idgenero;
-		this.especie = especie;
+		this.idseta = idseta;
 	}
 
 	@Column(name = "idusuario", nullable = false)
@@ -32,22 +30,13 @@ public class FavoritoId implements java.io.Serializable {
 		this.idusuario = idusuario;
 	}
 
-	@Column(name = "idgenero", nullable = false)
-	public int getIdgenero() {
-		return this.idgenero;
+	@Column(name = "idseta", nullable = false)
+	public int getIdseta() {
+		return this.idseta;
 	}
 
-	public void setIdgenero(int idgenero) {
-		this.idgenero = idgenero;
-	}
-
-	@Column(name = "especie", nullable = false, length = 20)
-	public String getEspecie() {
-		return this.especie;
-	}
-
-	public void setEspecie(String especie) {
-		this.especie = especie;
+	public void setIdseta(int idseta) {
+		this.idseta = idseta;
 	}
 
 	public boolean equals(Object other) {
@@ -59,17 +48,14 @@ public class FavoritoId implements java.io.Serializable {
 			return false;
 		FavoritoId castOther = (FavoritoId) other;
 
-		return (this.getIdusuario() == castOther.getIdusuario()) && (this.getIdgenero() == castOther.getIdgenero())
-				&& ((this.getEspecie() == castOther.getEspecie()) || (this.getEspecie() != null
-						&& castOther.getEspecie() != null && this.getEspecie().equals(castOther.getEspecie())));
+		return (this.getIdusuario() == castOther.getIdusuario()) && (this.getIdseta() == castOther.getIdseta());
 	}
 
 	public int hashCode() {
 		int result = 17;
 
 		result = 37 * result + this.getIdusuario();
-		result = 37 * result + this.getIdgenero();
-		result = 37 * result + (getEspecie() == null ? 0 : this.getEspecie().hashCode());
+		result = 37 * result + this.getIdseta();
 		return result;
 	}
 

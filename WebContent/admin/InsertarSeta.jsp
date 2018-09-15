@@ -6,13 +6,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Insertar seta</title>
-	<link rel="stylesheet" href="css/Web_Setas.css">
-	<link rel="stylesheet" href="css/EditarSeta.css">
+	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
+	<link rel="stylesheet" href="../css/EditarSeta.css">
 </head>
 <body>
 	<div class="encabezado">
 		<div class="nombre">
-			<a href="Inicio.jsp">micoPedia</a>
+			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
 		<div class="registro">
 		<c:choose>
@@ -26,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -48,8 +48,12 @@
 					<option value="${g.genero}">${g.genero}</option>
 				</c:forEach>
 			</select>
-			<button onclick="window.location.href='filo.do'">NUEVO GÉNERO</button>
+			<button onclick="window.location.href='../filo.do'">NUEVO GÉNERO</button>
+			<br/>
+			<br/>
 			 Especie: <input type="text" form="insertarSeta" name="especie">
+			 
+			<div class="entradas">
 			<p>Cuerpo fructífero: 
 			<p><textarea rows="5" cols="50" maxlength="500" name="cuerpoFructifero" form="insertarSeta"></textarea>
 			<p>Sombrero: 
@@ -76,6 +80,7 @@
 			<p><textarea rows="5" cols="50" maxlength="500" name="habitat" form="insertarSeta"></textarea>
 			<p>Comestibilidad: 
 			<p><textarea rows="5" cols="50" maxlength="500" name="comestibilidad" form="insertarSeta"></textarea>
+			</div>
 			<p>Foto: <input type="text" name="ruta">
 			<p>
 			<p>Idioma: 
@@ -86,7 +91,7 @@
 				<option value="Ca">Catalán</option>
 			</select>  
 			 Nombre:<input type="text" form="insertarSeta" name="nombre">
-			<p><input type="submit" value="Insertar seta">
+			<p><input type="submit" form="insertarSeta" value="INSERTAR SETA">
 	</div>
 </body>
 </html>

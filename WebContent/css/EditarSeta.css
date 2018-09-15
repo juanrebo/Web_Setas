@@ -1,18 +1,18 @@
 @charset "ISO-8859-1";
 
-h1{
-	background-color: ;
-}
-
 p{
 	margin-top: 10px;
 }
-
+textarea{
+	width: 99%;
+}
 .cuerpo{
 	background-color: white;
 	box-shadow: 5px 5px #BBBBBB;
-	padding: 20px;
-	max-width: 1200px;
-	box-shadow: 5px 5px #BBBBBB;
+	padding: 10px;
 	margin-bottom: 20px;
+	border-radius: 4px;
+}
+.entradas{
+	width: 100%;
 }

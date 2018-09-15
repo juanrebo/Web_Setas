@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Web_Setas.css">
+	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="css/Clasificaciones.css">
 	<title>Especies</title>
 </head>
@@ -26,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -55,7 +55,7 @@
 		<div class="clasificaciones">
 			<c:forEach var="l" items="${listaSeta}">
 			<div class="clasificacion">
-				<a href="seta.do?genero=${genero.genero}&especie=${l.id.especie}" class="enlaceClasificacion">${l.id.especie}</a>
+				<a href="seta.do?genero=${genero.genero}&especie=${l.especie}" class="enlaceClasificacion">${l.especie}</a>
 				
 			</div>
 			<p>

@@ -14,7 +14,7 @@
 	   crossorigin=""></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="../js/localizacion.js"></script>
-	<link rel="stylesheet" href="../css/Web_Setas.css">
+	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="../css/Mapa.css">
 </head>
 
@@ -35,11 +35,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
-			<div class="botonEncabezado">
-				<a href="cerrarSesion.do">Cerrar sesión</a>
-			</div>
 			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
+			<div class="botonEncabezado">
+				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
 			</div>
 		</div>
 		</c:otherwise>
@@ -49,35 +49,33 @@
 	
 	<div class="mapa">
  		<div id="mapid" style="height: 500px"></div>
-	 	<br/>
-	 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
-	 	<br/>
-	 	<br/>
-	 	
-	 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do"></form>
-	 	<form id="nuevoLugar" method="post" action="insertarLugar.do"></form>
-	 	
-	 		<select name="lugarLocalizacion" form="nuevoPunto">
-	 			<c:forEach var="l" items="${sessionScope.listaLugar}">
-	 			<option value="${l.idlugar}">${l.lugar}</option>
-	 			</c:forEach>
-	 		</select>
-	 		
-	 		<input type="text" form="nuevoLugar" name="nuevoLugar">
-	 		<input type="submit" form="nuevoLugar" value="NUEVO LUGAR">
-
-	 		<select name="setaLocalizacion" form="nuevoPunto">
-	 			<c:forEach var="s" items="${applicationScope.todasSetas}">
-	 			<option value="${s.genero.genero} ${s.id.especie}">${s.genero.genero} ${s.id.especie}</option>
-	 			</c:forEach>
-	 		</select>
-	 		
-	 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
-	 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">
-	 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
-	 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Centro mapa
-	 		<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">NUEVA UBICACION</button>
-
+	 	<div class="controlesMapa">
+		 	
+		 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do"></form>
+		 	<form id="nuevoLugar" method="post" action="insertarLugar.do"></form>
+	
+		 		<select name="setaLocalizacion" form="nuevoPunto">
+		 			<c:forEach var="s" items="${applicationScope.todasSetas}">
+		 			<option value="${s.genero.genero} ${s.especie}">${s.genero.genero} ${s.especie}</option>
+		 			</c:forEach>
+		 		</select>
+		 	
+		 		<select name="lugarLocalizacion" form="nuevoPunto">
+		 			<c:forEach var="l" items="${sessionScope.listaLugar}">
+		 			<option value="${l.idlugar}">${l.lugar}</option>
+		 			</c:forEach>
+		 		</select>
+		 		
+		 		<input type="text" form="nuevoLugar" name="nuevoLugar">
+		 		<input type="submit" form="nuevoLugar" value="NUEVO LUGAR">
+		 		
+		 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
+		 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">
+		 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
+		 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Centro mapa
+		 		<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">AÑADIR UBICACION</button>
+		 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
+		</div>
  	</div>
  	
  	<div class="popups">
@@ -90,10 +88,10 @@
 					<img src="${foto.next().ruta}"></img>
 				</div>
 				<div class="popupTexto">
-					<div class="popupNombre">${l.seta.genero.genero} ${l.seta.id.especie}</div>
+					<div class="popupNombre">${l.seta.genero.genero} ${l.seta.especie}</div>
 					<div class="popupLugar">${l.lugar.lugar}</div>
-					<div class="popupLat" latitud="${l.latitud}">Latitud: ${l.latitud.substring(0,10)}</div>
-					<div class="popupLon" longitud="${l.longitud}">Longitud: ${l.longitud.substring(0,10)}</div>
+					<div class="popupLat" latitud="${l.latitud}">Lat.: ${l.latitud.substring(0,10)}</div>
+					<div class="popupLon" longitud="${l.longitud}">Lon.: ${l.longitud.substring(0,10)}</div>
 				</div>
 			</div>
 				<div class="popupEliminar">

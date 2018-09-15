@@ -28,7 +28,7 @@ public class InsertarSetaAccion extends Accion {
 		ServiceGenero sg = new ServiceGeneroImp();
 		Genero genero = sg.recuperaGenero(request.getParameter("genero"));
 		seta.setGenero(genero);
-		seta.getId().setEspecie(request.getParameter("especie"));
+		seta.setEspecie(request.getParameter("especie"));
 		seta.setCuerpoFructifero(request.getParameter("cuerpoFructifero"));
 		seta.setSombrero(request.getParameter("sombrero"));
 		seta.setHimenio(request.getParameter("himenio"));
@@ -45,7 +45,7 @@ public class InsertarSetaAccion extends Accion {
 		ss.insertarSeta(seta);
 		
 		String ruta = request.getParameter("ruta");
-		if(ruta != "") {
+		if(ruta != null) {
 			ServiceFoto sf = new ServiceFotoImp();
 			Foto foto = new Foto();
 			foto.setRuta(ruta);
@@ -66,7 +66,7 @@ public class InsertarSetaAccion extends Accion {
 		List<Seta> todasSetas = ss.getSeta();
 		request.getServletContext().setAttribute("todasSetas", todasSetas);
 		
-		return "seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();
+		return "REDIRECT ../seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getEspecie();
 	}
 
 }

@@ -32,7 +32,7 @@ public class ModificarSetaAccion extends Accion{
 		seta.setGenero(nuevoGenero);
 		request.getSession().setAttribute("genero", nuevoGenero);
 		
-		seta.getId().setEspecie(request.getParameter("especie"));
+		seta.setEspecie(request.getParameter("especie"));
 		seta.setCuerpoFructifero(request.getParameter("cuerpoFructifero"));
 		seta.setSombrero(request.getParameter("sombrero"));
 		seta.setHimenio(request.getParameter("himenio"));
@@ -83,7 +83,10 @@ public class ModificarSetaAccion extends Accion{
 		
 		ss.modificarSeta(seta);
 		
-		return "REDIRECT ../seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getId().getEspecie();
+		List<Seta> todasSetas = ss.getSeta();
+		request.getServletContext().setAttribute("todasSetas", todasSetas);
+		
+		return "REDIRECT ../seta.do?genero="+seta.getGenero().getGenero()+"&especie="+seta.getEspecie();
 	}
 
 }

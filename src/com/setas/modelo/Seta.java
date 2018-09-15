@@ -1,14 +1,14 @@
 package com.setas.modelo;
-// Generated 05-sep-2018 0:51:29 by Hibernate Tools 5.2.10.Final
+// Generated 12-sep-2018 1:15:09 by Hibernate Tools 5.2.10.Final
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,8 +21,9 @@ import javax.persistence.Table;
 @Table(name = "seta", catalog = "setasdb")
 public class Seta implements java.io.Serializable {
 
-	private SetaId id;
+	private Integer idseta;
 	private Genero genero;
+	private String especie;
 	private String cuerpoFructifero;
 	private String sombrero;
 	private String himenio;
@@ -36,25 +37,25 @@ public class Seta implements java.io.Serializable {
 	private String habitat;
 	private String comestibilidad;
 	private String setacol;
-	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
 	private Set<Favorito> favoritos = new HashSet<Favorito>(0);
+	private Set<Localizacion> localizacions = new HashSet<Localizacion>(0);
 	private Set<Nombre> nombres = new HashSet<Nombre>(0);
 	private Set<Foto> fotos = new HashSet<Foto>(0);
 
 	public Seta() {
 	}
 
-	public Seta(SetaId id, Genero genero) {
-		this.id = id;
+	public Seta(Genero genero, String especie) {
 		this.genero = genero;
+		this.especie = especie;
 	}
 
-	public Seta(SetaId id, Genero genero, String cuerpoFructifero, String sombrero, String himenio, String laminas,
+	public Seta(Genero genero, String especie, String cuerpoFructifero, String sombrero, String himenio, String laminas,
 			String tubos, String gleba, String estroma, String pie, String carne, String esporas, String habitat,
-			String comestibilidad, String setacol, Set<Localizacion> localizacions, Set<Favorito> favoritos,
+			String comestibilidad, String setacol, Set<Favorito> favoritos, Set<Localizacion> localizacions,
 			Set<Nombre> nombres, Set<Foto> fotos) {
-		this.id = id;
 		this.genero = genero;
+		this.especie = especie;
 		this.cuerpoFructifero = cuerpoFructifero;
 		this.sombrero = sombrero;
 		this.himenio = himenio;
@@ -68,32 +69,41 @@ public class Seta implements java.io.Serializable {
 		this.habitat = habitat;
 		this.comestibilidad = comestibilidad;
 		this.setacol = setacol;
-		this.localizacions = localizacions;
 		this.favoritos = favoritos;
+		this.localizacions = localizacions;
 		this.nombres = nombres;
 		this.fotos = fotos;
 	}
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@AttributeOverrides({ @AttributeOverride(name = "idgenero", column = @Column(name = "idgenero", nullable = false)),
-			@AttributeOverride(name = "especie", column = @Column(name = "especie", nullable = false, length = 20)) })
-	public SetaId getId() {
-		return this.id;
+	@Column(name = "idseta", unique = true, nullable = false)
+	public Integer getIdseta() {
+		return this.idseta;
 	}
 
-	public void setId(SetaId id) {
-		this.id = id;
+	public void setIdseta(Integer idseta) {
+		this.idseta = idseta;
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idgenero", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "idgenero", nullable = false)
 	public Genero getGenero() {
 		return this.genero;
 	}
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
+	}
+
+	@Column(name = "especie", nullable = false, length = 20)
+	public String getEspecie() {
+		return this.especie;
+	}
+
+	public void setEspecie(String especie) {
+		this.especie = especie;
 	}
 
 	@Column(name = "cuerpoFructifero", length = 500)
@@ -213,6 +223,15 @@ public class Seta implements java.io.Serializable {
 		this.setacol = setacol;
 	}
 
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "seta")
+	public Set<Favorito> getFavoritos() {
+		return this.favoritos;
+	}
+
+	public void setFavoritos(Set<Favorito> favoritos) {
+		this.favoritos = favoritos;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "seta")
 	public Set<Localizacion> getLocalizacions() {
 		return this.localizacions;
@@ -220,15 +239,6 @@ public class Seta implements java.io.Serializable {
 
 	public void setLocalizacions(Set<Localizacion> localizacions) {
 		this.localizacions = localizacions;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "seta")
-	public Set<Favorito> getFavoritos() {
-		return this.favoritos;
-	}
-
-	public void setFavoritos(Set<Favorito> favoritos) {
-		this.favoritos = favoritos;
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "seta")

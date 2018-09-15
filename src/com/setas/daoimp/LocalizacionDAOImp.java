@@ -90,7 +90,7 @@ public class LocalizacionDAOImp implements LocalizacionDAO {
 			sf.getCurrentSession().beginTransaction();
 			Query q = sf.getCurrentSession().createQuery("select u from Localizacion u where idusuario=:idusuario and idseta=:idseta");
 			q.setParameter("idusuario", usuario.getIdusuario());
-			q.setParameter("idseta", seta.getId());
+			q.setParameter("idseta", seta.getIdseta());
 			List<Localizacion> listaLocalizacionSeta = (List<Localizacion>) q.getResultList();
 			sf.getCurrentSession().getTransaction().commit();
 			return listaLocalizacionSeta;

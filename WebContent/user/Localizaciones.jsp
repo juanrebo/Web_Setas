@@ -5,9 +5,8 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="../css/Web_Setas_claro.css">
-	<link rel="stylesheet" href="../css/Menu.css">
-	<link rel="stylesheet" href="../css/Mapa.css">
+	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
+	<link rel="stylesheet" href="../css/Localizaciones.css">
 	<title>Localizaciones</title>
 </head>
 <body>
@@ -27,11 +26,11 @@
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
+			<div class="nombreUsuario">
+				Hola, ${sessionScope.usuario.nombre}
+			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
-			</div>
-			<div class="nombreUsuario">
-				${sessionScope.usuario.nombre}
 			</div>
 		</div>
 		</c:otherwise>
@@ -39,38 +38,41 @@
 		</div>
 	</div>
 	
-	<div>
-	<c:forEach var="g" items="${sessionScope.listaLugar}">
-		<div class="localizacionFicha">
+	<h1>Localizaciones</h1>
+	
+		<c:forEach var="g" items="${sessionScope.listaLugar}">
+		<div class="localizacion">
 			<a href="Mapa.jsp?localizacion=${g.idlugar}"><h3>${g.lugar}</h3></a>
-			<c:forEach var="l" items="${sessionScope.listaLocalizacion}">
-			<c:if test="${l.lugar.idlugar eq g.idlugar}">
-			
-				<div class="popup">
-	 			<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
-	 			<div class="popupContenido">
-					<div class="popupFoto">
-						<img src="${foto.next().ruta}"></img>
-					</div>
-					<div class="popupTexto">
-						<div class="popupNombre">${l.seta.genero.genero} ${l.seta.id.especie}</div>
-						
-						<div class="popupLat" latitud="${l.latitud}">Latitud: ${l.latitud.substring(0,10)}</div>
-						<div class="popupLon" longitud="${l.longitud}">Longitud: ${l.longitud.substring(0,10)}</div>
-					</div>
-				</div>
+			<div class="popups">
+				<c:forEach var="l" items="${sessionScope.listaLocalizacion}">
+				<c:if test="${l.lugar.idlugar eq g.idlugar}">
+				<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
+					<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
+		 			<div class="popupContenido">
+						<div class="popupFoto">
+							<img src="${foto.next().ruta}"></img>
+						</div>
+						<div class="popupTexto">
+							<div class="popupNombre">${l.seta.genero.genero} ${l.seta.especie}</div>
+							<div class="popupLat" latitud="${l.latitud}">Latitud: ${l.latitud.substring(0,10)}</div>
+							<div class="popupLon" longitud="${l.longitud}">Longitud: ${l.longitud.substring(0,10)}</div>
+						</div>
+					</div>		
 					<div class="popupEliminar">
 						<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
 							<input type="submit" value="X"/>			
 						</form>
 					</div>
 	 			</div>
-	 			
-			</c:if>
-			</c:forEach>
+				</c:if>
+				</c:forEach>
+			</div>
 		</div>
-	</c:forEach>
-	</div>
+		</c:forEach>
+	
+	
+			
+	 			
 	
 </body>
 </html>

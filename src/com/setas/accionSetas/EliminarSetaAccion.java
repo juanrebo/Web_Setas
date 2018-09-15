@@ -20,7 +20,7 @@ public class EliminarSetaAccion extends Accion{
 		
 		List<Seta> todasSetas = ss.getSeta();
 		request.getServletContext().setAttribute("todasSetas", todasSetas);
-		return "../setas.jsp";
+		return "REDIRECT ../setas.jsp";
 	}
 
 }

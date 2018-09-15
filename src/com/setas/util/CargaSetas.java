@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.setas.modelo.Genero;
 import com.setas.modelo.Seta;
+import com.setas.service.ServiceGenero;
+import com.setas.service.ServiceGeneroImp;
 import com.setas.service.ServiceSeta;
 import com.setas.service.ServiceSetaImp;
 
@@ -32,6 +35,10 @@ public class CargaSetas extends HttpServlet {
     	ServiceSeta ss = new ServiceSetaImp();
 		List<Seta> todasSetas = ss.getSeta();
 		getServletContext().setAttribute("todasSetas", todasSetas);
+		
+		ServiceGenero sg = new ServiceGeneroImp();
+		List<Genero> todoGenero = (List<Genero>) sg.getGenero();
+		getServletContext().setAttribute("todoGenero", todoGenero);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

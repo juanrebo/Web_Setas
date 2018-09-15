@@ -10,7 +10,12 @@ public class CerrarUsuarioAccion extends Accion{
 	@Override
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		request.getSession().invalidate();
-		return "Inicio.jsp";
+		
+		if(request.getServletPath().contains("admin") || request.getServletPath().contains("user")) {
+			return "REDIRECT ../Inicio.jsp";
+		}else {
+			return "Inicio.jsp";
+		}
 	}
 
 }
