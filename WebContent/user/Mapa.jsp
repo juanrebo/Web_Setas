@@ -6,14 +6,18 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Mapa</title>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-	   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-	   crossorigin=""/>
-	<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-	   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-	   crossorigin=""></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="../js/localizacion.js"></script>
+	<c:if test="${rol.rol == 'user'}">
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script src="../js/eliminarClas.js"></script>
+	</c:if>
 	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="../css/Mapa.css">
 </head>
@@ -27,7 +31,7 @@
 		<c:choose>
 		<c:when test="${sessionScope.usuario eq null}">
 		<div class="botonEncabezado">
-			<a href="registro.html">REGISTRO</a>
+			<a href="registro.jsp">REGISTRO</a>
 		</div>	    
 		<div class="botonEncabezado">
 			<a href="login.html">INICIAR SESIÓN</a>
@@ -48,37 +52,51 @@
 	</div>
 	
 	<div class="mapa">
- 		<div id="mapid" style="height: 500px"></div>
-	 	<div class="controlesMapa">
-		 	
+ 		<div id="mapid"></div>
+		<div class="controlesMapa">
+			<button id="centrarMapa" type="button" onclick="CentrarUsuario()">MI POSICIÓN</button>
+			<button type="button" id="botonOcultar" onclick="MostrarControles()">NUEVA UBICACIÓN</button>
+			
+		</div>
+	 	<div class="controlesLocalizacion" style="display: none">		 	
 		 	<form id="nuevoPunto" method="post" action="insertarLocalizacion.do"></form>
 		 	<form id="nuevoLugar" method="post" action="insertarLugar.do"></form>
-	
-		 		<select name="setaLocalizacion" form="nuevoPunto">
-		 			<c:forEach var="s" items="${applicationScope.todasSetas}">
-		 			<option value="${s.genero.genero} ${s.especie}">${s.genero.genero} ${s.especie}</option>
-		 			</c:forEach>
-		 		</select>
-		 	
-		 		<select name="lugarLocalizacion" form="nuevoPunto">
-		 			<c:forEach var="l" items="${sessionScope.listaLugar}">
-		 			<option value="${l.idlugar}">${l.lugar}</option>
-		 			</c:forEach>
-		 		</select>
-		 		
-		 		<input type="text" form="nuevoLugar" name="nuevoLugar">
-		 		<input type="submit" form="nuevoLugar" value="NUEVO LUGAR">
-		 		
-		 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
-		 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">
-		 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Ubicación usuario
-		 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Centro mapa
-		 		<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">AÑADIR UBICACION</button>
-		 	<button id="centrarMapa" type="button" onclick="CentrarUsuario()">CENTRAR MAPA</button>
+		 		<div class="controlLocalizacion">
+					Especie: 
+			 		<select name="setaLocalizacion" form="nuevoPunto">
+			 			<c:forEach var="s" items="${applicationScope.todasSetas}">
+			 			<option value="${s.genero.genero} ${s.especie}">${s.genero.genero} ${s.especie}</option>
+			 			</c:forEach>
+			 		</select>
+		 		</div>
+		 		<div class="controlLocalizacion">
+			 		Lugar: 
+			 		<select name="lugarLocalizacion" form="nuevoPunto">
+			 			<c:forEach var="l" items="${sessionScope.listaLugar}">
+			 			<option value="${l.idlugar}">${l.lugar}</option>
+			 			</c:forEach>
+			 		</select>
+			 		<button type="button" id="botonOcultarLugar" onclick="MostrarControlesLugar()">NUEVO LUGAR</button>
+			 		<div class="nuevoLugar" style="display: none">
+				 		<input type="text" form="nuevoLugar" name="nuevoLugar">
+				 		<input type="submit" form="nuevoLugar" value="AÑADIR LUGAR">
+			 		</div>
+			 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
+			 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">
+		 		</div>
+		 		<div class="controlLocalizacion">
+			 		Centro: 
+			 		<input type="radio" id="coordsUsu" form="nuevoPunto" name="centroCoords" value="usuario" checked="checked">Usuario
+			 		<input type="radio" id="coordsMap" form="nuevoPunto" name="centroCoords" value="mapa">Mapa
+			 		</div>
+		 		<div class="controlLocalizacion">
+		 			<button type="button" form="nuevoPunto" onclick="InsertarLocalizacion()">AÑADIR UBICACIÓN</button>
+		 		</div>
 		</div>
  	</div>
  	
  	<div class="popups">
+ 		<c:set var="n" value="0"/>
  		<c:forEach var="l" items="${listaLocalizacion}">
  		<c:if test="${param['localizacion'] eq l.lugar.idlugar.toString() or param['localizacion']==null}">
  		<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
@@ -94,11 +112,11 @@
 					<div class="popupLon" longitud="${l.longitud}">Lon.: ${l.longitud.substring(0,10)}</div>
 				</div>
 			</div>
-				<div class="popupEliminar">
-					<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
-						<input type="submit" value="X"/>			
-					</form>
-				</div>
+			<div class="popupEliminar">
+				<form id="eliminar${n}" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}&origen=mapa"></form>
+				<button class="borrar" onclick="eliminarClas(${n})" >X</button>
+				<c:set var="n" value="${n+1}"/>
+			</div>
  		</div>
  		</c:if>
  		</c:forEach>

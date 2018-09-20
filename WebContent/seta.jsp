@@ -7,6 +7,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="css/FichaSeta.css">
+	<c:if test="${rol.rol == 'admin'}">
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script src="js/eliminar.js"></script>
+	</c:if>
 	<title>${seta.genero.genero} ${seta.especie}</title>
 </head>
 <body>
@@ -106,9 +110,9 @@
 				<form method="post" action="admin/EditarSeta.jsp">
 					<input type="submit" value="EDITAR SETA">
 				</form>
-				<form method="post" action="admin/eliminarSeta.do">
-					<input type="submit" value="ELIMINAR SETA">
+				<form method="post" id="eliminar" action="admin/eliminarSeta.do">
 				</form>
+					<p><button class="borrar" onclick="eliminar()">ELIMINAR SETA</button></p>
 			</div>
 			</c:if>
 			<c:if test="${rol.rol == 'user'}">

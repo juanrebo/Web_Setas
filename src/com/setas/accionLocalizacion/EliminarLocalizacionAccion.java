@@ -21,7 +21,11 @@ public class EliminarLocalizacionAccion extends Accion{
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 		request.getSession().setAttribute("listaLocalizacion", sl.recuperarLocalizaUsu(usuario));
 		
-		return "Mapa.jsp";
+		if(request.getParameter("origen").equals("localizaciones")){
+			return "REDIRECT Localizaciones.jsp";
+		}else{
+			return "REDIRECT Mapa.jsp";
+		}
 	}
 
 }

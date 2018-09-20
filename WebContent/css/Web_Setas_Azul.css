@@ -78,6 +78,9 @@ button:hover{
 	background-color: #F1D489;
 	border: 1px solid #F1D489;
 }
+button .borrar:hover{
+	background-color: red;
+}
 .encabezado{
 	margin: 5px 0px 10px 0px;
 	background-color: #2C5673;
@@ -138,4 +141,8 @@ button:hover{
 }
 .nombreUsuario{
 	color: #F1D489;
+}
+.error{
+	margin: 10px 0px;
+	color:red;
 }

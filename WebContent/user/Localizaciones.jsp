@@ -7,6 +7,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="../css/Localizaciones.css">
+	<c:if test="${rol.rol == 'user'}">
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script src="../js/eliminarClas.js"></script>
+	</c:if>
 	<title>Localizaciones</title>
 </head>
 <body>
@@ -18,7 +22,7 @@
 		<c:choose>
 		<c:when test="${sessionScope.usuario eq null}">
 		<div class="botonEncabezado">
-			<a href="registro.html">REGISTRO</a>
+			<a href="registro.jsp">REGISTRO</a>
 		</div>	    
 		<div class="botonEncabezado">
 			<a href="login.html">INICIAR SESIÓN</a>
@@ -40,6 +44,7 @@
 	
 	<h1>Localizaciones</h1>
 	
+		<c:set var="n" value="0"/>
 		<c:forEach var="g" items="${sessionScope.listaLugar}">
 		<div class="localizacion">
 			<a href="Mapa.jsp?localizacion=${g.idlugar}"><h3>${g.lugar}</h3></a>
@@ -59,9 +64,9 @@
 						</div>
 					</div>		
 					<div class="popupEliminar">
-						<form id="eliminarLocalizacion" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}">
-							<input type="submit" value="X"/>			
-						</form>
+						<form id="eliminar${n}" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}&origen=localizaciones"/>
+						<button class="borrar" onclick="eliminarClas(${n})" >X</button>
+						<c:set var="n" value="${n+1}"/>
 					</div>
 	 			</div>
 				</c:if>
@@ -69,10 +74,5 @@
 			</div>
 		</div>
 		</c:forEach>
-	
-	
-			
-	 			
-	
 </body>
 </html>

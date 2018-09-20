@@ -65,13 +65,16 @@
 	color: #557097;
 }
 .fichaSetaEncabezado .fichaSetaBoton{
-	flex: 1;
+	flex: 2;
 	align-self: flex-start;
 	margin: 5px 5px 0px 0px;
 }
 .fichaSetaEncabezado .fichaSetaBoton input[type=submit]{
 	width: 100%;
 	margin-bottom: 5px;
+}
+.fichaSetaEncabezado button{
+	width: 100%;
 }
 .fichaSetaDatos{
 	background-color: white;
@@ -126,4 +129,7 @@
 
 .fichaSetaFotos .fichaSetaFoto .derecho{
     font-size: 0.75em;
+}
+button .borrar:hover{
+	background-color: red;
 }

@@ -18,7 +18,7 @@
 		<c:choose>
 		<c:when test="${sessionScope.usuario eq null}">
 		<div class="botonEncabezado">
-			<a href="registro.html">REGISTRO</a>
+			<a href="registro.jsp">REGISTRO</a>
 		</div>	    
 		<div class="botonEncabezado">
 			<a href="login.html">INICIAR SESIÓN</a>

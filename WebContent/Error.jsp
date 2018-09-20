@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" href="css/Error.css">
+	<link rel="stylesheet" href="css/Web_Setas_Azul.css">
 	<title>Error</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 			<c:choose>
 			<c:when test="${sessionScope.usuario eq null}">
 			<div class="botonEncabezado">
-				<a href="registro.html">REGISTRO</a>
+				<a href="registro.jsp">REGISTRO</a>
 			</div>	    
 			<div class="botonEncabezado">
 				<a href="login.html">INICIAR SESIÓN</a>
@@ -42,8 +42,19 @@
 	<c:choose>
 		<c:when test="${error.toString().contains('Duplicate entry')}">
 		<p>Entrada duplicada</p>
+			<c:if test="${error.toString().contains('nombre')}">
+			<p>Nombre ya existente</p>
+			<p>${error}</p>
+			</c:if>
+			<c:if test="${error.toString().contains('email')}">
+			<p>Email ya empleado</p>
+			<p>${error}</p>
+			</c:if>
 		</c:when>
-		
+		<c:when test="${error.toString().contains('Data too long')}">
+			<p>La entrada supera la longitud permitida</p>
+			<p>${error}</p>
+		</c:when>
 		<c:otherwise>
 		<p>${error}</p>
 		</c:otherwise>

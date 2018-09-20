@@ -1,5 +1,8 @@
 @charset "ISO-8859-1";
 
+#mapid{
+	height: 500px;
+}
 .mapa{
 	background-color: white;
 	max-width: 1200px;
@@ -9,6 +12,21 @@
 }
 .mapa .controlesMapa{
 	padding: 10px;
+}
+.mapa .controlesLocalizacion{
+	padding: 0px 10px 10px 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+.mapa .controlesLocalizacion .controlLocalizacion{
+	flex-grow: 1;
+	margin: 5px;
+}
+.mapa .controlesLocalizacion .controlLocalizacion .nuevoLugar{
+	margin: 5px;
 }
 .mapa input{
 	margin-left: 10px;
@@ -20,6 +38,7 @@
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	font-size: 12pt;
 }
+
 .popups{
 	padding: 10px 0px 0px 10px;
 	background-color: white;
@@ -89,7 +108,7 @@
 	flex-grow: 0;
 	display: inline-block;
 }
-.popupEliminar input{
+.popupEliminar button{
 	color: white;
 	height: 100%;
 	width: 100%;
@@ -99,7 +118,4 @@
 	padding: 0;
 	border: none;
 	text-align: center;
-}
-.popupEliminar input:hover{
-	cursor: pointer;
 }

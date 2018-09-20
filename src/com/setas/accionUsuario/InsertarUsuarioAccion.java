@@ -22,7 +22,13 @@ public class InsertarUsuarioAccion extends Accion {
 		usuario.setRol(rol.getRol(2));
 		
 		ServiceUsuario su = new ServiceUsuarioImp();
-		su.insertarUsuario(usuario);
+		try {
+			su.insertarUsuario(usuario);
+		}catch(Exception e) {
+			request.setAttribute("error", e.getCause());
+			return "Error.jsp";
+		}
+		
 		return "login.html";
 	}
 

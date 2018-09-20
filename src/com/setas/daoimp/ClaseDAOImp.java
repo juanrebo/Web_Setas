@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import com.setas.dao.ClaseDAO;
 import com.setas.modelo.Clase;
 import com.setas.modelo.Filo;
+import com.setas.modelo.Orden;
 
 public class ClaseDAOImp implements ClaseDAO {
 	SessionFactory sf;
@@ -87,10 +88,10 @@ public class ClaseDAOImp implements ClaseDAO {
 			sf.getCurrentSession().beginTransaction();
 			Query q = sf.getCurrentSession().createQuery("select u from Clase u where clase=:clase");
 			q.setParameter("clase", clase);
-			Clase unaClase = (Clase) q.getSingleResult();
-			unaClase.getFilo();
+			Clase unClase = (Clase) q.getSingleResult();
+			unClase.getClase();
 			sf.getCurrentSession().getTransaction().commit();
-			return unaClase;
+			return unClase;
 		}catch(Exception e) {
 			sf.getCurrentSession().getTransaction().rollback();
 			throw e;

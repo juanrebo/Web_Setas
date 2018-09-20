@@ -40,7 +40,8 @@ public class InsertarLocalizacionAccion extends Accion {
 		localizacion.setSeta(seta);
 		
 		ServiceLugar sl = new ServiceLugarImp();
-		Lugar lugar = sl.recuperaLugar(1);
+		int idlugar = Integer.parseInt(request.getParameter("lugarLocalizacion"));
+		Lugar lugar = sl.recuperaLugar(idlugar);
 		localizacion.setLugar(lugar);
 		
 		sf.insertarLocalizacion(localizacion);
@@ -49,5 +50,4 @@ public class InsertarLocalizacionAccion extends Accion {
 		
 		return "Mapa.jsp";
 	}
-
 }

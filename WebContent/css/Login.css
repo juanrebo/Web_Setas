@@ -2,13 +2,13 @@
 
 .login{
 	background-color: white;
-	padding: 30px 20px;
-	max-width: 300px;
+	padding: 20px 20px 10px 20px;
+	max-width: 350px;
 	margin-left:auto;
 	margin-right:auto;
 	display: block;
-	margin-top: 100px;
-	box-shadow: 5px 5px #BBBBBB
+	margin-top: 50px;
+	box-shadow: 5px 5px #B3913D;
 }
 .login h2{
 	border-bottom: 1px solid #1D3963;
@@ -33,5 +33,4 @@
 .login button{
 	margin: auto;
 	display: block;
-	padding: 10px 20px;
 }
