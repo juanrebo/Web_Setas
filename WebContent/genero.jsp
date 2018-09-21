@@ -69,7 +69,7 @@
 				<form method="post" id="eliminar${n}" class="eliminar" action="eliminarGenero.do">
 					<input type="hidden" name="actual" value="${l.genero}">
 				</form>
-				<button onclick="eliminarClas(${n})">ELIMINAR</button>
+				<button class="borrar" onclick="eliminarClas(${n})">ELIMINAR</button>
 				<c:set var="n" value="${n+1}"/>
 				</c:if>
 			</div>

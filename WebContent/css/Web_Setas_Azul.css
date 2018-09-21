@@ -78,7 +78,8 @@ button:hover{
 	background-color: #F1D489;
 	border: 1px solid #F1D489;
 }
-button .borrar:hover{
+.borrar:hover{
+	color: white;
 	background-color: red;
 }
 .encabezado{
