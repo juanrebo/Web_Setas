@@ -78,8 +78,9 @@
 			 		</select>
 			 		<button type="button" id="botonOcultarLugar" onclick="MostrarControlesLugar()">NUEVO LUGAR</button>
 			 		<div class="nuevoLugar" style="display: none">
-				 		<input type="text" form="nuevoLugar" name="nuevoLugar">
-				 		<input type="submit" form="nuevoLugar" value="AÑADIR LUGAR">
+				 		<input type="text" id="textoInsertarLugar" form="nuevoLugar" name="nuevoLugar">
+				 		<input type="submit" id="botonInsertarLugar" onclick="InsertarLugar()" value="AÑADIR LUGAR">
+				 		<div id="mensajeLugar"></div>
 			 		</div>
 			 		<input type="hidden" form="nuevoPunto" id="latUbi" name="latUbi" value="">
 			 		<input type="hidden" form="nuevoPunto" id="lonUbi" name="lonUbi" value="">

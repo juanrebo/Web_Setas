@@ -91,6 +91,14 @@ function InsertarLocalizacion(){
 	$("#nuevoPunto").submit();
 }
 
+function InsertarLugar(){
+	if($("#textoInsertarLugar").val() == ""){
+		$("#mensajeLugar").text("Introduzca un nombre para el lugar");
+	}else{
+		$("#nuevoLugar").submit();
+	}
+}
+
 function CentrarSeta(latSeta, lonSeta){
 	mymap.setView([latSeta,lonSeta]);
 }
