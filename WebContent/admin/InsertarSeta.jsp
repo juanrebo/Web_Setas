@@ -64,8 +64,6 @@
 			<p><textarea rows="5" cols="50" maxlength="500" name="gleba" form="insertarSeta"></textarea>
 			<p>Estroma: 
 			<p><textarea rows="5" cols="50" maxlength="500" name="estroma" form="insertarSeta"></textarea>
-			<p>Carne: 
-			<p><textarea rows="5" cols="50" maxlength="500" name="carne" form="insertarSeta"></textarea>
 			<p>Láminas: 
 			<p><textarea rows="5" cols="50" maxlength="500" name="laminas" form="insertarSeta"></textarea>
 			<p>Tubos: 
@@ -81,7 +79,9 @@
 			<p>Comestibilidad: 
 			<p><textarea rows="5" cols="50" maxlength="500" name="comestibilidad" form="insertarSeta"></textarea>
 			</div>
-			<p>Foto: <input type="text" name="ruta">
+			<p>Foto: <input type="text" form="insertarSeta" name="ruta">
+			<p>
+			<p>Derecho: <input type="text" form="insertarSeta" name="derecho">
 			<p>
 			<p>Idioma: 
 			<select type="select" form="insertarSeta" name="idioma">

@@ -45,13 +45,15 @@ public class InsertarSetaAccion extends Accion {
 		ss.insertarSeta(seta);
 		
 		String ruta = request.getParameter("ruta");
-		if(ruta != null) {
+		if(ruta != "") {
 			ServiceFoto sf = new ServiceFotoImp();
+			String derecho = request.getParameter("derecho");
 			Foto foto = new Foto();
 			foto.setRuta(ruta);
+			foto.setDerecho(derecho);
 			foto.setSeta(seta);
 			sf.insertarFoto(foto);
-		}
+		}		
 		
 		String nombrereq = request.getParameter("nombre");
 		if(nombrereq != "") {
@@ -59,6 +61,7 @@ public class InsertarSetaAccion extends Accion {
 			Nombre nombre = new Nombre();
 			nombre.setIdioma(idiomareq);
 			nombre.setNombre(nombrereq);
+			nombre.setSeta(seta);
 			ServiceNombre sn = new ServiceNombreImp();
 			sn.insertarNombre(nombre);
 		}

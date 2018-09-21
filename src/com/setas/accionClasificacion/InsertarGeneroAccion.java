@@ -24,7 +24,7 @@ public class InsertarGeneroAccion extends Accion{
 			sg.insertarGenero(genero);
 			
 			List<Genero> listaGenero = (List<Genero>) sg.getGenero();
-			request.getSession().setAttribute("listaGenero", listaGenero);
+			request.getServletContext().setAttribute("todoGenero", listaGenero);
 			return "genero.do?familia="+familia.getFamilia().toString();
 		}catch(Exception e) {
 			request.setAttribute("error", e.getCause());
