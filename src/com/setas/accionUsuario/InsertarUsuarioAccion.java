@@ -3,7 +3,10 @@ package com.setas.accionUsuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.setas.modelo.Lugar;
 import com.setas.modelo.Usuario;
+import com.setas.service.ServiceLugar;
+import com.setas.service.ServiceLugarImp;
 import com.setas.service.ServiceRol;
 import com.setas.service.ServiceRolImp;
 import com.setas.service.ServiceUsuario;
@@ -28,6 +31,12 @@ public class InsertarUsuarioAccion extends Accion {
 			request.setAttribute("error", e.getCause());
 			return "Error.jsp";
 		}
+		
+		Lugar lugar = new Lugar();
+		lugar.setLugar("Sin lugar");
+		lugar.setUsuario(usuario);
+		ServiceLugar sl = new ServiceLugarImp();
+		sl.insertarLugar(lugar);
 		
 		return "login.html";
 	}
