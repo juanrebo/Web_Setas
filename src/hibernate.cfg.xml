@@ -4,9 +4,9 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">laboral1</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/setasdb</property>
-        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">vance_0tacoma_GoGGle</property>
+        <property name="hibernate.connection.url">jdbc:mysql://aa8xsn7xj6eutt.c5bjrue1mexv.us-east-2.rds.amazonaws.com:3306/setasdb</property>
+        <property name="hibernate.connection.username">juanrebo</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>

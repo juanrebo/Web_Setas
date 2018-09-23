@@ -27,7 +27,7 @@
 		<c:otherwise>
 		<div class="sesionIniciada">
 			<div class="nombreUsuario">
-				Hola, ${sessionScope.usuario.nombre}
+				Hola, ${sessionScope.usuario.nombre}.
 			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
