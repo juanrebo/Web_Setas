@@ -19,3 +19,7 @@ function registro(){
 		}
 	}
 }
+
+function login(){
+	$("#login").submit();
+}

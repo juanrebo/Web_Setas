@@ -168,11 +168,6 @@
 				<p>${seta.estroma}</p>
 			</c:if>
 			
-			<c:if test="${seta.carne ne ''}" >
-				<h3>Carne</h3>
-				<p>${seta.carne}</p>
-			</c:if>
-			
 			<c:if test="${seta.laminas ne ''}" >
 				<h3>Laminas</h3>
 				<p>${seta.laminas}</p>

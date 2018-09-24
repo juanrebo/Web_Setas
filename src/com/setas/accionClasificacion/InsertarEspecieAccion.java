@@ -24,7 +24,7 @@ public class InsertarEspecieAccion extends Accion{
 			ss.insertarSeta(seta);
 			
 			List<Seta> todasSetas = ss.getSeta();
-			request.getSession().setAttribute("todasSetas", todasSetas);
+			request.getServletContext().setAttribute("todasSetas", todasSetas);
 			
 			return "especie.do?genero="+genero.getGenero().toString();
 		}catch(Exception e) {
