@@ -21,7 +21,7 @@
 			<a href="registro.jsp">REGISTRO</a>
 		</div>	    
 		<div class="botonEncabezado">
-			<a href="login.html">INICIAR SESIÓN</a>
+			<a href="login.jsp">INICIAR SESIÓN</a>
 		</div>
 		</c:when>
 		<c:otherwise>

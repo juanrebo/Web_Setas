@@ -25,26 +25,27 @@ public class ComprobarUsuarioAccion extends Accion {
 
 		try{
 			usuario = su.obtenerUsuario(request.getParameter("nombre"));
+			if (usuario.getContrasena().equals(request.getParameter("contrasena"))){
+				request.getSession().setAttribute("usuario", usuario);
+				request.getSession().setAttribute("rol", usuario.getRol());
+				
+				ServiceLocalizacion sl = new ServiceLocalizacionImp();
+				request.getSession().setAttribute("listaLocalizacion", sl.recuperarLocalizaUsu(usuario));
+				
+				ServiceFavorito sf = new ServiceFavoritoImp();
+				request.getSession().setAttribute("listaFavorito", sf.recuperaFavoritos(usuario));
+				
+				ServiceLugar sg = new ServiceLugarImp();
+				request.getSession().setAttribute("listaLugar", sg.recuperaLugares(usuario));
+				
+				respuesta = "Inicio.jsp";
+			}else {
+				request.setAttribute("errorLogin", "error");
+				respuesta = "login.jsp";
+			}
 		}catch(NoResultException e) {
-			respuesta = "login.html";
-		}
-
-		if (usuario.getContrasena().equals(request.getParameter("contrasena"))){
-			request.getSession().setAttribute("usuario", usuario);
-			request.getSession().setAttribute("rol", usuario.getRol());
-			
-			ServiceLocalizacion sl = new ServiceLocalizacionImp();
-			request.getSession().setAttribute("listaLocalizacion", sl.recuperarLocalizaUsu(usuario));
-			
-			ServiceFavorito sf = new ServiceFavoritoImp();
-			request.getSession().setAttribute("listaFavorito", sf.recuperaFavoritos(usuario));
-			
-			ServiceLugar sg = new ServiceLugarImp();
-			request.getSession().setAttribute("listaLugar", sg.recuperaLugares(usuario));
-			
-			respuesta = "Inicio.jsp";
-		}else {
-			respuesta = "login.html";
+			request.setAttribute("errorLogin", "error");
+			respuesta = "login.jsp";
 		}
 
 		return respuesta;

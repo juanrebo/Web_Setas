@@ -21,13 +21,13 @@
 			<a href="registro.jsp">REGISTRO</a>
 		</div>	    
 		<div class="botonEncabezado">
-			<a href="login.html">INICIAR SESIÓN</a>
+			<a href="login.jsp">INICIAR SESIÓN</a>
 		</div>
 		</c:when>
 		<c:otherwise>
 		<div class="sesionIniciada">
 			<div class="nombreUsuario">
-				Hola, ${sessionScope.usuario.nombre}.
+				Hola, ${sessionScope.usuario.nombre}
 			</div>
 			<div class="botonEncabezado">
 				<a href="cerrarSesion.do">CERRAR SESIÓN</a>

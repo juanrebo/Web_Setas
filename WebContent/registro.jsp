@@ -18,7 +18,7 @@
 		</div>
 		<div class="registro">
 			<div class="botonEncabezado">
-				<a href="login.html">INICIAR SESIÓN</a>
+				<a href="login.jsp">INICIAR SESIÓN</a>
 			</div>
 		</div>
 	</div>
