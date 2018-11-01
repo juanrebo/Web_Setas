@@ -40,11 +40,11 @@
 }
 
 .popups{
-	padding: 10px 0px 0px 10px;
-	background-color: white;
-	box-shadow: 5px 5px #B3913D;
-	border-radius: 4px;
-	margin: 10px 0px;
+/* 	padding: 10px 0px 0px 10px; */
+/* 	background-color: white; */
+/* 	box-shadow: 5px 5px #B3913D; */
+/* 	border-radius: 4px; */
+/* 	margin: 10px 0px; */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;

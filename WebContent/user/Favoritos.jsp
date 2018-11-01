@@ -14,27 +14,44 @@
 		<div class="nombre">
 			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
-		<div class="registro">
-		<c:choose>
-		<c:when test="${sessionScope.usuario eq null}">
-		<div class="botonEncabezado">
-			<a href="registro.jsp">REGISTRO</a>
-		</div>	    
-		<div class="botonEncabezado">
-			<a href="login.jsp">INICIAR SESIÓN</a>
-		</div>
-		</c:when>
-		<c:otherwise>
-		<div class="sesionIniciada">
-			<div class="nombreUsuario">
-				Hola, ${sessionScope.usuario.nombre}
-			</div>
+		<div class="acciones">
 			<div class="botonEncabezado">
-				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
+				<a href="filo.do">CLASIFICACIONES</a>
 			</div>
+			<c:choose>
+			<c:when test="${sessionScope.rol.rol eq 'user'}">
+			<div class="botonEncabezado">
+				<a href="Mapa.jsp">MAPA</a>
+			</div>
+			</c:when>
+			<c:when test="${sessionScope.rol.rol eq 'admin'}">
+			<div class="botonEncabezado">
+				<a href="admin/InsertarSeta.jsp">INSERTAR SETA</a>
+			</div>
+			</c:when>
+			</c:choose>
 		</div>
-		</c:otherwise>
-		</c:choose>
+		<div class="registro">
+			<c:choose>
+			<c:when test="${sessionScope.usuario eq null}">
+			<div class="botonEncabezado">
+				<a href="registro.jsp">REGISTRO</a>
+			</div>	    
+			<div class="botonEncabezado">
+				<a href="login.jsp">INICIAR SESIÓN</a>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<div class="sesionIniciada">
+				<div class="nombreUsuario">
+					Hola, ${sessionScope.usuario.nombre}
+				</div>
+				<div class="botonEncabezado">
+					<a href="cerrarSesion.do">CERRAR SESIÓN</a>
+				</div>
+			</div>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	

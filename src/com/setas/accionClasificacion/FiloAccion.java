@@ -13,8 +13,12 @@ public class FiloAccion extends Accion {
 	public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 		ServiceFilo sf = new ServiceFiloImp();
 		request.getSession().setAttribute("listaFilo", sf.getFilo());
-		
-		return "filo.jsp";
+
+		if(request.getRequestURI().equals("/Web_Setas/filo.do")) {
+			return "/filo.jsp";
+		}else {
+			return "REDIRECT ../filo.jsp";
+		}
 	}
 
 }

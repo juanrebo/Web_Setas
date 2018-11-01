@@ -16,7 +16,7 @@
 		<div class="nombre">
 			<a href="Inicio.jsp">micoPedia</a>
 		</div>
-		<div class="registro">
+		<div class="registro">   
 			<div class="botonEncabezado">
 				<a href="login.jsp">INICIAR SESIÓN</a>
 			</div>

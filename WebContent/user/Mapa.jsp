@@ -20,34 +20,52 @@
 	</c:if>
 	<link rel="stylesheet" href="../css/Web_Setas_Azul.css">
 	<link rel="stylesheet" href="../css/Mapa.css">
+	<link rel="stylesheet" href="../css/Localizaciones.css">
 </head>
 
 <body>
-<div class="encabezado">
+	<div class="encabezado">
 		<div class="nombre">
 			<a href="../Inicio.jsp">micoPedia</a>
 		</div>
-		<div class="registro">
-		<c:choose>
-		<c:when test="${sessionScope.usuario eq null}">
-		<div class="botonEncabezado">
-			<a href="registro.jsp">REGISTRO</a>
-		</div>	    
-		<div class="botonEncabezado">
-			<a href="login.jsp">INICIAR SESIÓN</a>
-		</div>
-		</c:when>
-		<c:otherwise>
-		<div class="sesionIniciada">
-			<div class="nombreUsuario">
-				Hola, ${sessionScope.usuario.nombre}
-			</div>
+		<div class="acciones">
 			<div class="botonEncabezado">
-				<a href="cerrarSesion.do">CERRAR SESIÓN</a>
+				<a href="filo.do">CLASIFICACIONES</a>
 			</div>
+			<c:choose>
+			<c:when test="${sessionScope.rol.rol eq 'user'}">
+			<div class="botonEncabezado">
+				<a href="Favoritos.jsp">FAVORITOS</a>
+			</div>
+			</c:when>
+			<c:when test="${sessionScope.rol.rol eq 'admin'}">
+			<div class="botonEncabezado">
+				<a href="admin/InsertarSeta.jsp">INSERTAR SETA</a>
+			</div>
+			</c:when>
+			</c:choose>
 		</div>
-		</c:otherwise>
-		</c:choose>
+		<div class="registro">
+			<c:choose>
+			<c:when test="${sessionScope.usuario eq null}">
+			<div class="botonEncabezado">
+				<a href="registro.jsp">REGISTRO</a>
+			</div>	    
+			<div class="botonEncabezado">
+				<a href="login.jsp">INICIAR SESIÓN</a>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<div class="sesionIniciada">
+				<div class="nombreUsuario">
+					Hola, ${sessionScope.usuario.nombre}
+				</div>
+				<div class="botonEncabezado">
+					<a href="cerrarSesion.do">CERRAR SESIÓN</a>
+				</div>
+			</div>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	
@@ -96,31 +114,35 @@
 		</div>
  	</div>
  	
- 	<div class="popups">
- 		<c:set var="n" value="0"/>
- 		<c:forEach var="l" items="${listaLocalizacion}">
- 		<c:if test="${param['localizacion'] eq l.lugar.idlugar.toString() or param['localizacion']==null}">
- 		<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
- 			<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
- 			<div class="popupContenido">
-				<div class="popupFoto">
-					<img src="${foto.next().ruta}"></img>
+	<div class="localizacion">
+	<c:set var="n" value="0"/>
+	<c:forEach var="g" items="${sessionScope.listaLugar}">
+		<a href="Mapa.jsp?localizacion=${g.idlugar}"><h3>${g.lugar}</h3></a>
+		<div class="popups">
+			<c:forEach var="l" items="${sessionScope.listaLocalizacion}">
+			<c:if test="${l.lugar.idlugar eq g.idlugar}">
+			<div class="popup" onclick="CentrarSeta(${l.latitud},${l.longitud})">
+	 			<c:set var="foto" scope="session" value="${l.seta.fotos.iterator()}"/>
+	 			<div class="popupContenido">
+					<div class="popupFoto">
+						<img src="${foto.next().ruta}"></img>
+					</div>
+					<div class="popupTexto">
+						<div class="popupNombre">${l.seta.genero.genero} ${l.seta.especie}</div>
+						<div class="popupLat" latitud="${l.latitud}">Lat.: ${l.latitud.substring(0,10)}</div>
+						<div class="popupLon" longitud="${l.longitud}">Lon.: ${l.longitud.substring(0,10)}</div>
+					</div>
 				</div>
-				<div class="popupTexto">
-					<div class="popupNombre">${l.seta.genero.genero} ${l.seta.especie}</div>
-					<div class="popupLugar">${l.lugar.lugar}</div>
-					<div class="popupLat" latitud="${l.latitud}">Lat.: ${l.latitud.substring(0,10)}</div>
-					<div class="popupLon" longitud="${l.longitud}">Lon.: ${l.longitud.substring(0,10)}</div>
+				<div class="popupEliminar">
+					<form id="eliminar${n}" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}&origen=mapa"></form>
+					<button class="borrar" onclick="eliminarClas(${n})" >X</button>
+					<c:set var="n" value="${n+1}"/>
 				</div>
-			</div>
-			<div class="popupEliminar">
-				<form id="eliminar${n}" method="post" action="eliminarLocalizacion.do?idlocalizacion=${l.idlocalizacion}&origen=mapa"></form>
-				<button class="borrar" onclick="eliminarClas(${n})" >X</button>
-				<c:set var="n" value="${n+1}"/>
-			</div>
- 		</div>
- 		</c:if>
- 		</c:forEach>
- 	</div>
+	 		</div>
+			</c:if>
+			</c:forEach>
+		</div>
+	</c:forEach>
+	</div>
 </body>
 </html>
